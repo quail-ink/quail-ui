@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "lib": ["ESNext", "ES2020", "DOM", "DOM.Iterable"],
+    "skipLibCheck": true,
+    // for dayjs
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+
+    /* Bundler mode */
+    "moduleResolution": "Node",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "preserve",
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}
