@@ -5,7 +5,11 @@ const props = defineProps({
   modelValue: {
     type: Boolean,
     required: true,
-  }
+  },
+	disabled: {
+		type: Boolean,
+		default: false,
+	},
 });
 
 const val = ref(props.modelValue);
@@ -26,7 +30,7 @@ function change(event:any) {
 
 <template>
 <label class="toggle">
-	<input class="toggle-checkbox" type="checkbox" v-model="val" @change="change">
+	<input class="toggle-checkbox" type="checkbox" v-model="val" @change="change" :disabled="props.disabled">
 	<div class="toggle-switch"></div>
 </label>
 </template>
