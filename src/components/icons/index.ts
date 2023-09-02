@@ -40,6 +40,8 @@ import QIconTrash from './QIconTrash.vue';
 import QIconUnsplash from './QIconUnsplash.vue';
 import QIconUserCircle from './QIconUserCircle.vue';
 import QIconZapSquare from './QIconZapSquare.vue';
+import QIconBitcoinCircle from './QIconBitcoinCircle.vue';
+import QIconDollarCircle from './QIconDollarCircle.vue';
 
 export {
   QIconArrowUpRight,
@@ -84,4 +86,6 @@ export {
   QIconUnsplash,
   QIconUserCircle,
   QIconZapSquare,
+  QIconBitcoinCircle,
+  QIconDollarCircle
 };
