@@ -21,7 +21,6 @@ const QuailUI = {
       }
       app.component(name, component);
     }
-    app.component('QIconArrowLeft', QIconArrowLeft);
   }
 };
 

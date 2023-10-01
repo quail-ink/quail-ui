@@ -42,6 +42,16 @@ import QIconUserCircle from './QIconUserCircle.vue';
 import QIconZapSquare from './QIconZapSquare.vue';
 import QIconBitcoinCircle from './QIconBitcoinCircle.vue';
 import QIconDollarCircle from './QIconDollarCircle.vue';
+import QIconBold from './QIconBold.vue';
+import QIconItalic from './QIconItalic.vue';
+import QIconExpand from './QIconExpand.vue';
+import QIconFileLock from './QIconFileLock.vue';
+import QIconHead from './QIconHead.vue';
+import QIconLink from './QIconLink.vue';
+import QIconOrderedList from './QIconOrderedList.vue';
+import QIconQuote from './QIconQuote.vue';
+import QIconStrikeThrough from './QIconStrikeThrough.vue';
+import QIconUnorderedList from './QIconUnorderedList.vue';
 
 export {
   QIconArrowUpRight,
@@ -87,5 +97,15 @@ export {
   QIconUserCircle,
   QIconZapSquare,
   QIconBitcoinCircle,
-  QIconDollarCircle
+  QIconDollarCircle,
+  QIconBold,
+  QIconItalic,
+  QIconExpand,
+  QIconFileLock,
+  QIconHead,
+  QIconLink,
+  QIconOrderedList,
+  QIconQuote,
+  QIconStrikeThrough,
+  QIconUnorderedList,
 };

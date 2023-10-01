@@ -1,6 +1,5 @@
 <template>
-  <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <script xmlns=""/><title/>
-    <path d="M7.5 6.75V0h9v6.75h-9zm9 3.75H24V24H0V10.5h7.5v6.75h9V10.5z" stroke="currentColor"/>
-  </svg>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M8.625 8.0625V3H15.375V8.0625H8.625ZM15.375 10.875H21V21H3V10.875H8.625V15.9375H15.375V10.875Z" fill="currentColor"/>
+</svg>
 </template>

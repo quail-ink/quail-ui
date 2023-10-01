@@ -29,7 +29,7 @@ function change(event:any) {
 </script>
 
 <template>
-<label class="toggle">
+<label class="toggle" :class="disabled ? 'disabled': ''">
 	<input class="toggle-checkbox" type="checkbox" v-model="val" @change="change" :disabled="props.disabled">
 	<div class="toggle-switch"></div>
 </label>
@@ -39,6 +39,9 @@ function change(event:any) {
 .toggle {
 	cursor: pointer;
 	display: inline-block;
+	&.disabled {
+		opacity: 0.5;
+	}
 }
 .toggle-switch {
 	display: inline-block;
@@ -49,6 +52,7 @@ function change(event:any) {
 	position: relative;
 	vertical-align: middle;
 	transition: all 0.25s;
+	cursor: default;
 	&:before,
 	&:after {
 		content: "";
