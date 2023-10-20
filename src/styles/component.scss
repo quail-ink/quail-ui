@@ -55,7 +55,7 @@
     background-color: rgba(211, 47, 47, 0.1);
     padding: 0.5rem;
     border: 1px solid rgba(211, 47, 47, 0.2);
-    border-radius: 2px;
+    border-radius: 4px;
   }
   .left, .right {
     display: flex;
@@ -151,7 +151,7 @@
 
 input.text-field, textarea.textarea {
   border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 2px;
+  border-radius: 4px;
   padding: 0.5rem;
   width: 100%;
   font-size: 1rem;
@@ -354,7 +354,7 @@ button.plain.danger {
 
 .frame {
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
-  border-radius: 2px;
+  border-radius: 4px;
 }
 
 .dark {
