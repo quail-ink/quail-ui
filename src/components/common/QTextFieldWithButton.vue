@@ -1,26 +1,25 @@
-
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed, ref } from "vue";
 
 const props = defineProps({
   type: {
-    default: 'text'
+    default: "text",
   },
   actionLabel: {
-    default: 'Submit'
+    default: "Submit",
   },
   placeholder: {
-    default: 'Type here'
+    default: "Type here",
   },
   defaultText: {
-    default: ''
+    default: "",
   },
   loading: {
-    default: false
+    default: false,
   },
   disabled: {
-    default: false
-  }
+    default: false,
+  },
 });
 
 const emit = defineEmits(["submit"]);
@@ -37,45 +36,48 @@ const validated = computed(() => {
     return false;
   }
 
-  if (props.type === 'email') {
+  if (props.type === "email") {
     return validateEmail.value;
-  } else if (props.type === 'code') {
+  } else if (props.type === "code") {
     return validatedCode.value;
   }
 
   return true;
 });
 
-const validateEmail = computed(()=> {
+const validateEmail = computed(() => {
   const trimed = text.value?.trim();
-  return !props.disabled && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimed)
-})
+  return !props.disabled && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimed);
+});
 
-const validatedCode = computed(()=> {
+const validatedCode = computed(() => {
   const trimed = text.value?.trim();
-  return /^\d{6}$/.test(trimed)
-})
+  return /^\d{6}$/.test(trimed);
+});
 
 const label = computed(() => {
   if (props.loading) {
-    return 'Loading...';
+    return "Loading...";
   }
 
-  return props.actionLabel
+  return props.actionLabel;
 });
 
 const submit = () => {
   if (validated.value) {
-    emit('submit', { text: text.value })
+    emit("submit", { text: text.value });
   }
 };
-
 </script>
 
 <template>
   <div class="text-field-with-button" :class="props.type">
     <div>
-      <input class="text-field" :placeholder="props.placeholder" v-model="text"/>
+      <input
+        class="text-field"
+        :placeholder="props.placeholder"
+        v-model="text"
+      />
     </div>
     <div>
       <button class="button primary" :disabled="!validated" @click="submit">
@@ -87,14 +89,13 @@ const submit = () => {
   </div>
 </template>
 
-
 <style lang="scss" scoped>
 .text-field-with-button {
   .text-field {
     text-align: center;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    min-width: 296px
+    min-width: 296px;
   }
   .button {
     transform: translateY(-1px);

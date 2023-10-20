@@ -1,48 +1,49 @@
 <script lang="ts" setup>
-import dayjs from 'dayjs';
-import { computed, onMounted, ref, watch } from 'vue';
+import dayjs from "dayjs";
+import { computed, onMounted, ref, watch } from "vue";
 const props = defineProps({
   modelValue: {
     type: String,
     required: true,
   },
-  enabled: {
+  disabled: {
     type: Boolean,
-    default: true,
+    default: false,
   },
 });
 
-const emit = defineEmits(['update:modelValue', 'change']);
+const emit = defineEmits(["update:modelValue", "change"]);
 
-const date = ref('');
-const time = ref('');
+const date = ref("");
+const time = ref("");
 
-watch(() => props.modelValue, (value) => {
-	const d = dayjs(value);
-  console.log('d', d.format('YYYY-MM-DDTHH:mm:ssZ'));
-  date.value = d.format('YYYY-MM-DD');
-  time.value = d.format('HH:mm');
-});
+watch(
+  () => props.modelValue,
+  (value) => {
+    const d = dayjs(value);
+    date.value = d.format("YYYY-MM-DD");
+    time.value = d.format("HH:mm");
+  }
+);
 
 function changed() {
-  const t = dayjs(`${date.value} ${time.value}`).format('YYYY-MM-DDTHH:mm:ssZ')
-  emit('change', t);
-  emit('update:modelValue', t);
+  const t = dayjs(`${date.value} ${time.value}`).format("YYYY-MM-DDTHH:mm:ssZ");
+  emit("change", t);
+  emit("update:modelValue", t);
 }
 
 onMounted(() => {
   const d = dayjs();
-  console.log('d', d.format('YYYY-MM-DDTHH:mm:ssZ'));
-  date.value = d.format('YYYY-MM-DD');
-  time.value = d.format('HH:mm');
-})
-
+  console.log("d", d.format("YYYY-MM-DDTHH:mm:ssZ"));
+  date.value = d.format("YYYY-MM-DD");
+  time.value = d.format("HH:mm");
+});
 </script>
 
 <template>
   <div class="wrapper">
-    <input v-model="date" type="date" :disabled="!enabled" @change="changed"/>
-    <input v-model="time" type="time" :disabled="!enabled" @change="changed"/>
+    <input v-model="date" type="date" :disabled="disabled" @change="changed" />
+    <input v-model="time" type="time" :disabled="disabled" @change="changed" />
   </div>
 </template>
 
@@ -51,7 +52,8 @@ onMounted(() => {
   border: 1px solid #ccc;
   border-radius: 2px;
 }
-input[type="date"], input[type="time"] {
+input[type="date"],
+input[type="time"] {
   width: 50%;
   height: 2.5rem;
   padding: 0.5rem;

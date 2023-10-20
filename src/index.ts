@@ -1,6 +1,5 @@
 import * as Icons from './components/icons';
 import * as Common from './components/common';
-import { QIconArrowLeft } from './components/icons';
 
 import './style.scss';
 

@@ -1,13 +1,19 @@
 <template>
   <div class="fence" :class="type">
-    <a v-if="link" class="fence-inner" :href="link" target="_blank">
-      <QIconHelp class="icon" />
+    <a v-if="link" class="fence-inner with-link" :href="link" target="_blank">
+      <template v-if="icon">
+        <component :is="icon" class="icon" />
+      </template>
+      <QIconHelp v-else class="icon" />
       <div>
         {{ text }}
       </div>
     </a>
     <div v-else class="fence-inner">
-      <QIconHelp class="icon" />
+      <template v-if="icon">
+        <component :is="icon" class="icon" />
+      </template>
+      <QIconHelp v-else class="icon" />
       <div>
         {{ text }}
       </div>
@@ -18,15 +24,18 @@
 const props = defineProps({
   link: {
     type: String,
-    default: '',
+    default: "",
   },
   text: {
     type: String,
-    default: '',
+    default: "",
   },
   type: {
     type: String,
-    default: 'default',
+    default: "default",
+  },
+  icon: {
+    type: Object || null,
   },
 });
 </script>
@@ -43,9 +52,16 @@ const props = defineProps({
     color: var(--vt-c-text-light-2);
     opacity: 0.6;
     background: var(--vt-c-white-soft);
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+    cursor: default;
     .icon {
       width: 16px;
+      min-width: 16px;
       margin-right: 0.5rem;
+    }
+    &.with-link:hover {
+      opacity: 0.9;
     }
   }
   &.warning {
