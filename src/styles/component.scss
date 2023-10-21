@@ -53,9 +53,12 @@
     font-size: 0.8rem;
     color: #d32f2f;
     background-color: rgba(211, 47, 47, 0.1);
-    padding: 0.5rem;
     border: 1px solid rgba(211, 47, 47, 0.2);
     border-radius: 4px;
+    padding-top: .375rem;
+    padding-bottom: .375rem;
+    padding-right: .75rem;
+    padding-left: .75rem;
   }
   .left, .right {
     display: flex;
@@ -152,7 +155,10 @@
 input.text-field, textarea.textarea {
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 4px;
-  padding: 0.5rem;
+  padding-top: .375rem;
+  padding-bottom: .375rem;
+  padding-right: .75rem;
+  padding-left: .75rem;
   width: 100%;
   font-size: 1rem;
   outline: none;
@@ -173,6 +179,8 @@ input.text-field {
 
 textarea.textarea {
   line-height: 1.3;
+  padding-top: .75rem;
+  padding-bottom: .75rem;
 }
 
 input.checkbox {

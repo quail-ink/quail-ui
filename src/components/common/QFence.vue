@@ -1,26 +1,29 @@
 <template>
   <div class="fence" :class="type">
     <a v-if="link" class="fence-inner with-link" :href="link" target="_blank">
-      <template v-if="icon">
-        <component :is="icon" class="icon" />
+      <template v-if="icon && components">
+        <component :is="components[icon]" class="icon" />
       </template>
       <QIconHelp v-else class="icon" />
-      <div>
+      <div class="fence-text">
         {{ text }}
       </div>
     </a>
     <div v-else class="fence-inner">
-      <template v-if="icon">
-        <component :is="icon" class="icon" />
+      <template v-if="icon && components">
+        <component :is="components[icon]" class="icon" />
       </template>
       <QIconHelp v-else class="icon" />
-      <div>
+      <div class="fence-text">
         {{ text }}
       </div>
     </div>
   </div>
 </template>
 <script setup lang="ts">
+import { ref, getCurrentInstance } from "vue";
+const components = getCurrentInstance()?.appContext.components;
+
 const props = defineProps({
   link: {
     type: String,
@@ -35,7 +38,7 @@ const props = defineProps({
     default: "default",
   },
   icon: {
-    type: Object || null,
+    type: String,
   },
 });
 </script>
@@ -44,13 +47,14 @@ const props = defineProps({
   display: block;
   width: 100%;
   .fence-inner {
+    border-radius: 4px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
     padding: 0.5rem 0.8rem;
     font-size: 0.8rem;
-    color: var(--vt-c-text-light-2);
-    opacity: 0.6;
+    color: var(--vt-c-text-light-1);
+    opacity: 0.7;
     background: var(--vt-c-white-soft);
     text-decoration: none;
     transition: all 0.2s ease-in-out;
@@ -61,7 +65,10 @@ const props = defineProps({
       margin-right: 0.5rem;
     }
     &.with-link:hover {
-      opacity: 0.9;
+      opacity: 1;
+    }
+    .fence-text {
+      margin-top: 2px;
     }
   }
   &.warning {

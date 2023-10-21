@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
 
-const switchValue = ref(true);
+const switchValue1 = ref(true);
+const switchValue2 = ref(false);
 const datetimeValue = ref("2023-10-23");
 const dialogValue1 = ref(false);
 const menuItems = computed(() => [
@@ -46,6 +47,12 @@ const menuItems = computed(() => [
     },
   },
 ]);
+
+const selectedMenuItem = ref(menuItems.value[0]);
+
+function dropdownMenuSelectionChanged(item: any) {
+  console.log("Dropdown menu selection changed", item);
+}
 </script>
 
 <template>
@@ -113,7 +120,7 @@ const menuItems = computed(() => [
               <div class="form-desc">The description about the setting.</div>
             </div>
             <div class="form-row-right">
-              <QSwitch />
+              <QSwitch v-model="switchValue2" />
             </div>
           </div>
           <div class="form-row column">
@@ -190,16 +197,8 @@ const menuItems = computed(() => [
     <div class="section">
       <h2 class="section-title">Switch</h2>
       <div class="grid">
-        <QSwitch />
-        <QSwitch v-model="switchValue" />
-      </div>
-    </div>
-
-    <div class="section">
-      <h2 class="section-title">Datetime Picker</h2>
-      <div class="grid">
-        <QDatetimePicker v-model="datetimeValue" />
-        <QDatetimePicker v-model="datetimeValue" disabled />
+        <QSwitch v-model="switchValue1" />
+        <QSwitch v-model="switchValue2" />
       </div>
     </div>
 
@@ -212,6 +211,31 @@ const menuItems = computed(() => [
         >
           <QMenu :items="menuItems" />
         </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Dropdown Menu</h2>
+      <div class="grid">
+        <QDropdownMenu
+          :items="menuItems"
+          :initial-item="selectedMenuItem"
+          @change="dropdownMenuSelectionChanged"
+        />
+        <QDropdownMenu
+          :items="menuItems"
+          :initial-item="selectedMenuItem"
+          hide-selected
+          @change="dropdownMenuSelectionChanged"
+        />
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Datetime Picker</h2>
+      <div class="grid">
+        <QDatetimePicker v-model="datetimeValue" />
+        <QDatetimePicker v-model="datetimeValue" disabled />
       </div>
     </div>
 

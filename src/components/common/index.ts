@@ -5,6 +5,7 @@ import QLoading from './QLoading.vue';
 import QMenu from './QMenu.vue';
 import QSwitch from './QSwitch.vue';
 import QTextFieldWithButton from './QTextFieldWithButton.vue';
+import QDropdownMenu from './QDropdownMenu.vue';
 
 export {
   QDatetimePicker,
@@ -14,4 +15,5 @@ export {
   QMenu,
   QSwitch,
   QTextFieldWithButton,
+  QDropdownMenu,
 };

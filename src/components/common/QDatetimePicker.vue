@@ -50,7 +50,7 @@ onMounted(() => {
 <style lang="scss" scoped>
 .wrapper {
   border: 1px solid #ccc;
-  border-radius: 2px;
+  border-radius: 4px;
 }
 input[type="date"],
 input[type="time"] {
@@ -59,6 +59,7 @@ input[type="time"] {
   padding: 0.5rem;
   border: none;
   outline: none;
+  background: transparent;
   &:focus {
     color: black;
     border: none !important;
