@@ -112,11 +112,13 @@ onMounted(() => {
             class="icon menu-icon"
             :is="selectedItem.icon"
           ></component>
-          {{
-            selectedItem
-              ? selectedItem.title
-              : props.placeholder || "Select ..."
-          }}
+          <div class="menu-title">
+            {{
+              selectedItem
+                ? selectedItem.title
+                : props.placeholder || "Select ..."
+            }}
+          </div>
         </div>
         <slot></slot>
         <QIconChevronDown class="icon chevron-icon" />
