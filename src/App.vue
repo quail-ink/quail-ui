@@ -228,6 +228,14 @@ function dropdownMenuSelectionChanged(item: any) {
           hide-selected
           @change="dropdownMenuSelectionChanged"
         />
+        <QDropdownMenu
+          :items="menuItems"
+          :initial-item="selectedMenuItem"
+          hide-selected
+          @change="dropdownMenuSelectionChanged"
+        >
+          <div>Custom content</div>
+        </QDropdownMenu>
       </div>
     </div>
 

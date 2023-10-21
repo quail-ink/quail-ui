@@ -118,6 +118,7 @@ onMounted(() => {
               : props.placeholder || "Select ..."
           }}
         </div>
+        <slot></slot>
         <QIconChevronDown class="icon chevron-icon" />
       </div>
       <div ref="menuWrapper">

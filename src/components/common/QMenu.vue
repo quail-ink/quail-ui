@@ -122,7 +122,7 @@ function doAction(item: any) {
 
     .menu-image {
       height: 24px;
-      widows: 24px;
+      width: 24px;
     }
 
     .menu-icon {
