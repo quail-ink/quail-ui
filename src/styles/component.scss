@@ -305,6 +305,9 @@ button.outlined[disabled] {
   color: #888;
   background-color: transparent;
   cursor: default;
+  &:hover {
+    background-color: transparent !important;
+  }
 }
 
 button.outlined.danger {
@@ -346,6 +349,9 @@ button.plain[disabled] {
   opacity: 0.4;
   background-color: transparent;
   cursor: default;
+  &:hover {
+    background-color: transparent;
+  }
 }
 
 button.plain.danger {

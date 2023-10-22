@@ -59,7 +59,10 @@ function dropdownMenuSelectionChanged(item: any) {
   <div class="container">
     <h1 class="">Quail UI</h1>
     <div>
-      👉 <a href="https://github.com/quail-ink/quail-ui" target="_blank">Fork me at Github</a>
+      👉
+      <a href="https://github.com/quail-ink/quail-ui" target="_blank"
+        >Fork me at Github</a
+      >
     </div>
     <div class="section">
       <h2 class="section-title">Buttons</h2>
@@ -79,8 +82,11 @@ function dropdownMenuSelectionChanged(item: any) {
       </div>
       <div class="grid">
         <button class="button danger">Danger</button>
+        <button class="button danger" disabled>Danger</button>
         <button class="button outlined danger">Danger</button>
+        <button class="button outlined danger" disabled>Danger</button>
         <button class="button plain danger">Danger</button>
+        <button class="button plain danger" disabled>Danger</button>
         <button class="button sm danger">Danger</button>
         <button class="button sm outlined danger">Danger</button>
         <button class="button sm plain danger">Danger</button>
