@@ -6,7 +6,7 @@ import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
-  const ret = {
+  const ret:any = {
     plugins: [
       vue(),
       scss({
@@ -47,7 +47,7 @@ export default defineConfig(({ mode }) => {
       fileName: 'index',
     }
   } else if (mode === 'demo') {
-    //
+    ret.base = '/quail-ui/'
   }
 
   return ret;
