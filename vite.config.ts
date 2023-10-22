@@ -2,6 +2,8 @@ import scss from 'rollup-plugin-scss';
 import { defineConfig } from 'vite'
 import { fileURLToPath, URL } from 'node:url'
 import { resolve } from 'path'
+import vueJsx from '@vitejs/plugin-vue-jsx'
+
 import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
@@ -17,7 +19,21 @@ export default defineConfig(({ mode }) => {
         ],
       }),
     ],
-    build: {
+    resolve: {
+      alias: {
+        '@': fileURLToPath(new URL('./src', import.meta.url))
+      }
+    }
+  }
+  if (mode === 'lib') {
+    ret.build = {
+      lib: {
+        // Could also be a dictionary or array of multiple entry points
+        entry: resolve(__dirname, 'src/index.ts'),
+        name: 'QuailUI',
+        // the proper extensions will be added
+        fileName: 'index',
+      },
       sourcemap: true,
       rollupOptions: {
         // make sure to externalize deps that shouldn't be bundled
@@ -31,20 +47,6 @@ export default defineConfig(({ mode }) => {
           },
         },
       },
-    },
-    resolve: {
-      alias: {
-        '@': fileURLToPath(new URL('./src', import.meta.url))
-      }
-    }
-  }
-  if (mode === 'lib') {
-    ret.build['lib'] = {
-      // Could also be a dictionary or array of multiple entry points
-      entry: resolve(__dirname, 'src/index.ts'),
-      name: 'QuailUI',
-      // the proper extensions will be added
-      fileName: 'index',
     }
   } else if (mode === 'demo') {
     ret.base = '/quail-ui/'
