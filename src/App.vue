@@ -58,6 +58,9 @@ function dropdownMenuSelectionChanged(item: any) {
 <template>
   <div class="container">
     <h1 class="">Quail UI</h1>
+    <div>
+      👉 <a href="https://github.com/quail-ink/quail-ui" target="_blank">Fork me at Github</a>
+    </div>
     <div class="section">
       <h2 class="section-title">Buttons</h2>
       <div class="grid">
@@ -274,7 +277,7 @@ function dropdownMenuSelectionChanged(item: any) {
   }
 }
 .section {
-  margin-bottom: 2rem;
+  margin: 2rem 0;
 }
 .grid {
   display: flex;
