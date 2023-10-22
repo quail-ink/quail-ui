@@ -20,7 +20,8 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc && vite build",
+    "build": "vue-tsc && vite build --mode lib",
+    "build:demo": "vue-tsc && vite build --mode demo",
     "preview": "vite preview"
   },
   "dependencies": {
