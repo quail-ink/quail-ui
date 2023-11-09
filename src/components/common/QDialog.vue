@@ -51,8 +51,8 @@ function v() {
 
 </script>
 <template>
-  <div v-if="isOpen" class="dialog-mask" @click="close">
-    <Transition>
+  <Transition>
+    <div v-if="isOpen" class="dialog-mask" @click="close">
       <div class="dialog" :style="dialogStyle" @click.stop="v">
         <div class="dialog-header">
           <template v-if="title">
@@ -64,8 +64,8 @@ function v() {
           <slot></slot>
         </div>
       </div>
-    </Transition>
-  </div>
+    </div>
+  </Transition>
 </template>
 
 <style scoped lang="scss">
@@ -84,9 +84,8 @@ function v() {
 
 .dialog {
   background-color: white;
-  padding: 20px;
+  padding: 0rem;
   border-radius: 2px;
-  // max-height: 70%;
   z-index: 101;
 }
 
@@ -99,13 +98,13 @@ function v() {
     text-align: center;
     font-size: 1.2rem;
     font-weight: bold;
-    padding: 0.5rem;
+    padding: 1rem;
   }
 }
 
 .dialog-body {
   height: calc(100% - 78px);
-  padding: 0.5rem;
+  padding: 0 1rem 1rem;
   overflow-y: auto;
   max-height: 600px;
   margin-bottom: cal(safe-area-inset-bottom);
@@ -128,17 +127,15 @@ function v() {
   .dialog {
     width: 100%;
     border-radius: 0;
-    padding: 0;
     bottom: 0;
     background: white;
     .dialog-header {
-      padding: 0.5rem 1rem;
     }
     .dialog-body {
       height: calc(100% - 78px);
-      padding: 0.5rem 1rem;
       overflow-y: auto;
       margin-bottom: cal(safe-area-inset-bottom);
+      padding-bottom: 28px;
     }
   }
 }

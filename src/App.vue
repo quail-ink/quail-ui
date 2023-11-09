@@ -252,6 +252,7 @@ function dropdownMenuSelectionChanged(item: any) {
       <h2 class="section-title">Datetime Picker</h2>
       <div class="grid">
         <QDatetimePicker v-model="datetimeValue" />
+        <br/>
         <QDatetimePicker v-model="datetimeValue" disabled />
       </div>
     </div>
@@ -264,7 +265,14 @@ function dropdownMenuSelectionChanged(item: any) {
         </button>
         <QDialog v-model="dialogValue1" title="Hello">
           <div class="dialog-body">
-            <p style="text-align: center">Some text here</p>
+            <div class="form-row center">
+              <p style="text-align: center">Some text here</p>
+            </div>
+            <div class="form-row center">
+              <button class="button primary" @click="dialogValue1 = false">
+                Close
+              </button>
+            </div>
           </div>
         </QDialog>
       </div>
