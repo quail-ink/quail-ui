@@ -3,7 +3,6 @@ import QIconArrowLeft from './QIconArrowLeft.vue';
 import QIconArrowRight from './QIconArrowRight.vue';
 import QIconBatteryMid from './QIconBatteryMid.vue';
 import QIconBatteryFull from './QIconBatteryFull.vue';
-import QIconBook from './QIconBook.vue';
 import QIconCamera from './QIconCamera.vue';
 import QIconCheckCircle from './QIconCheckCircle.vue';
 import QIconChevronDown from './QIconChevronDown.vue';
@@ -55,6 +54,14 @@ import QIconUnorderedList from './QIconUnorderedList.vue';
 import QIconBookOpen from './QIconBookOpen.vue';
 import QIconCheckHeart from './QIconCheckHeart.vue';
 import QIconCompass from './QIconCompass.vue';
+import QIconClockRewind from './QIconClockRewind.vue';
+import QIconMessageChatSquare from './QIconMessageChatSquare.vue';
+import QIconPaperclip from './QIconPaperclip.vue';
+import QIconPin from './QIconPin.vue';
+import QIconSettings from './QIconSettings.vue';
+import QIconShoppingBag from './QIconShoppingBag.vue';
+import QIconUsers from './QIconUsers.vue';
+import QIconDataflow from './QIconDataflow.vue';
 
 export {
   QIconArrowUpRight,
@@ -62,7 +69,6 @@ export {
   QIconArrowRight,
   QIconBatteryMid,
   QIconBatteryFull,
-  QIconBook,
   QIconCamera,
   QIconCheckCircle,
   QIconChevronDown,
@@ -114,4 +120,12 @@ export {
   QIconBookOpen,
   QIconCheckHeart,
   QIconCompass,
+  QIconClockRewind,
+  QIconMessageChatSquare,
+  QIconPaperclip,
+  QIconPin,
+  QIconSettings,
+  QIconShoppingBag,
+  QIconUsers,
+  QIconDataflow,
 };
