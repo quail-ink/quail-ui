@@ -52,6 +52,9 @@ import QIconOrderedList from './QIconOrderedList.vue';
 import QIconQuote from './QIconQuote.vue';
 import QIconStrikeThrough from './QIconStrikeThrough.vue';
 import QIconUnorderedList from './QIconUnorderedList.vue';
+import QIconBookOpen from './QIconBookOpen.vue';
+import QIconCheckHeart from './QIconCheckHeart.vue';
+import QIconCompass from './QIconCompass.vue';
 
 export {
   QIconArrowUpRight,
@@ -108,4 +111,7 @@ export {
   QIconQuote,
   QIconStrikeThrough,
   QIconUnorderedList,
+  QIconBookOpen,
+  QIconCheckHeart,
+  QIconCompass,
 };
