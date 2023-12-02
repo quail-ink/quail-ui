@@ -48,6 +48,8 @@ const menuItems = computed(() => [
   },
 ]);
 
+const currentPage = ref(1);
+
 const selectedMenuItem = ref(menuItems.value[0]);
 
 function dropdownMenuSelectionChanged(item: any) {
@@ -277,6 +279,33 @@ function dropdownMenuSelectionChanged(item: any) {
         </QDialog>
       </div>
     </div>
+
+    <div class="section">
+      <h2 class="section-title">Frame</h2>
+      <div class="grid">
+        <div class="frame">
+          Some content here
+        </div>
+        <div class="frame focus">
+          Some content here
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Pagination</h2>
+      <div>
+        <QPagination
+          v-model="currentPage"
+          :total-page="10"
+          :has-prev="currentPage > 1"
+          :has-next="currentPage < 10"
+          @change:prev="() => { currentPage-- }"
+          @change:next="() => { currentPage++ }"
+          @change:goto="(val: any) => { currentPage = val; console.log(val)}"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -298,5 +327,8 @@ function dropdownMenuSelectionChanged(item: any) {
   gap: 1rem;
   margin-bottom: 1rem;
   flex-wrap: wrap;
+}
+.frame {
+  padding: 1rem;
 }
 </style>

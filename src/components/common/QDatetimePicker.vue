@@ -34,7 +34,6 @@ function changed() {
 
 onMounted(() => {
   const d = dayjs();
-  console.log("d", d.format("YYYY-MM-DDTHH:mm:ssZ"));
   date.value = d.format("YYYY-MM-DD");
   time.value = d.format("HH:mm");
 });
