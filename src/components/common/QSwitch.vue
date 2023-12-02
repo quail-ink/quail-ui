@@ -29,21 +29,21 @@ function change(event:any) {
 </script>
 
 <template>
-<label class="toggle" :class="disabled ? 'disabled': ''">
-	<input class="toggle-checkbox" type="checkbox" v-model="val" @change="change" :disabled="props.disabled">
-	<div class="toggle-switch"></div>
+<label class="q-switch" :class="disabled ? 'disabled': ''">
+	<input class="q-switch-checkbox" type="checkbox" v-model="val" @change="change" :disabled="props.disabled">
+	<div class="q-switch-inner"></div>
 </label>
 </template>
 
-<style lang="scss" scoped>
-.toggle {
+<style lang="scss">
+.q-switch {
 	cursor: pointer;
 	display: inline-block;
 	&.disabled {
 		opacity: 0.5;
 	}
 }
-.toggle-switch {
+.q-switch-inner {
 	display: inline-block;
 	background: #ccc;
 	border-radius: 16px;
@@ -69,18 +69,18 @@ function change(event:any) {
 		left: 4px;
 		transition: left 0.25s;
 	}
-	.toggle:hover &:before {
+	.q-switch:hover &:before {
 		background: linear-gradient(to bottom, #fff 0%,#fff 100%);
 		box-shadow: 0 0 0 1px rgba(0,0,0,0.1);
 	}
-	.toggle-checkbox:checked + & {
+	.q-switch-checkbox:checked + & {
 		background: rgb(55, 162, 255);
 		&:before {
 			left: 30px;
 		}
 	}
 }
-.toggle-checkbox {
+.q-switch-checkbox {
 	position: absolute;
 	visibility: hidden;
 }

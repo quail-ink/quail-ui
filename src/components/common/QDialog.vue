@@ -52,15 +52,15 @@ function v() {
 </script>
 <template>
   <Transition>
-    <div v-if="isOpen" class="dialog-mask" @click="close">
-      <div class="dialog" :style="dialogStyle" @click.stop="v">
-        <div class="dialog-header">
+    <div v-if="isOpen" class="q-dialog-mask" @click="close">
+      <div class="q-dialog" :style="dialogStyle" @click.stop="v">
+        <div class="q-dialog-header">
           <template v-if="title">
-            <div class="dialog-title">{{ title }}</div>
+            <div class="q-dialog-title">{{ title }}</div>
           </template>
           <slot v-else name="header"></slot>
         </div>
-        <div class="dialog-body">
+        <div class="q-dialog-body">
           <slot></slot>
         </div>
       </div>
@@ -68,8 +68,8 @@ function v() {
   </Transition>
 </template>
 
-<style scoped lang="scss">
-.dialog-mask {
+<style lang="scss">
+.q-dialog-mask {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -82,18 +82,18 @@ function v() {
   z-index: 100;
 }
 
-.dialog {
+.q-dialog {
   background-color: white;
   padding: 0rem;
   border-radius: 2px;
   z-index: 101;
 }
 
-.dialog-header {
+.q-dialog-header {
   display: flex;
   align-items: center;
   max-height: 78px;
-  .dialog-title {
+  .q-dialog-title {
     flex: 1;
     text-align: center;
     font-size: 1.2rem;
@@ -102,7 +102,7 @@ function v() {
   }
 }
 
-.dialog-body {
+.q-dialog-body {
   height: calc(100% - 78px);
   padding: 0 1rem 1rem;
   overflow-y: auto;
@@ -121,17 +121,17 @@ function v() {
 }
 
 @media only screen and (max-width: 720px) {
-  .dialog-mask {
+  .q-dialog-mask {
     align-items: flex-end;
   }
-  .dialog {
+  .q-dialog {
     width: 100%;
     border-radius: 0;
     bottom: 0;
     background: white;
-    .dialog-header {
+    .q-dialog-header {
     }
-    .dialog-body {
+    .q-dialog-body {
       height: calc(100% - 78px);
       overflow-y: auto;
       margin-bottom: cal(safe-area-inset-bottom);

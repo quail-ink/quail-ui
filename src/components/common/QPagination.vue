@@ -90,60 +90,60 @@ function gotoPage(ix: any, item:any ) {
 
 </script>
 <template>
-  <div class="pagination">
-    <button class="prev button sm outlined icon" @click="prevPage" :disabled="!props.hasPrev">
+  <div class="q-pagination">
+    <button class="prev q-button button sm outlined icon" @click="prevPage" :disabled="!props.hasPrev">
       <q-icon-arrow-left class="icon" ></q-icon-arrow-left>
     </button>
-    <div v-if="totalPage !== 0" class="page-indicators">
-      <div v-for="item in indicators" class="page-indicator">
-        <button class="page-indicator button sm plain" :class="item.label === val? 'active': ''" :disabled="item.disabled" @click="gotoPage(item.label, item)">
+    <div v-if="totalPage !== 0" class="q-page-indicators">
+      <div v-for="item in indicators" class="q-page-indicator">
+        <button class="q-page-indicator q-button button sm plain" :class="item.label === val? 'active': ''" :disabled="item.disabled" @click="gotoPage(item.label, item)">
           {{ item.label }}
         </button>
       </div>
     </div>
-    <div v-else class="page-indicator-simple">
+    <div v-else class="q-page-indicator-simple">
       <div class="">{{ modelValue }}</div>
     </div>
-    <button class="next button sm outlined icon" @click="nextPage" :disabled="!props.hasNext">
+    <button class="next q-button button sm outlined icon" @click="nextPage" :disabled="!props.hasNext">
       <q-icon-arrow-right class="icon" ></q-icon-arrow-right>
     </button>
   </div>
 </template>
 
-<style lang="scss" scoped>
-.pagination {
+<style lang="scss">
+.q-pagination {
   font-size: 0.8rem;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  .page-indicators {
+  .q-page-indicators {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 0 0.2rem;
   }
-  .page-indicator {
+  .q-page-indicator {
     margin-right: 1px;
     &:last-child {
       margin-right: 0;
     }
-    .button {
+    .q-button {
       padding-left: 0.6rem;
       padding-right: 0.6rem;
       opacity: 0.6;
     }
-    .button[disabled] {
+    .q-button[disabled] {
       opacity: 0.5;
       border: none;
       padding-left: 0rem;
       padding-right: 0rem;
     }
-    .button.active {
+    .q-button.active {
       background-color: rgba(0, 0, 0, 0.06);
       opacity: 1;
     }
   }
-  .page-indicator-simple {
+  .q-page-indicator-simple {
     padding: 0 1rem;
     font-size: 0.9rem;
   }

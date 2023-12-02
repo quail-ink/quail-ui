@@ -35,30 +35,30 @@ function doAction(item: any) {
 }
 </script>
 <template>
-  <div class="menu frame">
+  <div class="q-menu frame">
     <div
-      class="menu-item"
+      class="q-menu-item"
       v-for="item in props.items"
-      :key="`menu-item-${item.id}`"
+      :key="`q-menu-item-${item.id}`"
       :class="cls(item)"
       @click="doAction(item)"
     >
-      <div v-if="item.divider" class="menu-item-divider"></div>
-      <div v-else class="menu-item-inner">
+      <div v-if="item.divider" class="q-menu-item-divider"></div>
+      <div v-else class="q-menu-item-inner">
         <img
           v-if="item.image"
-          class="menu-image"
+          class="q-menu-image"
           :src="item.image"
           :alt="item.title"
         />
         <component
           v-else-if="item.icon"
-          class="menu-icon mr-1"
+          class="q-menu-icon mr-1"
           :is="item.icon"
         />
-        <div class="menu-item-content">
-          <div class="menu-title">{{ item.title }}</div>
-          <div v-if="item.subtitle" class="menu-subtitle">
+        <div class="q-menu-item-content">
+          <div class="q-menu-title">{{ item.title }}</div>
+          <div v-if="item.subtitle" class="q-menu-subtitle">
             {{ item.subtitle }}
           </div>
         </div>
@@ -67,8 +67,8 @@ function doAction(item: any) {
   </div>
 </template>
 
-<style lang="scss" scoped>
-.menu {
+<style lang="scss">
+.q-menu {
   position: absolute;
   width: 100%;
   min-width: 220px;
@@ -77,14 +77,14 @@ function doAction(item: any) {
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 0 20px rgba(0, 0, 0, 0.1);
   padding: 0.5rem 0;
   z-index: 20;
-  .menu-item {
+  .q-menu-item {
     cursor: default;
     &.danger {
       color: var(--vt-c-red);
     }
     &.disabled {
       opacity: 0.5;
-      .menu-item-inner {
+      .q-menu-item-inner {
         &:hover {
           background-color: transparent;
         }
@@ -92,19 +92,19 @@ function doAction(item: any) {
     }
     &.with-icon,
     &.with-image {
-      .menu-item-inner {
-        .menu-item-content {
+      .q-menu-item-inner {
+        .q-menu-item-content {
           margin-left: 1rem;
         }
       }
     }
 
-    .menu-item-divider {
+    .q-menu-item-divider {
       border-top: 1px solid rgba(0, 0, 0, 0.1);
       margin: 0 1rem;
       height: 0px;
     }
-    .menu-item-inner {
+    .q-menu-item-inner {
       &:hover {
         background-color: rgba(0, 0, 0, 0.06);
       }
@@ -112,20 +112,20 @@ function doAction(item: any) {
       justify-items: center;
       align-items: center;
       padding: 0.5rem 1rem;
-      .menu-item-content {
+      .q-menu-item-content {
         margin-left: 0rem;
       }
-      .menu-subtitle {
+      .q-menu-subtitle {
         font-size: 0.7rem;
       }
     }
 
-    .menu-image {
+    .q-menu-image {
       height: 24px;
       width: 24px;
     }
 
-    .menu-icon {
+    .q-menu-icon {
       width: 16px;
       height: 16px;
       display: flex;

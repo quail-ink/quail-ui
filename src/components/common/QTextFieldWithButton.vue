@@ -71,16 +71,16 @@ const submit = () => {
 </script>
 
 <template>
-  <div class="text-field-with-button" :class="props.type">
+  <div class="q-text-field-with-button" :class="props.type">
     <div>
       <input
-        class="text-field"
+        class="q-text-field text-field"
         :placeholder="props.placeholder"
         v-model="text"
       />
     </div>
     <div>
-      <button class="button primary" :disabled="!validated" @click="submit">
+      <button class="q-button button primary" :disabled="!validated" @click="submit">
         <div clas="">
           {{ label }}
         </div>
@@ -89,15 +89,15 @@ const submit = () => {
   </div>
 </template>
 
-<style lang="scss" scoped>
-.text-field-with-button {
-  .text-field {
+<style lang="scss">
+.q-text-field-with-button {
+  .q-text-field {
     text-align: center;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     min-width: 296px;
   }
-  .button {
+  .q-button {
     transform: translateY(-1px);
     width: 100%;
     border-top-left-radius: 0;
@@ -108,7 +108,7 @@ const submit = () => {
   }
 
   &.code {
-    .text-field {
+    .q-text-field {
       font-family: monospace;
       letter-spacing: 0.2rem;
     }

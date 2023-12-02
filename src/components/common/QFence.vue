@@ -1,20 +1,20 @@
 <template>
-  <div class="fence" :class="type">
-    <a v-if="link" class="fence-inner with-link" :href="link" target="_blank">
+  <div class="q-fence" :class="type">
+    <a v-if="link" class="q-fence-inner with-link" :href="link" target="_blank">
       <template v-if="icon && components">
         <component :is="components[icon]" class="icon" />
       </template>
       <q-icon-help v-else class="icon" ></q-icon-help>
-      <div class="fence-text">
+      <div class="q-fence-text">
         {{ text }}
       </div>
     </a>
-    <div v-else class="fence-inner">
+    <div v-else class="q-fence-inner">
       <template v-if="icon && components">
         <component :is="components[icon]" class="icon" />
       </template>
       <q-icon-help v-else class="icon" ></q-icon-help>
-      <div class="fence-text">
+      <div class="q-fence-text">
         {{ text }}
       </div>
     </div>
@@ -42,11 +42,11 @@ const props = defineProps({
   },
 });
 </script>
-<style lang="scss" scoped>
-.fence {
+<style lang="scss">
+.q-fence {
   display: block;
   width: 100%;
-  .fence-inner {
+  .q-fence-inner {
     border-radius: 4px;
     display: flex;
     align-items: flex-start;
@@ -67,12 +67,12 @@ const props = defineProps({
     &.with-link:hover {
       opacity: 1;
     }
-    .fence-text {
+    .q-fence-text {
       margin-top: 2px;
     }
   }
   &.warning {
-    .fence-inner {
+    .q-fence-inner {
       color: var(--vt-c-orange-dark);
       background-color: var(--vt-c-orange-dimm-2);
     }

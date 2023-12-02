@@ -97,10 +97,10 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="dropdown-menu">
-    <div class="dropdown-menu-inner narrow-view">
-      <div class="dropdown-menu-action" :class="actionCls" @click.stop="toggle">
-        <div v-if="!hideSelected && selectedItem" class="dropdown-selected">
+  <div class="q-dropdown-menu">
+    <div class="q-dropdown-menu-inner narrow-view">
+      <div class="q-dropdown-menu-action" :class="actionCls" @click.stop="toggle">
+        <div v-if="!hideSelected && selectedItem" class="q-dropdown-selected">
           <img
             v-if="selectedItem.image"
             class="menu-image"
@@ -132,13 +132,13 @@ onMounted(() => {
   </div>
 </template>
 
-<style lang="scss" scoped>
-.dropdown-menu {
+<style lang="scss">
+.q-dropdown-menu {
   height: 44px;
-  .dropdown-menu-inner {
+  .q-dropdown-menu-inner {
     position: relative;
   }
-  .dropdown-menu-action {
+  .q-dropdown-menu-action {
     height: 44px;
     padding: 0 0.5rem;
     display: flex;
@@ -159,7 +159,7 @@ onMounted(() => {
       }
     }
   }
-  .dropdown-selected {
+  .q-dropdown-selected {
     white-space: nowrap;
     margin-left: 0.2rem;
     flex: 1;
