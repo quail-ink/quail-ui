@@ -116,6 +116,8 @@ function gotoPage(ix: any, item:any ) {
     padding: 0 0.5rem;
   }
   .page-indicator {
+    margin-left: 1px;
+    margin-right: 1px;
     &[disabled] {
       opacity: 0.5;
       border: none;
@@ -123,7 +125,7 @@ function gotoPage(ix: any, item:any ) {
       padding-right: 0.2rem;
     }
     &.active {
-      background-color: rgba(0, 0, 0, 0.1);
+      background-color: rgba(0, 0, 0, 0.06);
     }
   }
 }
