@@ -146,7 +146,9 @@ onMounted(() => {
     align-items: center;
     cursor: pointer;
     .menu-icon {
-      margin-right: 0.5rem;
+    }
+    .menu-title {
+      margin-left: 0.5rem;
     }
     .chevron-icon {
       transition: transform 0.2s ease;

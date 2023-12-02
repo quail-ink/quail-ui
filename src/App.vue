@@ -245,7 +245,7 @@ function dropdownMenuSelectionChanged(item: any) {
           hide-selected
           @change="dropdownMenuSelectionChanged"
         >
-          <div>Custom content</div>
+          <div class="">Custom content</div>
         </QDropdownMenu>
       </div>
     </div>
@@ -301,7 +301,16 @@ function dropdownMenuSelectionChanged(item: any) {
           :has-prev="currentPage > 1"
           :has-next="currentPage < 10"
           @change:prev="() => { currentPage-- }"
-          @change:next="() => { currentPage++ }"
+          @change:next="() => { currentPage++; console.log(currentPage) }"
+          @change:goto="(val: any) => { currentPage = val; console.log(val)}"
+        />
+        <br />
+        <QPagination
+          v-model="currentPage"
+          :has-prev="currentPage > 1"
+          :has-next="currentPage < 10"
+          @change:prev="() => { currentPage-- }"
+          @change:next="() => { currentPage++; console.log(currentPage) }"
           @change:goto="(val: any) => { currentPage = val; console.log(val)}"
         />
       </div>

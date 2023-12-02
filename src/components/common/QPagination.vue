@@ -23,33 +23,37 @@ const props = defineProps({
 const indicators = computed(() => {
   let max = 6;
   const result:any = [];
-  if (props.totalPage < max) {
-    for (let i = 1; i <= props.totalPage; i++) {
-      result.push({ label: i });
+  if (props.totalPage !== 0) {
+    if (props.totalPage < max) {
+      for (let i = 1; i <= props.totalPage; i++) {
+        result.push({ label: i });
+      }
+    } else {
+      result.push({ label: 1});
+      // check the range around the current page
+      let start = val.value - 2;
+      let end = val.value + 2;
+      if (start < 2) {
+        start = 2;
+        end = start + max - 2;
+      }
+      if (end > props.totalPage - 1) {
+        end = props.totalPage - 1;
+        start = end - max + 2;
+      }
+      if (start > 2) {
+        result.push({ label: "…", disabled: true });
+      }
+      for (let i = start; i <= end; i++) {
+        result.push({ label: i });
+      }
+      if (end < props.totalPage - 1) {
+        result.push({ label: "…", disabled: true });
+      }
+      result.push({ label: props.totalPage });
     }
   } else {
-    result.push({ label: 1});
-    // check the range around the current page
-    let start = val.value - 2;
-    let end = val.value + 2;
-    if (start < 2) {
-      start = 2;
-      end = start + max - 2;
-    }
-    if (end > props.totalPage - 1) {
-      end = props.totalPage - 1;
-      start = end - max + 2;
-    }
-    if (start > 2) {
-      result.push({ label: "…", disabled: true });
-    }
-    for (let i = start; i <= end; i++) {
-      result.push({ label: i });
-    }
-    if (end < props.totalPage - 1) {
-      result.push({ label: "…", disabled: true });
-    }
-    result.push({ label: props.totalPage});
+
   }
   return result;
 });
@@ -86,17 +90,20 @@ function gotoPage(ix: any, item:any ) {
 </script>
 <template>
   <div class="pagination">
-    <button class="prev button outlined icon" @click="prevPage" :disabled="!props.hasPrev">
+    <button class="prev button sm outlined icon" @click="prevPage" :disabled="!props.hasPrev">
       <QIconArrowLeft class="icon" />
     </button>
-    <div class="page-indicators">
-      <div v-for="item, ix in indicators" class="page-indicator">
-        <button class="page-indicator button plain" :class="ix === val - 1? 'active': ''" :disabled="item.disabled" @click="gotoPage(ix + 1, item)">
+    <div v-if="totalPage !== 0" class="page-indicators">
+      <div v-for="item in indicators" class="page-indicator">
+        <button class="page-indicator button sm plain" :class="item.label === val? 'active': ''" :disabled="item.disabled" @click="gotoPage(item.label, item)">
           {{ item.label }}
         </button>
       </div>
     </div>
-    <button class="next button outlined icon" @click="nextPage" :disabled="!props.hasNext">
+    <div v-else class="page-indicator-simple">
+      <div class="">{{ modelValue }}</div>
+    </div>
+    <button class="next button sm outlined icon" @click="nextPage" :disabled="!props.hasNext">
       <QIconArrowRight class="icon" />
     </button>
   </div>
@@ -113,20 +120,32 @@ function gotoPage(ix: any, item:any ) {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 0.5rem;
+    padding: 0 0.2rem;
   }
   .page-indicator {
-    margin-left: 1px;
     margin-right: 1px;
-    &[disabled] {
+    &:last-child {
+      margin-right: 0;
+    }
+    .button {
+      padding-left: 0.6rem;
+      padding-right: 0.6rem;
+      opacity: 0.6;
+    }
+    .button[disabled] {
       opacity: 0.5;
       border: none;
-      padding-left: 0.2rem;
-      padding-right: 0.2rem;
+      padding-left: 0rem;
+      padding-right: 0rem;
     }
-    &.active {
+    .button.active {
       background-color: rgba(0, 0, 0, 0.06);
+      opacity: 1;
     }
+  }
+  .page-indicator-simple {
+    padding: 0 1rem;
+    font-size: 0.9rem;
   }
 }
 </style>
