@@ -91,7 +91,7 @@ function gotoPage(ix: any, item:any ) {
 <template>
   <div class="pagination">
     <button class="prev button sm outlined icon" @click="prevPage" :disabled="!props.hasPrev">
-      <QIconArrowLeft class="icon" />
+      <q-icon-arrow-left class="icon" ></q-icon-arrow-left>
     </button>
     <div v-if="totalPage !== 0" class="page-indicators">
       <div v-for="item in indicators" class="page-indicator">
@@ -104,7 +104,7 @@ function gotoPage(ix: any, item:any ) {
       <div class="">{{ modelValue }}</div>
     </div>
     <button class="next button sm outlined icon" @click="nextPage" :disabled="!props.hasNext">
-      <QIconArrowRight class="icon" />
+      <q-icon-arrow-right class="icon" ></q-icon-arrow-right>
     </button>
   </div>
 </template>

@@ -16,7 +16,7 @@ const QuailUI = {
     }
     for (const [name, component] of Object.entries(Common)) {
       if (options?.debug) {
-        console.log('[quail-ui] register cpmmon component', name, component);
+        console.log('[quail-ui] register common component', name, component);
       }
       app.component(name, component);
     }
@@ -24,7 +24,6 @@ const QuailUI = {
     document.body.addEventListener('click', (e) => {
       closePopupMenu();
     })
-
   }
 };
 
