@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
+import { QIconChevronDown } from "./components/icons";
 
 const switchValue1 = ref(true);
 const switchValue2 = ref(false);

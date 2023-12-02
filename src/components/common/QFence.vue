@@ -4,7 +4,7 @@
       <template v-if="icon && components">
         <component :is="components[icon]" class="icon" />
       </template>
-      <QIconHelp v-else class="icon" />
+      <q-icon-help v-else class="icon" ></q-icon-help>
       <div class="fence-text">
         {{ text }}
       </div>
@@ -13,7 +13,7 @@
       <template v-if="icon && components">
         <component :is="components[icon]" class="icon" />
       </template>
-      <QIconHelp v-else class="icon" />
+      <q-icon-help v-else class="icon" ></q-icon-help>
       <div class="fence-text">
         {{ text }}
       </div>

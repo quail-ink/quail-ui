@@ -121,11 +121,11 @@ onMounted(() => {
           </div>
         </div>
         <slot></slot>
-        <QIconChevronDown class="icon chevron-icon" />
+        <q-icon-chevron-down class="icon chevron-icon" ></q-icon-chevron-down>
       </div>
       <div ref="menuWrapper">
         <Transition>
-          <QMenu v-if="expanded" :items="items" @action="menuItemClick"></QMenu>
+          <q-menu v-if="expanded" :items="items" @action="menuItemClick"></q-menu>
         </Transition>
       </div>
     </div>

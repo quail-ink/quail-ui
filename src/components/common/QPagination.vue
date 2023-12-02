@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, watch } from "vue";
-
+import QIconArrowLeft from '../icons/QIconArrowLeft.vue';
+import QIconArrowRight from '../icons/QIconArrowRight.vue';
 const props = defineProps({
   modelValue: {
     type: Number,
@@ -17,7 +18,7 @@ const props = defineProps({
   hasNext: {
     type: Boolean,
     default: false,
-  },
+  }
 });
 
 const indicators = computed(() => {
