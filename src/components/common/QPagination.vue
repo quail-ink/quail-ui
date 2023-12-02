@@ -115,7 +115,6 @@ function gotoPage(ix: any, item:any ) {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 1rem;
   .page-indicators {
     display: flex;
     justify-content: center;
