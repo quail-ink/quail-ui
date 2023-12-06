@@ -25,7 +25,7 @@ const indicators = computed(() => {
   let max = 6;
   const result:any = [];
   if (props.totalPage !== 0) {
-    if (props.totalPage < max) {
+    if (props.totalPage <= max) {
       for (let i = 1; i <= props.totalPage; i++) {
         result.push({ label: i });
       }
