@@ -8,7 +8,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref, getCurrentInstance, computed } from "vue";
+import { computed } from "vue";
 const props = defineProps({
   infinite: {
     type: Boolean,

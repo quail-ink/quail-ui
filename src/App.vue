@@ -6,6 +6,7 @@ const switchValue1 = ref(true);
 const switchValue2 = ref(false);
 const datetimeValue = ref("2023-10-23");
 const dialogValue1 = ref(false);
+const dialogValue2 = ref(false);
 const menuItems = computed(() => [
   {
     title: "Item 1",
@@ -269,6 +270,10 @@ function dropdownMenuSelectionChanged(item: any) {
         <button class="button primary" @click="dialogValue1 = true">
           Open Dialog
         </button>
+        <button class="button primary" @click="dialogValue2 = true">
+          Open Persistent Dialog
+        </button>
+
         <QDialog v-model="dialogValue1" title="Hello">
           <div class="dialog-body">
             <div class="form-row center">
@@ -276,6 +281,19 @@ function dropdownMenuSelectionChanged(item: any) {
             </div>
             <div class="form-row center">
               <button class="button primary" @click="dialogValue1 = false">
+                Close
+              </button>
+            </div>
+          </div>
+        </QDialog>
+
+        <QDialog v-model="dialogValue2" title="Hello" :persistent="true">
+          <div class="dialog-body">
+            <div class="form-row center">
+              <p style="text-align: center">You must click close button to close me</p>
+            </div>
+            <div class="form-row center">
+              <button class="button primary" @click="dialogValue2 = false">
                 Close
               </button>
             </div>

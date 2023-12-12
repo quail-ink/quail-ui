@@ -18,10 +18,15 @@ const props = defineProps({
     type: String,
     default: 'center',
   },
+  persistent: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const emit = defineEmits(["update:modelValue", "close"]);
 
+const shaking = ref(false);
 const isOpen = ref(props.modelValue);
 
 const dialogStyle = computed(() => {
@@ -41,6 +46,14 @@ watch(
 );
 
 function close () {
+  if (props.persistent) {
+    // shake the dialog
+    shaking.value = true;
+    setTimeout(() => {
+      shaking.value = false;
+    }, 300);
+    return
+  };
   isOpen.value = false;
   emit('update:modelValue', false);
   emit('close');
@@ -53,7 +66,7 @@ function v() {
 <template>
   <Transition>
     <div v-if="isOpen" class="q-dialog-mask" @click="close">
-      <div class="q-dialog" :style="dialogStyle" @click.stop="v">
+      <div class="q-dialog" :style="dialogStyle" @click.stop="v" :class="shaking ? 'shaking': ''">
         <div class="q-dialog-header">
           <template v-if="title">
             <div class="q-dialog-title">{{ title }}</div>
@@ -87,6 +100,9 @@ function v() {
   padding: 0rem;
   border-radius: 2px;
   z-index: 101;
+  &.shaking {
+    animation: shake 0.3s;
+  }
 }
 
 .q-dialog-header {
@@ -137,6 +153,24 @@ function v() {
       margin-bottom: cal(safe-area-inset-bottom);
       padding-bottom: 28px;
     }
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.02);
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
   }
 }
 </style>
