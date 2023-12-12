@@ -7,6 +7,7 @@ import QSwitch from './QSwitch.vue';
 import QTextFieldWithButton from './QTextFieldWithButton.vue';
 import QDropdownMenu from './QDropdownMenu.vue';
 import QPagination from './QPagination.vue';
+import QProgress from './QProgress.vue';
 
 export {
   QDatetimePicker,
@@ -18,4 +19,5 @@ export {
   QTextFieldWithButton,
   QDropdownMenu,
   QPagination,
+  QProgress,
 };

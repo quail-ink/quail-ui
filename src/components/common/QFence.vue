@@ -77,5 +77,17 @@ const props = defineProps({
       background-color: var(--vt-c-orange-dimm-2);
     }
   }
+  &.error {
+    .q-fence-inner {
+      color: var(--vt-c-red-dark);
+      background-color: var(--vt-c-red-dimm-2);
+    }
+  }
+  &.success {
+    .q-fence-inner {
+      color: var(--vt-c-green-dark);
+      background-color: var(--vt-c-green-dimm-2);
+    }
+  }
 }
 </style>
