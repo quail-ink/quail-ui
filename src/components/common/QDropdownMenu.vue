@@ -54,7 +54,7 @@ function toggle() {
   if (expanded.value) {
     setTimeout(() => {
       const wrapper = menuWrapper.value;
-      const menu = wrapper.querySelector(".menu");
+      const menu = wrapper.querySelector(".q-menu");
       const rect = menu.getBoundingClientRect();
       if (rect.left < 0) {
         menu.style.left = "0";
@@ -169,12 +169,11 @@ onMounted(() => {
   .menu-image {
     width: 24px;
     height: 24px;
-    margin-right: 0.5rem;
   }
   .icon {
     height: 16px;
   }
-  &:deep(.menu) {
+  .q-menu {
     right: 0;
   }
 }

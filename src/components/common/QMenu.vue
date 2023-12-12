@@ -35,7 +35,7 @@ function doAction(item: any) {
 }
 </script>
 <template>
-  <div class="q-menu frame">
+  <div class="q-menu">
     <div
       class="q-menu-item"
       v-for="item in props.items"
@@ -76,6 +76,7 @@ function doAction(item: any) {
   transform: translateY(0.5rem);
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 0 20px rgba(0, 0, 0, 0.1);
   padding: 0.5rem 0;
+  border-radius: 4px;
   z-index: 20;
   .q-menu-item {
     cursor: default;
