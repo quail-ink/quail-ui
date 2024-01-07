@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, watch, type Ref } from "vue";
 import { closePopupMenu } from "../../util";
+import { useSlots } from 'vue'
+const slots = useSlots()
 
 const props = defineProps({
   items: {
@@ -40,7 +42,15 @@ const actionCls = computed(() => {
     cls.push("frame");
   }
 
+  if (props.hideSelected) {
+    cls.push("hide-selected");
+  }
+
   return cls.join(" ");
+});
+
+const hasSlot = computed(() => {
+  return slots.default !== undefined;
 });
 
 function toggle() {
@@ -100,7 +110,7 @@ onMounted(() => {
   <div class="q-dropdown-menu">
     <div class="q-dropdown-menu-inner narrow-view">
       <div class="q-dropdown-menu-action" :class="actionCls" @click.stop="toggle">
-        <div v-if="!hideSelected && selectedItem" class="q-dropdown-selected">
+        <div v-if="!hideSelected && selectedItem && !hasSlot" class="q-dropdown-selected">
           <img
             v-if="selectedItem.image"
             class="menu-image"
@@ -140,7 +150,7 @@ onMounted(() => {
   }
   .q-dropdown-menu-action {
     height: 44px;
-    padding: 0 0.5rem;
+    padding: 0 0.5rem 0 1rem;
     display: flex;
     justify-items: center;
     align-items: center;
@@ -148,20 +158,28 @@ onMounted(() => {
     .menu-icon {
     }
     .menu-title {
-      margin-left: 0.5rem;
+      margin-left: 1rem;
     }
     .chevron-icon {
       transition: transform 0.2s ease;
+      margin-left: 0.3rem;
+      opacity: 0.5;
     }
     &.expanded {
       .chevron-icon {
         transform: rotate(180deg);
       }
     }
+    &.hide-selected {
+      padding: 0 0.8rem;
+      .chevron-icon {
+        margin-left: 0;
+        opacity: 1;
+      }
+    }
   }
   .q-dropdown-selected {
     white-space: nowrap;
-    margin-left: 0.2rem;
     flex: 1;
     display: flex;
     align-items: center;
@@ -172,9 +190,12 @@ onMounted(() => {
   }
   .icon {
     height: 16px;
+    width: 16px;
   }
   .q-menu {
     right: 0;
+  }
+  .menu-title {
   }
 }
 .v-enter-active,

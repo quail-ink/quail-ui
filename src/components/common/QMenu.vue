@@ -22,6 +22,9 @@ function cls(item: any) {
   if (item.image) {
     _cls += " with-image";
   }
+  if (item.divider) {
+    _cls += " with-divider";
+  }
   return _cls;
 }
 
@@ -99,11 +102,15 @@ function doAction(item: any) {
         }
       }
     }
+    &.with-divider {
+      height: 0px;
+    }
 
     .q-menu-item-divider {
       border-top: 1px solid rgba(0, 0, 0, 0.1);
       margin: 0 1rem;
       height: 0px;
+      transform: translateY(-0.5px);
     }
     .q-menu-item-inner {
       &:hover {
@@ -118,6 +125,7 @@ function doAction(item: any) {
       }
       .q-menu-subtitle {
         font-size: 0.7rem;
+        opacity: 0.6;
       }
     }
 

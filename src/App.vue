@@ -57,6 +57,10 @@ const selectedMenuItem = ref(menuItems.value[0]);
 function dropdownMenuSelectionChanged(item: any) {
   console.log("Dropdown menu selection changed", item);
 }
+
+function submit(val:any) {
+  console.log("submit", val);
+}
 </script>
 
 <template>
@@ -157,22 +161,10 @@ function dropdownMenuSelectionChanged(item: any) {
     <div class="section">
       <h2 class="section-title">TextField with button</h2>
       <div class="grid">
-        <QTextFieldWithButton
-          type="text"
-          placeholder="type here!"
-          action-label="Go!"
-        />
-        <QTextFieldWithButton
-          type="text"
-          placeholder="type here!"
-          default-text="some default text"
-          action-label="Go!"
-        />
-        <QTextFieldWithButton
-          type="email"
-          placeholder="your email here!"
-          action-label="Subscribe"
-        />
+        <QTextFieldWithButton type="text" placeholder="type here!"  action-label="Go!" @submit="submit"/>
+        <QTextFieldWithButton type="text" placeholder="type here!"  default-text="some default text" action-label="Go!" @submit="submit"/>
+        <QTextFieldWithButton type="email" placeholder="your email here!" action-label="Subscribe" @submit="submit"/>
+        <QTextFieldWithButton type="email" layout="" placeholder="your email here!" action-label="Subscribe" @submit="submit"/>
       </div>
     </div>
 
@@ -247,7 +239,6 @@ function dropdownMenuSelectionChanged(item: any) {
         <QDropdownMenu
           :items="menuItems"
           :initial-item="selectedMenuItem"
-          hide-selected
           @change="dropdownMenuSelectionChanged"
         >
           <div class="">Custom content</div>

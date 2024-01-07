@@ -5,6 +5,9 @@ const props = defineProps({
   type: {
     default: "text",
   },
+  layout: {
+    default: "vertical",
+  },
   actionLabel: {
     default: "Submit",
   },
@@ -25,6 +28,19 @@ const props = defineProps({
 const emit = defineEmits(["submit"]);
 
 const text = ref(props.defaultText);
+
+const cls = computed(() => {
+  const cls: string[] = [];
+  if (props.layout === "vertical") {
+    cls.push("vertical");
+  } else {
+    cls.push("horizontal");
+  }
+  if (props.type === "code") {
+    cls.push("code");
+  }
+  return cls.join(" ");
+});
 
 const validated = computed(() => {
   if (props.loading) {
@@ -71,15 +87,15 @@ const submit = () => {
 </script>
 
 <template>
-  <div class="q-text-field-with-button" :class="props.type">
-    <div>
+  <div class="q-text-field-with-button" :class="cls">
+    <div class="q-text-field-wrapper">
       <input
         class="q-text-field text-field"
         :placeholder="props.placeholder"
         v-model="text"
       />
     </div>
-    <div>
+    <div class="q-text-button-wrapper">
       <button class="q-button button primary" :disabled="!validated" @click="submit">
         <div clas="">
           {{ label }}
@@ -111,6 +127,26 @@ const submit = () => {
     .q-text-field {
       font-family: monospace;
       letter-spacing: 0.2rem;
+    }
+  }
+  &.horizontal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 400px;
+    .q-text-field-wrapper {
+      flex: 6;
+    }
+    .q-text-button-wrapper {
+      flex: 4;
+    }
+    .q-text-field {
+      border-radius: 4px 0 0 4px;
+      min-width: auto;
+    }
+    .q-button {
+      border-radius: 0 4px 4px 0;
+      transform: translateX(-1px);
     }
   }
 }
