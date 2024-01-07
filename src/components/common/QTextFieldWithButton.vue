@@ -20,6 +20,9 @@ const props = defineProps({
   loading: {
     default: false,
   },
+  glow: {
+    default: '',
+  },
   disabled: {
     default: false,
   },
@@ -38,6 +41,9 @@ const cls = computed(() => {
   }
   if (props.type === "code") {
     cls.push("code");
+  }
+  if (props.glow) {
+    cls.push(`glow-${props.glow}`);
   }
   return cls.join(" ");
 });
@@ -102,6 +108,7 @@ const submit = () => {
         </div>
       </button>
     </div>
+    <div v-if="glow !== ''" class="q-button-glow"></div>
   </div>
 </template>
 
@@ -142,12 +149,61 @@ const submit = () => {
     }
     .q-text-field {
       border-radius: 4px 0 0 4px;
+      border-width: 1px 0 1px 1px;
       min-width: auto;
     }
     .q-button {
       border-radius: 0 4px 4px 0;
-      transform: translateX(-1px);
+      transform: translateY(0px);
     }
+  }
+  &.glow-matrix {
+    position: relative;
+    .q-text-field {
+      color: #fff;
+      background: transparent;
+      border-color: rgba(255, 255, 255, 0.2) transparent rgba(255, 255, 255, 0.2) rgba(255, 255, 255, 0.2) ;
+      border-width: 1px 0 1px 1px;
+      border-style: solid;
+      &:focus {
+        border-color: rgba(180, 233, 65, 0.2);
+      }
+    }
+    .q-button {
+      color: #b3e941 !important;
+      background: rgba(180, 233, 65, 0.3) !important;
+      &[disabled] {
+        color: #8bb434 !important;
+        background: rgba(180, 233, 65, 0.2) !important;
+        box-shadow: none !important;
+      }
+    }
+    .q-button-glow {
+      position: absolute;
+      background-color: rgba(180, 233, 65, 0.4);
+      color: #b3e941;
+      filter: blur(20px);
+      height: 44px;
+      width: 40%;
+      right: 0;
+    }
+    &:hover {
+      .q-button-glow {
+        animation: glow 3s ease-in-out infinite;
+      }
+    }
+  }
+}
+
+@keyframes glow {
+  0% {
+    transform: scale(0.9);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(0.9);
   }
 }
 </style>

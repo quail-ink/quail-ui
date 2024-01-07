@@ -164,7 +164,12 @@ function submit(val:any) {
         <QTextFieldWithButton type="text" placeholder="type here!"  action-label="Go!" @submit="submit"/>
         <QTextFieldWithButton type="text" placeholder="type here!"  default-text="some default text" action-label="Go!" @submit="submit"/>
         <QTextFieldWithButton type="email" placeholder="your email here!" action-label="Subscribe" @submit="submit"/>
-        <QTextFieldWithButton type="email" layout="" placeholder="your email here!" action-label="Subscribe" @submit="submit"/>
+        <QTextFieldWithButton type="email" layout="horizontal" placeholder="your email here!" action-label="Subscribe" @submit="submit"/>
+      </div>
+      <div class="grid">
+        <div style="background-color: #111; padding: 1rem;">
+          <QTextFieldWithButton type="email" layout="horizontal" glow="matrix" placeholder="your email here!" action-label="Subscribe" @submit="submit"/>
+        </div>
       </div>
     </div>
 
