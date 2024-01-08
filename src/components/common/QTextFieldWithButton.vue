@@ -95,6 +95,7 @@ const label = computed(() => {
 });
 
 watch(() => props.modelValue, (value) => {
+  console.log('watch modelValue', value);
 	text.value = value;
 });
 
@@ -105,6 +106,7 @@ function submit() {
 }
 
 function changed() {
+  console.log('changed', text.value);
   emit("update:modelValue", text.value);
 }
 </script>
@@ -121,9 +123,7 @@ function changed() {
     </div>
     <div class="q-text-button-wrapper">
       <button class="q-button button primary" :disabled="!validated" @click="submit">
-        <div clas="">
-          {{ label }}
-        </div>
+        {{ label }}
       </button>
     </div>
     <div v-if="glow !== ''" class="q-button-glow"></div>
