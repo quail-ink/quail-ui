@@ -23,9 +23,6 @@ export default defineConfig(({ mode }) => {
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url))
       }
-    },
-    define: {
-      __VUE_PROD_DEVTOOLS__: false,
     }
   }
   if (mode === 'lib') {
