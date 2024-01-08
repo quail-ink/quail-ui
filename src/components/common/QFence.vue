@@ -22,6 +22,7 @@
 </template>
 <script setup lang="ts">
 import { ref, getCurrentInstance } from "vue";
+import QIconHelp from '../icons/QIconHelp.vue';
 const components = getCurrentInstance()?.appContext.components;
 
 const props = defineProps({

@@ -56,7 +56,7 @@ function doAction(item: any) {
         />
         <component
           v-else-if="item.icon"
-          class="q-menu-icon mr-1"
+          class="q-menu-icon"
           :is="item.icon"
         />
         <div class="q-menu-item-content">

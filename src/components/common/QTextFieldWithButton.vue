@@ -49,18 +49,15 @@ const cls = computed(() => {
   if (props.glow) {
     cls.push(`glow-${props.glow}`);
   }
-  console.log('cls', cls.join(" "))
   return cls.join(" ");
 });
 
 const validated = computed(() => {
-  console.log('validated loading', props.loading)
   if (props.loading) {
     return false;
   }
 
   const trimed = text.value?.trim();
-  console.log('trimed', trimed)
   if (trimed.length === 0) {
     return false;
   }
@@ -76,13 +73,11 @@ const validated = computed(() => {
 
 const validateEmail = computed(() => {
   const trimed = text.value?.trim();
-  console.log('validateEmail', trimed);
   return !props.disabled && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimed);
 });
 
 const validatedCode = computed(() => {
   const trimed = text.value?.trim();
-  console.log('validatedCode', trimed);
   return /^\d{6}$/.test(trimed);
 });
 
@@ -95,7 +90,6 @@ const label = computed(() => {
 });
 
 watch(() => props.modelValue, (value) => {
-  console.log('watch modelValue', value);
 	text.value = value;
 });
 
@@ -106,7 +100,6 @@ function submit() {
 }
 
 function changed() {
-  console.log('changed', text.value);
   emit("update:modelValue", text.value);
 }
 </script>
