@@ -1,7 +1,11 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
 
 const props = defineProps({
+  modelValue: {
+    type: String,
+    required: true,
+  },
   type: {
     default: "text",
   },
@@ -28,7 +32,7 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(["submit"]);
+const emit = defineEmits(["submit", "update:modelValue"]);
 
 const text = ref(props.defaultText);
 
@@ -85,11 +89,19 @@ const label = computed(() => {
   return props.actionLabel;
 });
 
-const submit = () => {
+watch(() => props.modelValue, (value) => {
+	text.value = value;
+});
+
+function submit() {
   if (validated.value) {
     emit("submit", { text: text.value });
   }
-};
+}
+
+function changed() {
+  emit("update:modelValue", text.value);
+}
 </script>
 
 <template>
@@ -99,6 +111,7 @@ const submit = () => {
         class="q-text-field text-field"
         :placeholder="props.placeholder"
         v-model="text"
+        @change="changed"
       />
     </div>
     <div class="q-text-button-wrapper">

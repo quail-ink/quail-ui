@@ -7,6 +7,7 @@ const switchValue2 = ref(false);
 const datetimeValue = ref("2023-10-23");
 const dialogValue1 = ref(false);
 const dialogValue2 = ref(false);
+const fieldValue = ref("");
 const menuItems = computed(() => [
   {
     title: "Item 1",
@@ -161,14 +162,14 @@ function submit(val:any) {
     <div class="section">
       <h2 class="section-title">TextField with button</h2>
       <div class="grid">
-        <QTextFieldWithButton type="text" placeholder="type here!"  action-label="Go!" @submit="submit"/>
-        <QTextFieldWithButton type="text" placeholder="type here!"  default-text="some default text" action-label="Go!" @submit="submit"/>
-        <QTextFieldWithButton type="email" placeholder="your email here!" action-label="Subscribe" @submit="submit"/>
-        <QTextFieldWithButton type="email" layout="horizontal" placeholder="your email here!" action-label="Subscribe" @submit="submit"/>
+        <QTextFieldWithButton v-model="fieldValue" type="text" placeholder="type here!"  action-label="Go!" @submit="submit"/>
+        <QTextFieldWithButton v-model="fieldValue" type="text" placeholder="type here!"  default-text="some default text" action-label="Go!" @submit="submit"/>
+        <QTextFieldWithButton v-model="fieldValue" type="email" placeholder="your email here!" action-label="Subscribe" @submit="submit"/>
+        <QTextFieldWithButton v-model="fieldValue" type="email" layout="horizontal" placeholder="your email here!" action-label="Subscribe" @submit="submit"/>
       </div>
       <div class="grid">
         <div style="background-color: #111; padding: 1rem;">
-          <QTextFieldWithButton type="email" layout="horizontal" glow="matrix" placeholder="your email here!" action-label="Subscribe" @submit="submit"/>
+          <QTextFieldWithButton v-model="fieldValue" type="email" layout="horizontal" glow="matrix" placeholder="your email here!" action-label="Subscribe" @submit="submit"/>
         </div>
       </div>
     </div>
