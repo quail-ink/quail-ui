@@ -159,6 +159,8 @@ function changed() {
     }
     .q-text-button-wrapper {
       flex: 4;
+      position: relative;
+      z-index: 1;
     }
     .q-text-field {
       border-radius: 4px 0 0 4px;
@@ -199,6 +201,7 @@ function changed() {
       height: 44px;
       width: 40%;
       right: 0;
+      z-index: 0;
     }
     &:hover {
       .q-button-glow {
@@ -213,7 +216,7 @@ function changed() {
     transform: scale(0.9);
   }
   50% {
-    transform: scale(1.3);
+    transform: scale(1.2);
   }
   100% {
     transform: scale(0.9);
