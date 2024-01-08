@@ -216,7 +216,7 @@ function changed() {
     transform: scale(0.9);
   }
   50% {
-    transform: scale(1.2);
+    transform: scale(1.1);
   }
   100% {
     transform: scale(0.9);
