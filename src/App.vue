@@ -42,11 +42,17 @@ const menuItems = computed(() => [
     },
   },
   {
-    title: "Item 45, danger",
+    title: "Item 5, danger",
     danger: true,
     icon: "QIconLogout",
     action: () => {
       console.log("Item 5");
+    },
+  },
+  {
+    title: "Item 6, no icon",
+    action: () => {
+      console.log("Item 6");
     },
   },
 ]);

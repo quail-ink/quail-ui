@@ -46,6 +46,12 @@ const actionCls = computed(() => {
     cls.push("hide-selected");
   }
 
+  if (selectedItem.value && (selectedItem.value.icon || selectedItem.value.image)) {
+    cls.push("prepend");
+  } else {
+    cls.push("no-prepend");
+  }
+
   return cls.join(" ");
 });
 
@@ -175,6 +181,11 @@ onMounted(() => {
       .chevron-icon {
         margin-left: 0;
         opacity: 1;
+      }
+    }
+    &.no-prepend {
+      .menu-title {
+        margin-left: 0;
       }
     }
   }
