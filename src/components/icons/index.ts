@@ -62,6 +62,9 @@ import QIconSettings from './QIconSettings.vue';
 import QIconShoppingBag from './QIconShoppingBag.vue';
 import QIconUsers from './QIconUsers.vue';
 import QIconDataflow from './QIconDataflow.vue';
+import QIconFaceHappy from './QIconFaceHappy.vue';
+import QIconMessageSquare from './QIconMessageSquare.vue';
+import QIconShareSquare from './QIconShareSquare.vue';
 
 export {
   QIconArrowUpRight,
@@ -128,4 +131,7 @@ export {
   QIconShoppingBag,
   QIconUsers,
   QIconDataflow,
+  QIconFaceHappy,
+  QIconMessageSquare,
+  QIconShareSquare,
 };
