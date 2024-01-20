@@ -7,6 +7,8 @@ const switchValue2 = ref(false);
 const datetimeValue = ref("2023-10-23");
 const dialogValue1 = ref(false);
 const dialogValue2 = ref(false);
+const dialogValue3 = ref(false);
+const dialogValue4 = ref(false);
 const fieldValue = ref("");
 const menuItems = computed(() => [
   {
@@ -63,6 +65,8 @@ const selectedMenuItem = ref(menuItems.value[0]);
 
 const selectedLang = ref('en');
 
+const triggerElement:any = ref(null);
+
 function onLangSelected(item: any) {
   console.log("Language selected", item);
   selectedLang.value = item.value;
@@ -74,6 +78,16 @@ function dropdownMenuSelectionChanged(item: any) {
 
 function submit(val:any) {
   console.log("submit", val);
+}
+
+function openDialog3(ev:any) {
+  triggerElement.value = ev.target;
+  dialogValue3.value = true;
+}
+
+function openDialog4(ev:any) {
+  triggerElement.value = ev.target;
+  dialogValue4.value = true;
 }
 </script>
 
@@ -292,19 +306,23 @@ function submit(val:any) {
         <button class="button primary" @click="dialogValue1 = true">
           Open Dialog
         </button>
+
         <button class="button primary" @click="dialogValue2 = true">
           Open Persistent Dialog
+        </button>
+
+        <button class="button primary" @click="openDialog3">
+          Open Dialog (popup)
+        </button>
+
+        <button class="button primary" @click="openDialog4">
+          Open Dialog (popup & no-frame)
         </button>
 
         <QDialog v-model="dialogValue1" title="Hello">
           <div class="dialog-body">
             <div class="form-row center">
               <p style="text-align: center">Some text here</p>
-            </div>
-            <div class="form-row center">
-              <button class="button primary" @click="dialogValue1 = false">
-                Close
-              </button>
             </div>
           </div>
         </QDialog>
@@ -321,6 +339,41 @@ function submit(val:any) {
             </div>
           </div>
         </QDialog>
+
+
+        <QDialog v-model="dialogValue3" desktop-mode="popup" :bind-element="triggerElement">
+          <div class="dialog-body">
+            <div class="form-row center">
+              <p style="text-align: center">Some text here</p>
+            </div>
+          </div>
+        </QDialog>
+
+        <QDialog v-model="dialogValue4" desktop-mode="popup" no-frame :bind-element="triggerElement">
+          <div
+            class="dialog-body"
+            style="padding: 1rem; position: relative"
+          >
+            <div class="dialog-body-frame" style="background-color: #fff; border-radius: 8px; padding: 20px">
+              <div class="form-row center">
+                <button class="button primary block">
+                  Action
+                </button>
+              </div>
+              <div class="form-row center">
+                <button class="button danger block">
+                  Action
+                </button>
+              </div>
+              <div class="form-row center">
+                <button class="button block" @click="dialogValue4 = false">
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </div>
+        </QDialog>
+
       </div>
     </div>
 
