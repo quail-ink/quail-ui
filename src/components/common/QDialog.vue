@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import { computed, ref, useSlots, watch,
+import { computed, ref, watch,
   nextTick,
-  Ref
+  Ref,
+  onMounted
 } from 'vue';
 import { useUtil } from "../../composables/useUtil";
-const slots = useSlots();
 const { browserDetect } = useUtil();
 const { isMobile } = browserDetect();
 
@@ -48,6 +48,10 @@ const popupPos = ref({ "top": "0", "left": "0" });
 const triggerWrapper:Ref<any> = ref(null);
 const dialogMask:Ref<any> = ref(null);
 
+const isPopup = computed(() => {
+  return !isMobile && props.desktopMode === 'popup';
+});
+
 const dialogStyle = computed(() => {
   const w = document.body.clientWidth < 720 ? '100%' : props.width;
   const h = props.height;
@@ -55,7 +59,7 @@ const dialogStyle = computed(() => {
     width: w,
     height: h,
   };
-  if (!isMobile && props.desktopMode === 'popup') {
+  if (isPopup.value) {
     ret.top = popupPos.value.top;
     ret.left = popupPos.value.left;
   }
@@ -78,7 +82,7 @@ const dialogCls = computed(() => {
 
 const dialogMaskCls = computed(() => {
   let cls = [];
-  if (!isMobile && props.desktopMode === 'popup') {
+  if (isPopup.value) {
     cls.push('desktop-mode-popup');
   }
   return cls.join(' ');
@@ -91,7 +95,7 @@ watch(
     nextTick(() => {
       if (!isMobile && props.desktopMode === 'popup') {
         if (triggerWrapper.value.children) {
-          dialogMask.value.style.height = `${document.body.clientHeight}px`;
+          // dialogMask.value.style.height = `${document.body.clientHeight}px`;
           const el:any = (triggerWrapper.value.children as any)[0]
           if (el) {
             const rect = el.getBoundingClientRect();
@@ -121,26 +125,48 @@ function close () {
 
 function v() {};
 
+onMounted(() => {
+  if (props.desktopMode === "popup") {
+    window.addEventListener("storage", (event) => {
+      if (event.key === "quailui_global_popup_trigger") {
+        if (event.newValue) {
+          close();
+        }
+      }
+    });
+  }
+})
 </script>
 <template>
   <div class="trigger-wrapper" ref="triggerWrapper">
     <slot name="trigger"></slot>
   </div>
-  <Transition>
-    <div v-if="isOpen" class="q-dialog-mask" @click="close" :class="dialogMaskCls" ref="dialogMask">
-      <div class="q-dialog" :style="dialogStyle" @click.stop="v" :class="dialogCls">
-        <div class="q-dialog-header">
-          <template v-if="title">
-            <div class="q-dialog-title">{{ title }}</div>
-          </template>
-          <slot v-else name="header"></slot>
-        </div>
+  <template v-if="isPopup">
+    <Transition>
+      <div v-if="isOpen" class="q-dialog" :style="dialogStyle" @click.stop="v" :class="dialogCls">
         <div class="q-dialog-body">
           <slot></slot>
         </div>
       </div>
-    </div>
-  </Transition>
+    </Transition>
+  </template>
+  <template v-else>
+    <Transition>
+      <div v-if="isOpen" class="q-dialog-mask" @click="close" :class="dialogMaskCls" ref="dialogMask">
+        <div class="q-dialog" :style="dialogStyle" @click.stop="v" :class="dialogCls">
+          <div class="q-dialog-header">
+            <template v-if="title">
+              <div class="q-dialog-title">{{ title }}</div>
+            </template>
+            <slot v-else name="header"></slot>
+          </div>
+          <div class="q-dialog-body">
+            <slot></slot>
+          </div>
+        </div>
+      </div>
+    </Transition>
+  </template>
 </template>
 
 <style lang="scss">
@@ -157,7 +183,7 @@ function v() {};
   z-index: 100;
   &.desktop-mode-popup {
     background-color: transparent;
-    position: absolute;
+    position: static;
   }
 }
 
