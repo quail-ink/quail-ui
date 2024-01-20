@@ -1,7 +1,10 @@
 <script lang="ts" setup>
-import { computed, ref, watch } from 'vue';
+import { computed, ref, useSlots, watch,
+  nextTick,
+  Ref
+} from 'vue';
 import { useUtil } from "../../composables/useUtil";
-
+const slots = useSlots();
 const { browserDetect } = useUtil();
 const { isMobile } = browserDetect();
 
@@ -10,10 +13,6 @@ const props = defineProps({
   desktopMode: {
     type: String,
     default: 'dialog' // dialog, popup
-  },
-  bindElement: {
-    type: Element || null,
-    default: null,
   },
   noFrame: {
     type: Boolean,
@@ -46,6 +45,7 @@ const emit = defineEmits(["update:modelValue", "close"]);
 const shaking = ref(false);
 const isOpen = ref(props.modelValue);
 const popupPos = ref({ "top": "0", "left": "0" });
+const triggerWrapper:Ref<any> = ref(null);
 
 const dialogStyle = computed(() => {
   const w = document.body.clientWidth < 720 ? '100%' : props.width;
@@ -66,7 +66,6 @@ const dialogCls = computed(() => {
   if (shaking.value) {
     cls.push('shaking');
   }
-  console.log(isMobile)
   if (!isMobile) {
     cls.push(`desktop-mode-${props.desktopMode}`);
   }
@@ -88,15 +87,19 @@ watch(
   () => props.modelValue,
   (value) => {
     isOpen.value = value;
-    if (!isMobile && props.desktopMode === 'popup' && props.bindElement) {
-      const el = props.bindElement;
-      if (el) {
-        const rect = el.getBoundingClientRect();
-        const top = rect.top + rect.height + 8;
-        const left = rect.left;
-        popupPos.value = { "top": `${top}px`, "left":`${left}px` };
+    nextTick(() => {
+      if (!isMobile && props.desktopMode === 'popup') {
+        if (triggerWrapper.value.children) {
+          const el:any = (triggerWrapper.value.children as any)[0]
+          if (el) {
+            const rect = el.getBoundingClientRect();
+            const top = rect.top + rect.height + 8;
+            const left = rect.left;
+            popupPos.value = { "top": `${top}px`, "left":`${left}px` };
+          }
+        }
       }
-    }
+    })
   }
 );
 
@@ -118,6 +121,9 @@ function v() {};
 
 </script>
 <template>
+  <div class="trigger-wrapper" ref="triggerWrapper">
+    <slot name="trigger"></slot>
+  </div>
   <Transition>
     <div v-if="isOpen" class="q-dialog-mask" @click="close" :class="dialogMaskCls">
       <div class="q-dialog" :style="dialogStyle" @click.stop="v" :class="dialogCls">
