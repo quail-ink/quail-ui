@@ -58,6 +58,7 @@ const languageItems = computed(() => {
 });
 
 function selectLang(item: any) {
+  localStorage.setItem("quail-language", item.value);
   emit("change", {
     title: props.noFlag ? item.title_no_flag: item.title,
     value: item.value,
