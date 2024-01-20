@@ -93,7 +93,7 @@ function openDialog4(ev:any) {
     <div>
       👉
       <a href="https://github.com/quail-ink/quail-ui" target="_blank"
-        >Fork me at Github</a
+        >Fork at Github</a
       >
     </div>
     <div class="section">
