@@ -311,37 +311,13 @@ function openDialog4(ev:any) {
           Open Persistent Dialog
         </button>
 
-        <button class="button primary" @click="openDialog3">
-          Open Dialog (popup)
-        </button>
+        <QDialog v-model="dialogValue3" desktop-mode="popup">
+          <template #trigger>
+            <button class="button primary" @click="openDialog3">
+              Open Dialog (popup)
+            </button>
+          </template>
 
-        <button class="button primary" @click="openDialog4">
-          Open Dialog (popup & no-frame)
-        </button>
-
-        <QDialog v-model="dialogValue1" title="Hello">
-          <div class="dialog-body">
-            <div class="form-row center">
-              <p style="text-align: center">Some text here</p>
-            </div>
-          </div>
-        </QDialog>
-
-        <QDialog v-model="dialogValue2" title="Hello" :persistent="true">
-          <div class="dialog-body">
-            <div class="form-row center">
-              <p style="text-align: center">You must click close button to close me</p>
-            </div>
-            <div class="form-row center">
-              <button class="button primary" @click="dialogValue2 = false">
-                Close
-              </button>
-            </div>
-          </div>
-        </QDialog>
-
-
-        <QDialog v-model="dialogValue3" desktop-mode="popup" :bind-element="triggerElement">
           <div class="dialog-body">
             <div class="form-row center">
               <p style="text-align: center">Some text here</p>
@@ -350,6 +326,12 @@ function openDialog4(ev:any) {
         </QDialog>
 
         <QDialog v-model="dialogValue4" desktop-mode="popup" no-frame :bind-element="triggerElement">
+          <template #trigger>
+              <button class="button primary" @click="openDialog4">
+              Open Dialog (popup & no-frame)
+            </button>
+          </template>
+
           <div
             class="dialog-body"
             style="padding: 1rem; position: relative"
@@ -370,6 +352,29 @@ function openDialog4(ev:any) {
                   Cancel
                 </button>
               </div>
+            </div>
+          </div>
+        </QDialog>
+
+
+
+        <QDialog v-model="dialogValue1" title="Hello">
+          <div class="dialog-body">
+            <div class="form-row center">
+              <p style="text-align: center">Some text here</p>
+            </div>
+          </div>
+        </QDialog>
+
+        <QDialog v-model="dialogValue2" title="Hello" :persistent="true">
+          <div class="dialog-body">
+            <div class="form-row center">
+              <p style="text-align: center">You must click close button to close me</p>
+            </div>
+            <div class="form-row center">
+              <button class="button primary" @click="dialogValue2 = false">
+                Close
+              </button>
             </div>
           </div>
         </QDialog>
