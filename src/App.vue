@@ -61,6 +61,13 @@ const currentPage = ref(1);
 
 const selectedMenuItem = ref(menuItems.value[0]);
 
+const selectedLang = ref('en');
+
+function onLangSelected(item: any) {
+  console.log("Language selected", item);
+  selectedLang.value = item.value;
+}
+
 function dropdownMenuSelectionChanged(item: any) {
   console.log("Dropdown menu selection changed", item);
 }
@@ -262,8 +269,11 @@ function submit(val:any) {
     <div class="section">
       <h2 class="section-title">Language Selector</h2>
       <div class="grid">
-        <QLanguageSelector :initial="'en'" @change="(val:any) => { console.log(val) }"/>
-        <QLanguageSelector :initial="'zh'" @change="(val:any) => { console.log(val) }"/>
+        <QLanguageSelector :lang="'en'" @change="onLangSelected"/>
+        <div style="margin-top: 0.5rem">
+          <QIconArrowRight></QIconArrowRight>
+        </div>
+        <QLanguageSelector :lang="selectedLang" no-flag @change="onLangSelected"/>
       </div>
     </div>
 
