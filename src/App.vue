@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import { QIconChevronDown } from "./components/icons";
+import * as icons from "./components/icons";
 
 const switchValue1 = ref(true);
 const switchValue2 = ref(false);
@@ -258,6 +258,15 @@ function submit(val:any) {
       </div>
     </div>
 
+
+    <div class="section">
+      <h2 class="section-title">Language Selector</h2>
+      <div class="grid">
+        <QLanguageSelector :initial="'en'" @change="(val:any) => { console.log(val) }"/>
+        <QLanguageSelector :initial="'zh'" @change="(val:any) => { console.log(val) }"/>
+      </div>
+    </div>
+
     <div class="section">
       <h2 class="section-title">Datetime Picker</h2>
       <div class="grid">
@@ -340,6 +349,16 @@ function submit(val:any) {
         />
       </div>
     </div>
+
+    <div class="section">
+      <h2 class="section-title">Icons</h2>
+      <div class="grid">
+        <div v-for="icon in icons">
+          <component :is="icon" />
+        </div>
+      </div>
+    </div>
+
   </div>
 </template>
 
