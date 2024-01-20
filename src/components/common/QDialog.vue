@@ -95,12 +95,11 @@ watch(
     nextTick(() => {
       if (!isMobile && props.desktopMode === 'popup') {
         if (triggerWrapper.value.children) {
-          // dialogMask.value.style.height = `${document.body.clientHeight}px`;
           const el:any = (triggerWrapper.value.children as any)[0]
           if (el) {
             const rect = el.getBoundingClientRect();
-            const top = window.scrollY + rect.top + rect.height + 8;
-            const left = rect.left;
+            const top = rect.height + 8;
+            const left = 0;
             popupPos.value = { "top": `${top}px`, "left":`${left}px` };
           }
         }
@@ -138,19 +137,19 @@ onMounted(() => {
 })
 </script>
 <template>
-  <div class="trigger-wrapper" ref="triggerWrapper">
+  <div class="q-dialog-trigger-wrapper" ref="triggerWrapper">
     <slot name="trigger"></slot>
-  </div>
-  <template v-if="isPopup">
-    <Transition>
-      <div v-if="isOpen" class="q-dialog" :style="dialogStyle" @click.stop="v" :class="dialogCls">
-        <div class="q-dialog-body">
-          <slot></slot>
+    <template v-if="isPopup">
+      <Transition>
+        <div v-if="isOpen" class="q-dialog" :style="dialogStyle" @click.stop="v" :class="dialogCls">
+          <div class="q-dialog-body">
+            <slot></slot>
+          </div>
         </div>
-      </div>
-    </Transition>
-  </template>
-  <template v-else>
+      </Transition>
+    </template>
+  </div>
+  <template v-if="!isPopup">
     <Transition>
       <div v-if="isOpen" class="q-dialog-mask" @click="close" :class="dialogMaskCls" ref="dialogMask">
         <div class="q-dialog" :style="dialogStyle" @click.stop="v" :class="dialogCls">
@@ -170,6 +169,9 @@ onMounted(() => {
 </template>
 
 <style lang="scss">
+.q-dialog-trigger-wrapper {
+  position: relative;
+}
 .q-dialog-mask {
   display: flex;
   justify-content: center;
