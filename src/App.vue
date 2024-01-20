@@ -269,11 +269,11 @@ function submit(val:any) {
     <div class="section">
       <h2 class="section-title">Language Selector</h2>
       <div class="grid">
-        <QLanguageSelector :lang="'en'" @change="onLangSelected"/>
+        <QLanguageSelector :lang="'en'" auto @change="onLangSelected"/>
         <div style="margin-top: 0.5rem">
           <QIconArrowRight></QIconArrowRight>
         </div>
-        <QLanguageSelector :lang="selectedLang" no-flag @change="onLangSelected"/>
+        <QLanguageSelector :lang="selectedLang" no-flag :presist="true" @change="onLangSelected"/>
       </div>
     </div>
 

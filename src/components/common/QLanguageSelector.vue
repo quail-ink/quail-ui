@@ -18,12 +18,20 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  auto: {
+    type: Boolean,
+    default: false,
+  },
+  presist: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const selectedLangItem: Ref<any> = ref(null);
 
 const languageItems = computed(() => {
-  const items = [
+  let items = [
     {
       title_flag: "🇺🇸 English",
       title_no_flag: "English",
@@ -48,17 +56,29 @@ const languageItems = computed(() => {
       value: "ja",
       action: selectLang,
     },
-  ].map((item) => {
+  ]
+  if (props.auto) {
+    items.unshift({
+      title_flag: "🌐 Auto",
+      title_no_flag: "Auto",
+      value: "",
+      action: selectLang,
+    });
+  }
+  items = items.map((item) => {
     return {
       ...item,
       title: props.noFlag ? item.title_no_flag: item.title_flag,
     };
-  })
+  });
+
   return items;
 });
 
 function selectLang(item: any) {
-  localStorage.setItem("quail-language", item.value);
+  if (props.presist) {
+    localStorage.setItem("quail-language", item.value);
+  }
   emit("change", {
     title: props.noFlag ? item.title_no_flag: item.title,
     value: item.value,
