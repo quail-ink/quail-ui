@@ -65,8 +65,6 @@ const selectedMenuItem = ref(menuItems.value[0]);
 
 const selectedLang = ref('en');
 
-const triggerElement:any = ref(null);
-
 function onLangSelected(item: any) {
   console.log("Language selected", item);
   selectedLang.value = item.value;
@@ -81,12 +79,10 @@ function submit(val:any) {
 }
 
 function openDialog3(ev:any) {
-  triggerElement.value = ev.target;
   dialogValue3.value = true;
 }
 
 function openDialog4(ev:any) {
-  triggerElement.value = ev.target;
   dialogValue4.value = true;
 }
 </script>
@@ -313,7 +309,7 @@ function openDialog4(ev:any) {
 
         <QDialog v-model="dialogValue3" desktop-mode="popup">
           <template #trigger>
-            <button class="button primary" @click="openDialog3">
+            <button class="button primary" @click.stop="openDialog3">
               Open Dialog (popup)
             </button>
           </template>
@@ -325,9 +321,9 @@ function openDialog4(ev:any) {
           </div>
         </QDialog>
 
-        <QDialog v-model="dialogValue4" desktop-mode="popup" no-frame :bind-element="triggerElement">
+        <QDialog v-model="dialogValue4" desktop-mode="popup" no-frame>
           <template #trigger>
-              <button class="button primary" @click="openDialog4">
+              <button class="button primary" @click.stop="openDialog4">
               Open Dialog (popup & no-frame)
             </button>
           </template>
