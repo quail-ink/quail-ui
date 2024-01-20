@@ -336,7 +336,7 @@ function openDialog4(ev:any) {
             class="dialog-body"
             style="padding: 1rem; position: relative"
           >
-            <div class="dialog-body-frame" style="background-color: #fff; border-radius: 8px; padding: 20px">
+            <div class="dialog-body-frame" style="background-color: #fff; border-radius: 8px; padding: 20px; box-shadow: 0 0 20px rgba(0,0,0,0.1);">
               <div class="form-row center">
                 <button class="button primary block">
                   Action

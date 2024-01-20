@@ -46,6 +46,7 @@ const shaking = ref(false);
 const isOpen = ref(props.modelValue);
 const popupPos = ref({ "top": "0", "left": "0" });
 const triggerWrapper:Ref<any> = ref(null);
+const dialogMask:Ref<any> = ref(null);
 
 const dialogStyle = computed(() => {
   const w = document.body.clientWidth < 720 ? '100%' : props.width;
@@ -90,10 +91,11 @@ watch(
     nextTick(() => {
       if (!isMobile && props.desktopMode === 'popup') {
         if (triggerWrapper.value.children) {
+          dialogMask.value.style.height = `${document.body.clientHeight}px`;
           const el:any = (triggerWrapper.value.children as any)[0]
           if (el) {
             const rect = el.getBoundingClientRect();
-            const top = rect.top + rect.height + 8;
+            const top = window.scrollY + rect.top + rect.height + 8;
             const left = rect.left;
             popupPos.value = { "top": `${top}px`, "left":`${left}px` };
           }
@@ -125,7 +127,7 @@ function v() {};
     <slot name="trigger"></slot>
   </div>
   <Transition>
-    <div v-if="isOpen" class="q-dialog-mask" @click="close" :class="dialogMaskCls">
+    <div v-if="isOpen" class="q-dialog-mask" @click="close" :class="dialogMaskCls" ref="dialogMask">
       <div class="q-dialog" :style="dialogStyle" @click.stop="v" :class="dialogCls">
         <div class="q-dialog-header">
           <template v-if="title">
@@ -155,6 +157,7 @@ function v() {};
   z-index: 100;
   &.desktop-mode-popup {
     background-color: transparent;
+    position: absolute;
   }
 }
 
@@ -173,6 +176,9 @@ function v() {};
     }
     .q-dialog-body {
       padding: 0;
+    }
+    &.desktop-mode-popup {
+      box-shadow: none;
     }
   }
   &.desktop-mode-popup {
