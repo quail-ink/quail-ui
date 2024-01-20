@@ -1,7 +1,24 @@
 <script lang="ts" setup>
 import { computed, ref, watch } from 'vue';
+import { useUtil } from "../../composables/useUtil";
+
+const { browserDetect } = useUtil();
+const { isMobile } = browserDetect();
+
 const props = defineProps({
   modelValue: Boolean,
+  desktopMode: {
+    type: String,
+    default: 'dialog' // dialog, popup
+  },
+  bindElement: {
+    type: Element || null,
+    default: null,
+  },
+  noFrame: {
+    type: Boolean,
+    default: false,
+  },
   title: {
     type: String,
     default: '',
@@ -28,20 +45,58 @@ const emit = defineEmits(["update:modelValue", "close"]);
 
 const shaking = ref(false);
 const isOpen = ref(props.modelValue);
+const popupPos = ref({ "top": "0", "left": "0" });
 
 const dialogStyle = computed(() => {
   const w = document.body.clientWidth < 720 ? '100%' : props.width;
   const h = props.height;
-  return {
+  const ret:any = {
     width: w,
     height: h,
   };
+  if (!isMobile && props.desktopMode === 'popup') {
+    ret.top = popupPos.value.top;
+    ret.left = popupPos.value.left;
+  }
+  return ret;
+});
+
+const dialogCls = computed(() => {
+  let cls = [];
+  if (shaking.value) {
+    cls.push('shaking');
+  }
+  console.log(isMobile)
+  if (!isMobile) {
+    cls.push(`desktop-mode-${props.desktopMode}`);
+  }
+  if (props.noFrame) {
+    cls.push('no-frame');
+  }
+  return cls.join(' ');
+});
+
+const dialogMaskCls = computed(() => {
+  let cls = [];
+  if (!isMobile && props.desktopMode === 'popup') {
+    cls.push('desktop-mode-popup');
+  }
+  return cls.join(' ');
 });
 
 watch(
   () => props.modelValue,
   (value) => {
     isOpen.value = value;
+    if (!isMobile && props.desktopMode === 'popup' && props.bindElement) {
+      const el = props.bindElement;
+      if (el) {
+        const rect = el.getBoundingClientRect();
+        const top = rect.top + rect.height + 8;
+        const left = rect.left;
+        popupPos.value = { "top": `${top}px`, "left":`${left}px` };
+      }
+    }
   }
 );
 
@@ -59,14 +114,13 @@ function close () {
   emit('close');
 };
 
-function v() {
-};
+function v() {};
 
 </script>
 <template>
   <Transition>
-    <div v-if="isOpen" class="q-dialog-mask" @click="close">
-      <div class="q-dialog" :style="dialogStyle" @click.stop="v" :class="shaking ? 'shaking': ''">
+    <div v-if="isOpen" class="q-dialog-mask" @click="close" :class="dialogMaskCls">
+      <div class="q-dialog" :style="dialogStyle" @click.stop="v" :class="dialogCls">
         <div class="q-dialog-header">
           <template v-if="title">
             <div class="q-dialog-title">{{ title }}</div>
@@ -93,15 +147,31 @@ function v() {
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 100;
+  &.desktop-mode-popup {
+    background-color: transparent;
+  }
 }
 
 .q-dialog {
   background-color: white;
   padding: 0rem;
-  border-radius: 2px;
+  border-radius: 4px;
   z-index: 101;
   &.shaking {
     animation: shake 0.3s;
+  }
+  &.no-frame {
+    background-color: transparent;
+    .q-dialog-header {
+      display: none;
+    }
+    .q-dialog-body {
+      padding: 0;
+    }
+  }
+  &.desktop-mode-popup {
+    position: absolute;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   }
 }
 
