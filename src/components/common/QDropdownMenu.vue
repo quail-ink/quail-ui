@@ -82,9 +82,6 @@ function toggle() {
 function menuItemClick(item: any) {
   expanded.value = false;
   selectedItem.value = item;
-  if (item.action) {
-    item.action(item);
-  }
   emit("change", item);
 }
 
