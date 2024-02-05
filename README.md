@@ -2,6 +2,8 @@
 
 The Vue3 UI library for [Quail](https://quail.ink).
 
+[Demo](https://quail-ink.github.io/quail-ui/)
+
 ## Installation
 
 ```bash
