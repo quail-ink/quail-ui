@@ -117,3 +117,19 @@ body {
 .v-leave-to {
   opacity: 0;
 }
+
+.one-line-ellipsis, .two-line-ellipsis, .three-line-ellipsis {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.one-line-ellipsis {
+  -webkit-line-clamp: 1;
+}
+.two-line-ellipsis {
+  -webkit-line-clamp: 2;
+}
+.three-line-ellipsis {
+  -webkit-line-clamp: 3;
+}

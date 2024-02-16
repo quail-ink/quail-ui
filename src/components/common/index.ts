@@ -9,6 +9,7 @@ import QDropdownMenu from './QDropdownMenu.vue';
 import QPagination from './QPagination.vue';
 import QProgress from './QProgress.vue';
 import QLanguageSelector from './QLanguageSelector.vue';
+import QPackCover from './QPackCover.vue';
 
 export {
   QDatetimePicker,
@@ -22,4 +23,5 @@ export {
   QPagination,
   QProgress,
   QLanguageSelector,
+  QPackCover,
 };
