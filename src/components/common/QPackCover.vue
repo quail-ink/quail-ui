@@ -4,7 +4,7 @@ const props = defineProps({
     type: String,
     required: true
   },
-  title: {
+  alt: {
     type: String,
   }
 });
