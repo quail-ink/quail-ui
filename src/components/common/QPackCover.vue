@@ -67,7 +67,7 @@ const props = defineProps({
 
 @media only screen and (max-width: 720px) {
   .q-pack-cover {
-    // width: 112px;
+    width: 112px;
   }
   .q-pack-cover-inner {
     flex-basis: 112px;
