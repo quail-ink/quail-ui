@@ -10,6 +10,7 @@ import QPagination from './QPagination.vue';
 import QProgress from './QProgress.vue';
 import QLanguageSelector from './QLanguageSelector.vue';
 import QPackCover from './QPackCover.vue';
+import QShare from './QShare.vue';
 
 export {
   QDatetimePicker,
@@ -24,4 +25,5 @@ export {
   QProgress,
   QLanguageSelector,
   QPackCover,
+  QShare,
 };

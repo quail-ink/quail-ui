@@ -16,7 +16,6 @@ import QIconDownloadCloud from './QIconDownloadCloud.vue';
 import QIconEcosystem from './QIconEcosystem.vue';
 import QIconFaceFrown from './QIconFaceFrown.vue';
 import QIconFeather from './QIconFeather.vue';
-import QIconFeed from './QIconFeed.vue';
 import QIconFilter from './QIconFilter.vue';
 import QIconHelp from './QIconHelp.vue';
 import QIconImage from './QIconImage.vue';
@@ -33,7 +32,6 @@ import QIconPlus from './QIconPlus.vue';
 import QIconQuail from './QIconQuail.vue';
 import QIconSearch from './QIconSearch.vue';
 import QIconSun from './QIconSun.vue';
-import QIconTelegram from './QIconTelegram.vue';
 import QIconTooling from './QIconTooling.vue';
 import QIconTrash from './QIconTrash.vue';
 import QIconUnsplash from './QIconUnsplash.vue';
@@ -65,6 +63,18 @@ import QIconDataflow from './QIconDataflow.vue';
 import QIconFaceHappy from './QIconFaceHappy.vue';
 import QIconMessageSquare from './QIconMessageSquare.vue';
 import QIconShareSquare from './QIconShareSquare.vue';
+import QIconColorTelegram from './QIconColorTelegram.vue';
+import QIconColorFeed from './QIconColorFeed.vue';
+import QIconColorTwitter from './QIconColorTwitter.vue';
+import QIconColorFacebook from './QIconColorFacebook.vue';
+import QIconColorLinkedin from './QIconColorLinkedin.vue';
+import QIconColorHackernews from './QIconColorHackernews.vue';
+import QIconColorDiscord from './QIconColorDiscord.vue';
+import QIconColorLine from './QIconColorLine.vue';
+
+// obsolete
+import QIconTelegram from './QIconColorTelegram.vue';
+import QIconFeed from './QIconColorFeed.vue';
 
 export {
   QIconArrowUpRight,
@@ -85,7 +95,6 @@ export {
   QIconEcosystem,
   QIconFaceFrown,
   QIconFeather,
-  QIconFeed,
   QIconFilter,
   QIconHelp,
   QIconImage,
@@ -102,7 +111,6 @@ export {
   QIconQuail,
   QIconSearch,
   QIconSun,
-  QIconTelegram,
   QIconTooling,
   QIconTrash,
   QIconUnsplash,
@@ -134,4 +142,17 @@ export {
   QIconFaceHappy,
   QIconMessageSquare,
   QIconShareSquare,
+
+  QIconColorTelegram,
+  QIconColorFeed,
+  QIconColorTwitter,
+  QIconColorFacebook,
+  QIconColorLinkedin,
+  QIconColorHackernews,
+  QIconColorDiscord,
+  QIconColorLine,
+
+  // obsolete
+  QIconTelegram,
+  QIconFeed,
 };
