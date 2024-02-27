@@ -1,12 +1,12 @@
 <template>
   <div class="q-share" :class="cls">
-    <a :href="`https://twitter.com/intent/tweet?url=${shareUrl}`" target="_blank" title="Share on Twitter" class="q-share-link twitter">
+    <a :href="`https://twitter.com/intent/tweet?url=${shareUrl}&text=${props.text}`" target="_blank" title="Share on Twitter" class="q-share-link twitter">
       <q-icon-color-twitter class="icon share-icon"></q-icon-color-twitter>
     </a>
     <a :href="`https://www.facebook.com/sharer.php?u=${shareUrl}`" target="_blank" title="Share on facebook" class="q-share-link facebook">
       <q-icon-color-facebook class="icon share-icon"></q-icon-color-facebook>
     </a>
-    <a :href="`https://news.ycombinator.com/submitlink?u=${shareUrl}&t=${shareUrl}`" target="_blank" title="Share on hackernews" class="q-share-link hackernews">
+    <a :href="`https://news.ycombinator.com/submitlink?u=${shareUrl}&t=${props.text}`" target="_blank" title="Share on hackernews" class="q-share-link hackernews">
       <q-icon-color-hackernews class="icon share-icon"></q-icon-color-hackernews>
     </a>
     <a :href="`https://www.linkedin.com/shareArticle?mini=true&amp;url=${shareUrl}`" target="_blank" title="Share on linkedin" class="q-share-link linkedin">
@@ -19,6 +19,10 @@
 import { computed } from "vue";
 const props = defineProps({
   url: {
+    type: String,
+    default: "",
+  },
+  text: {
     type: String,
     default: "",
   },
