@@ -4,6 +4,10 @@ const props = defineProps({
     type: Array<any>,
     required: true,
   },
+  noFrame: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const emit = defineEmits(["action"]);
@@ -38,7 +42,7 @@ function doAction(item: any) {
 }
 </script>
 <template>
-  <div class="q-menu">
+  <div class="q-menu" :class="props.noFrame ? 'no-frame': ''">
     <div
       class="q-menu-item"
       v-for="item in props.items"
@@ -81,6 +85,10 @@ function doAction(item: any) {
   padding: 0.5rem 0;
   border-radius: 4px;
   z-index: 20;
+  &.no-frame {
+    box-shadow: none;
+    border: none;
+  }
   .q-menu-item {
     cursor: default;
     &.danger {

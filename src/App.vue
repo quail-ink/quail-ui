@@ -250,6 +250,12 @@ function openDialog4(ev:any) {
         >
           <QMenu :items="menuItems" />
         </div>
+        <div
+          class="menu-wrapper"
+          style="width: 300px; height: 260px; position: relative"
+        >
+          <QMenu :items="menuItems" no-frame/>
+        </div>
       </div>
     </div>
 
@@ -354,8 +360,6 @@ function openDialog4(ev:any) {
           </div>
         </QDialog>
 
-
-
         <QDialog v-model="dialogValue1" title="Hello">
           <div class="dialog-body">
             <div class="form-row center">
@@ -426,6 +430,16 @@ function openDialog4(ev:any) {
             <div class="two-line-ellipsis">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
           </div>
         </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Avatar</h2>
+      <div class="grid">
+        <QAvatar :src="'https://picsum.photos/200'" size="24" />
+        <QAvatar :src="'https://picsum.photos/200'" size="32" />
+        <QAvatar :src="'https://picsum.photos/200'" size="48" />
+        <QAvatar :src="'https://picsum.photos/200'" size="64" />
       </div>
     </div>
 

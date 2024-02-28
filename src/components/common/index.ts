@@ -11,6 +11,7 @@ import QProgress from './QProgress.vue';
 import QLanguageSelector from './QLanguageSelector.vue';
 import QPackCover from './QPackCover.vue';
 import QShare from './QShare.vue';
+import QAvatar from './QAvatar.vue';
 
 export {
   QDatetimePicker,
@@ -26,4 +27,5 @@ export {
   QLanguageSelector,
   QPackCover,
   QShare,
+  QAvatar,
 };
