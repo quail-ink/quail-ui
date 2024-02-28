@@ -143,13 +143,14 @@ function doAction(item: any) {
       transform: translateY(-0.5px);
     }
     .q-menu-item-inner {
-      &:hover {
-        background-color: rgba(0, 0, 0, 0.06);
-      }
       display: flex;
       justify-items: center;
       align-items: center;
       padding: 0.5rem 1rem;
+      transition: background-color 0.2s ease-in;
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.06);
+      }
       .q-menu-item-content {
         margin-left: 0rem;
       }

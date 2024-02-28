@@ -230,14 +230,23 @@ onMounted(() => {
     display: flex;
     justify-items: center;
     align-items: center;
-    cursor: pointer;
+    cursor: default;
+    transition: all 0.2s ease-in;
+    &:hover {
+      &.frame {
+        box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.16);
+      }
+      .chevron-icon {
+        opacity: 1;
+      }
+    }
     .menu-icon {
     }
     .menu-title {
       margin-left: 1rem;
     }
     .chevron-icon {
-      transition: transform 0.2s ease;
+      transition: all 0.2s ease-in;
       margin-left: 0.3rem;
       opacity: 0.5;
     }

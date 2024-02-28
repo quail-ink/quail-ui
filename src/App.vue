@@ -366,10 +366,18 @@ function openDialog4(ev:any) {
     <div class="section">
       <h2 class="section-title">Dropdown Menu With Text field</h2>
       <div class="flow">
-        <QDropdownMenuWithTextField :default-selection="currencies[0]" default-text="1.234" :items="currencies" @change="currencySelected"/>
-      </div>
-      <div v-if="selectedCurrencyResult" class="flow">
-        You selected: {{ selectedCurrencyResult.selected?.title }} - {{ selectedCurrencyResult.text }}
+        <div>
+          <QDropdownMenuWithTextField :default-selection="currencies[0]" default-text="1.234" :items="currencies" @change="currencySelected"/>
+          <div v-if="selectedCurrencyResult" class="flow">
+            You selected: {{ selectedCurrencyResult.selected?.title }} - {{ selectedCurrencyResult.text }}
+          </div>
+        </div>
+        <div>
+          <QDropdownMenuWithTextField :default-selection="currencies[0]" default-text="1.234"
+            :items="currencies" @change="currencySelected"
+            fill-action-label='Bal: 100' fill-action-value="100" hint-text="$100000"
+          />
+        </div>
       </div>
     </div>
 
