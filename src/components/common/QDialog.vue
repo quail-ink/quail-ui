@@ -104,6 +104,12 @@ watch(
           }
         }
       }
+      // disable scroll
+      if (value) {
+        document.body.style.overflowY = 'hidden';
+      } else {
+        document.body.style.overflowY = 'auto';
+      }
     })
   }
 );
@@ -118,6 +124,9 @@ function close () {
     return
   };
   isOpen.value = false;
+  // enable scroll
+  document.body.style.overflowY = 'auto';
+
   emit('update:modelValue', false);
   emit('close');
 };
@@ -234,16 +243,6 @@ onMounted(() => {
   overflow-y: auto;
   max-height: 600px;
   margin-bottom: cal(safe-area-inset-bottom);
-}
-
-.v-enter-active,
-.v-leave-active {
-  transition: opacity 0.2s ease;
-}
-
-.v-enter-from,
-.v-leave-to {
-  opacity: 0;
 }
 
 @media only screen and (max-width: 720px) {

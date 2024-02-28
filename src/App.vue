@@ -73,6 +73,19 @@ const selectedMenuItem = ref(menuItems.value[0]);
 
 const selectedLang = ref('en');
 
+const currencies = computed(() => [
+  {
+    title: "BTC",
+    subtitle: "Bitcoin",
+    image: "https://s2.coinmarketcap.com/static/img/coins/64x64/1.png",
+  },
+  {
+    title: "LTC",
+    subtitle: "Litecoin",
+    image: "https://s2.coinmarketcap.com/static/img/coins/64x64/2.png",
+  },
+]);
+
 function onLangSelected(item: any) {
   console.log("Language selected", item);
   selectedLang.value = item.value;
@@ -80,6 +93,12 @@ function onLangSelected(item: any) {
 
 function dropdownMenuSelectionChanged(item: any) {
   console.log("Dropdown menu selection changed", item);
+}
+
+const selectedCurrencyResult:any = ref(null);
+function currencySelected(item: any) {
+  console.log("Currency selected", item.selected.title, item.text);
+  selectedCurrencyResult.value = { selected: item.selected, text: item.text };
 }
 
 function submit(val:any) {
@@ -251,7 +270,7 @@ function openDialog4(ev:any) {
 
     <div class="section">
       <h2 class="section-title">Menu</h2>
-      <div class="grid gap-4 grid-cols-2">
+      <div class="flow">
         <div
           class="menu-wrapper"
           style="width: 300px; height: 260px; position: relative"
@@ -290,9 +309,48 @@ function openDialog4(ev:any) {
         >
           <div class="">Custom content</div>
         </QDropdownMenu>
+        <QDropdownMenu
+          :items="menuItems"
+          :initial-item="selectedMenuItem"
+          variant="plain"
+          @change="dropdownMenuSelectionChanged"
+        >
+          <div class="">Custom content</div>
+        </QDropdownMenu>
+        <QDropdownMenu
+          :items="menuItems"
+          :initial-item="selectedMenuItem"
+          variant="plain"
+          hide-action-label
+          @change="dropdownMenuSelectionChanged"
+        ></QDropdownMenu>
+
+      </div>
+      <h3 class="mb-2">use dialog</h3>
+      <div class="flow">
+        <QDropdownMenu
+          :items="menuItems"
+          :initial-item="selectedMenuItem"
+          use-dialog="always"
+          @change="dropdownMenuSelectionChanged"
+        />
+        <QDropdownMenu
+          :items="menuItems"
+          :initial-item="selectedMenuItem"
+          use-dialog="always"
+          use-filter
+          @change="dropdownMenuSelectionChanged"
+        />
+        <QDropdownMenu
+          :items="menuItems"
+          :initial-item="selectedMenuItem"
+          use-dialog="always"
+          use-filter
+          scroll-height="200px"
+          @change="dropdownMenuSelectionChanged"
+        />
       </div>
     </div>
-
 
     <div class="section">
       <h2 class="section-title">Language Selector</h2>
@@ -302,6 +360,16 @@ function openDialog4(ev:any) {
           <QIconArrowRight></QIconArrowRight>
         </div>
         <QLanguageSelector :lang="selectedLang" no-flag :presist="true" @change="onLangSelected"/>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Dropdown Menu With Text field</h2>
+      <div class="flow">
+        <QDropdownMenuWithTextField :default-selection="currencies[0]" default-text="1.234" :items="currencies" @change="currencySelected"/>
+      </div>
+      <div v-if="selectedCurrencyResult" class="flow">
+        You selected: {{ selectedCurrencyResult.selected?.title }} - {{ selectedCurrencyResult.text }}
       </div>
     </div>
 

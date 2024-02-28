@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, watch, type Ref } from "vue";
-import { closePopupMenu } from "../../util";
+import { closePopupMenu, debounce } from "../../util";
 import { useSlots } from 'vue'
+
 const slots = useSlots()
 
 const props = defineProps({
@@ -21,16 +22,39 @@ const props = defineProps({
     type: String,
     default: "outlined",
   },
+  hideActionLabel: {
+    type: Boolean,
+    default: false,
+  },
   placeholder: {
     type: String,
     default: "",
   },
+  useDialog: {
+    type: String,
+    default: 'auto',
+  },
+  useFilter: {
+    type: Boolean,
+    default: false,
+  },
+  scrollHeight: {
+    type: String,
+    default: 'auto',
+  },
+  emptyHit: {
+    type: String,
+    default: "No item",
+  }
 });
 
 const emit = defineEmits(["change"]);
 const expanded = ref(false);
 const selectedItem: Ref<any> = ref(null);
 const menuWrapper: Ref<any> = ref(null);
+const scrollArea: Ref<any> = ref(null);
+const scrollAreaCls = ref("");
+const filterText = ref("");
 
 const actionCls = computed(() => {
   const cls: string[] = [];
@@ -40,6 +64,8 @@ const actionCls = computed(() => {
 
   if (props.variant === "outlined") {
     cls.push("frame");
+  } else if (props.variant === "plain") {
+    cls.push("plain");
   }
 
   if (props.hideSelected) {
@@ -59,6 +85,32 @@ const hasSlot = computed(() => {
   return slots.default !== undefined;
 });
 
+const filteredItems = computed(() => {
+  if (props.items && props.items.length > 0) {
+    if (filterText.value.trim() === "") {
+      return props.items;
+    }
+    const text = filterText.value.toLowerCase();
+    return props.items.filter((item) => {
+      if (item?.title?.toLowerCase().includes(text)) {
+        return true;
+      }
+      return false;
+    });
+  }
+  return [];
+});
+
+const useDialogFlag = computed(() => {
+  if (props.useDialog === "always") {
+    return true
+  } else if (props.useDialog === "never") {
+    return false
+  } else {
+    return window.innerWidth < 768
+  }
+});
+
 function toggle() {
   if (!expanded.value) {
     // want to expand? close other menus
@@ -68,14 +120,24 @@ function toggle() {
   expanded.value = !expanded.value;
   // adjust menu position to make sure it's visible
   if (expanded.value) {
-    setTimeout(() => {
-      const wrapper = menuWrapper.value;
-      const menu = wrapper.querySelector(".q-menu");
-      const rect = menu.getBoundingClientRect();
-      if (rect.left < 0) {
-        menu.style.left = "0";
-      }
-    }, 10);
+    if (!useDialogFlag.value) {
+      setTimeout(() => {
+        const wrapper = menuWrapper?.value;
+        const menu = wrapper?.querySelector(".q-menu");
+        const rect = menu.getBoundingClientRect();
+        if (rect.left < 0) {
+          menu.style.left = "0";
+        }
+      }, 10);
+    } else {
+      debounce(() => {
+        scrollArea?.value?.addEventListener("scroll", () => {
+          debounce(() => {
+            scrollAreaCls.value = scrollArea.value.scrollTop > 0 ? "scrolled" : "";
+          }, 100)()
+        });
+      }, 1000)();
+    }
   }
 }
 
@@ -125,7 +187,7 @@ onMounted(() => {
             class="icon menu-icon"
             :is="selectedItem.icon"
           ></component>
-          <div class="menu-title">
+          <div v-if="!hideActionLabel" class="menu-title">
             {{
               selectedItem
                 ? selectedItem.title
@@ -136,11 +198,22 @@ onMounted(() => {
         <slot></slot>
         <q-icon-chevron-down class="icon chevron-icon" ></q-icon-chevron-down>
       </div>
-      <div ref="menuWrapper">
+      <div v-if="!useDialogFlag" ref="menuWrapper">
         <Transition>
           <q-menu v-if="expanded" :items="items" @action="menuItemClick"></q-menu>
         </Transition>
       </div>
+      <q-dialog v-if="useDialogFlag" v-model="expanded" no-frame>
+        <div class="q-menu-popup-body">
+          <div v-if="props.useFilter" class="filter-area">
+            <input type="text" class="filter-input text-field" placeholder="Filter" v-model="filterText" />
+          </div>
+          <div class="scroll-area" :class="scrollAreaCls" ref="scrollArea" :style="{ height: props.scrollHeight, maxHeight: props.scrollHeight }">
+            <q-menu v-if="filteredItems" :items="filteredItems" @action="menuItemClick" persistent no-frame></q-menu>
+            <div v-else class="empty-hint flow place-center" v-text="emptyHit"></div>
+          </div>
+        </div>
+      </q-dialog>
     </div>
   </div>
 </template>
@@ -206,13 +279,30 @@ onMounted(() => {
   .menu-title {
   }
 }
-.v-enter-active,
-.v-leave-active {
-  transition: opacity 0.2s ease;
-}
-
-.v-enter-from,
-.v-leave-to {
-  opacity: 0;
+.q-menu-popup-body {
+  background: #fff;
+  border-radius: 4px;
+  .filter-area {
+    padding: 1rem 1rem 0.5rem 1rem;
+  }
+  .scroll-area {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    .empty-hint  {
+      margin-top: 1rem;
+      color: var(--vt-c-text-light-3)
+    }
+  }
+  .scroll-area.scrolled {
+    &:before {
+      content: "";
+      display: block;
+      height: 0.5rem;
+      width: 100%;
+      position: absolute;
+      // backdrop-filter: blur(10px);
+      background: linear-gradient(180deg,rgba(0,0,0,.05) 0%,rgba(0,0,0,.0) 100%);
+    }
+  }
 }
 </style>
