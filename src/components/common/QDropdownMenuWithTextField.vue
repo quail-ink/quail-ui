@@ -15,6 +15,7 @@
       </div>
       <div class="q-text-field-wrapper">
         <input
+          ref="textField"
           class="q-text-field text-field"
           :placeholder="props.placeholder"
           v-model="text"
@@ -71,9 +72,9 @@ const props = defineProps({
 });
 
 const emit = defineEmits(["change"]);
-
 const text = ref(props.defaultText);
 const selectedItem = ref(props.defaultSelection);
+const textField = ref<any>(null);
 
 const showBottom = computed(() => {
   return props.fillActionLabel !== "" || props.hintText !== "";
@@ -98,6 +99,7 @@ function changed() {
 
 function fill() {
   text.value = props.fillActionValue;
+  changed()
 }
 
 onMounted(() => {
@@ -107,6 +109,9 @@ onMounted(() => {
     if (selectedItem.value === null || selectedItem.value === undefined) {
       selectedItem.value = props.items[0];
     }
+    textField.value.addEventListener("focus", () => {
+      textField.value.select();
+    });
   }, 300)();
 });
 </script>
