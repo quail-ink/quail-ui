@@ -1,8 +1,14 @@
 <script setup lang="ts">
+import { computed } from "vue";
+
 const props = defineProps({
   items: {
     type: Array<any>,
     required: true,
+  },
+  persistent: {
+    type: Boolean,
+    default: false,
   },
   noFrame: {
     type: Boolean,
@@ -11,6 +17,17 @@ const props = defineProps({
 });
 
 const emit = defineEmits(["action"]);
+
+const menuCls = computed(() => {
+  let _cls = []
+  if (props.persistent) {
+    _cls.push("persistent");
+  }
+  if (props.noFrame) {
+    _cls.push("no-frame");
+  }
+  return _cls.join(" ");
+});
 
 function cls(item: any) {
   let _cls = "";
@@ -42,7 +59,7 @@ function doAction(item: any) {
 }
 </script>
 <template>
-  <div class="q-menu" :class="props.noFrame ? 'no-frame': ''">
+  <div class="q-menu" :class="menuCls">
     <div
       class="q-menu-item"
       v-for="item in props.items"
@@ -88,6 +105,11 @@ function doAction(item: any) {
   &.no-frame {
     box-shadow: none;
     border: none;
+  }
+  &.persistent {
+    position: static;
+    transform: none;
+    z-index: inherit;
   }
   .q-menu-item {
     cursor: default;

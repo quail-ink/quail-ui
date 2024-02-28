@@ -1,0 +1,145 @@
+$breakpoint-sizes: ("md": 768px, "lg": 1024px);
+
+@mixin usefull-classes($breakpoint) {
+  @if $breakpoint != "" {
+    $prefix: "#{$breakpoint}-";
+    $breakpoint-size: map-get($breakpoint-sizes, $breakpoint);
+    @media (min-width: $breakpoint-size) {
+      @include usefull-classes-inner($prefix);
+    }
+  } @else {
+    @include usefull-classes-inner("");
+  }
+}
+
+@mixin usefull-classes-inner($prefix) {
+  .#{$prefix}flex {
+    display: flex;
+  }
+  .#{$prefix}flow {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+  .#{$prefix}text-center {
+    text-align: center;
+  }
+  .#{$prefix}text-left {
+    text-align: left;
+  }
+  .#{$prefix}text-right {
+    text-align: right;
+  }
+
+  .#{$prefix}place-center {
+    align-items: center;
+    justify-content: center;
+  }
+  .#{$prefix}justify-center {
+    justify-content: center;
+  }
+  .#{$prefix}align-center {
+    align-items: center;
+  }
+
+  .#{$prefix}text-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+  .#{$prefix}text-sm {
+    font-size: .875rem;
+    line-height: 1.25rem;
+  }
+  .#{$prefix}text-xs {
+    font-size: .75rem;
+    line-height: 1rem;
+  }
+  .#{$prefix}text-6xl {
+    font-size: 3.75rem;
+    line-height: 1;
+  }
+  .#{$prefix}text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+  .#{$prefix}text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+  .#{$prefix}text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+  .#{$prefix}font-black {
+    font-weight: 900;
+  }
+  .#{$prefix}font-bold {
+    font-weight: 700;
+  }
+  .#{$prefix}font-medium {
+    font-weight: 500;
+  }
+
+  .#{$prefix}grid {
+    display: grid;
+  }
+
+  @for $i from 1 through 20 {
+    .#{$prefix}grid-cols-#{$i} {
+      grid-template-columns: repeat(#{$i},minmax(0,1fr));
+    }
+    .#{$prefix}gap-#{$i} {
+      gap: #{$i*0.25}rem;
+    }
+    .#{$prefix}col-span-#{$i} {
+      grid-column: span #{$i}/span #{$i};
+    }
+  }
+
+  // generate mb-1, mb-2 ... mb-20
+  @for $i from 1 through 20 {
+    .#{$prefix}mb-#{$i} {
+      margin-bottom: #{$i*0.25}rem;
+    }
+    .#{$prefix}mt-#{$i} {
+      margin-top: #{$i*0.25}rem;
+    }
+    .#{$prefix}ml-#{$i} {
+      margin-left: #{$i*0.25}rem;
+    }
+    .#{$prefix}mr-#{$i} {
+      margin-right: #{$i*0.25}rem;
+    }
+    .#{$prefix}mx-#{$i} {
+      margin: 0 #{$i*0.25}rem;
+    }
+    .#{$prefix}my-#{$i} {
+      margin: #{$i*0.25}rem 0;
+    }
+    .#{$prefix}m-#{$i} {
+      margin: #{$i*0.25}rem;
+    }
+    .#{$prefix}pb-#{$i} {
+      padding-bottom: #{$i*0.25}rem;
+    }
+    .#{$prefix}pt-#{$i} {
+      padding-top: #{$i*0.25}rem;
+    }
+    .#{$prefix}pl-#{$i} {
+      padding-left: #{$i*0.25}rem;
+    }
+    .#{$prefix}pr-#{$i} {
+      padding-right: #{$i*0.25}rem;
+    }
+    .#{$prefix}px-#{$i} {
+      padding: 0 #{$i*0.25}rem;
+    }
+    .#{$prefix}py-#{$i} {
+      padding: #{$i*0.25}rem 0;
+    }
+    .#{$prefix}p-#{$i} {
+      padding: #{$i*0.25}rem;
+    }
+  }
+}

@@ -6,5 +6,6 @@ import { QuailUI } from './index'
 const app = createApp(App)
 app.use(QuailUI, {
   debug: true,
+  useLayout: true,
 })
 app.mount('#app')

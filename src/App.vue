@@ -36,6 +36,14 @@ const menuItems = computed(() => [
     },
   },
   {
+    title: "Item 3.1 with image and subtitle",
+    subtitle: "Item 3.1: subtitle",
+    image: "https://picsum.photos/200",
+    action: () => {
+      console.log("Item 3");
+    },
+  },
+  {
     title: "Item 4, disabled",
     disabled: true,
     icon: "QIconFileLock",
@@ -98,7 +106,7 @@ function openDialog4(ev:any) {
     </div>
     <div class="section">
       <h2 class="section-title">Buttons</h2>
-      <div class="grid">
+      <div class="flow">
         <button class="button primary">Primary</button>
         <button class="button primary elevated">Primary</button>
         <button class="button primary" disabled>Primary</button>
@@ -112,7 +120,7 @@ function openDialog4(ev:any) {
         <button class="button plain" disabled>Plain</button>
         <button class="button sm plain">Plain</button>
       </div>
-      <div class="grid">
+      <div class="flow">
         <button class="button danger">Danger</button>
         <button class="button danger" disabled>Danger</button>
         <button class="button outlined danger">Danger</button>
@@ -123,7 +131,7 @@ function openDialog4(ev:any) {
         <button class="button sm outlined danger">Danger</button>
         <button class="button sm plain danger">Danger</button>
       </div>
-      <div class="grid">
+      <div class="flow">
         <button class="button icon primary">
           <QIconPlus class="icon" />
         </button>
@@ -145,7 +153,7 @@ function openDialog4(ev:any) {
 
     <div class="section">
       <h2 class="section-title">Text field and Textarea</h2>
-      <div class="grid">
+      <div class="flow">
         <input type="text" placeholder="type here!" class="text-field" />
         <textarea placeholder="type here!" class="textarea" />
       </div>
@@ -184,13 +192,13 @@ function openDialog4(ev:any) {
 
     <div class="section">
       <h2 class="section-title">TextField with button</h2>
-      <div class="grid">
+      <div class="flow">
         <QTextFieldWithButton v-model="fieldValue" type="text" placeholder="type here!"  action-label="Go!" @submit="submit"/>
         <QTextFieldWithButton v-model="fieldValue" type="text" placeholder="type here!"  default-text="some default text" action-label="Go!" @submit="submit"/>
         <QTextFieldWithButton v-model="fieldValue" type="email" placeholder="your email here!" action-label="Subscribe" @submit="submit"/>
         <QTextFieldWithButton v-model="fieldValue" type="email" layout="horizontal" placeholder="your email here!" action-label="Subscribe" @submit="submit"/>
       </div>
-      <div class="grid">
+      <div class="flow">
         <div style="background-color: #111; padding: 1rem;">
           <QTextFieldWithButton v-model="fieldValue" type="email" layout="horizontal" glow="matrix" placeholder="your email here!" action-label="Subscribe" @submit="submit"/>
         </div>
@@ -199,7 +207,7 @@ function openDialog4(ev:any) {
 
     <div class="section">
       <h2 class="section-title">Fence</h2>
-      <div class="grid">
+      <div class="flow">
         <QFence text="Some text here to tell you something useful." />
         <QFence text="This will redirect you to an external page" link="https://quail.ink" />
         <QFence text="Some text here to tell you important information." type="warning" />
@@ -212,7 +220,7 @@ function openDialog4(ev:any) {
 
     <div class="section">
       <h2 class="section-title">Loading</h2>
-      <div class="grid">
+      <div class="flow">
         <div class="loading-wrapper" style="padding: 1rem 0">
           <QLoading />
         </div>
@@ -221,7 +229,7 @@ function openDialog4(ev:any) {
 
     <div class="section">
       <h2 class="section-title">Progress</h2>
-      <div class="grid">
+      <div class="flow">
         <QProgress :value="50" :max="100" />
         <QProgress :value="50" :max="100" color="red" />
         <QProgress :value="50" :max="100" color="green" />
@@ -233,7 +241,7 @@ function openDialog4(ev:any) {
 
     <div class="section">
       <h2 class="section-title">Switch</h2>
-      <div class="grid">
+      <div class="flow">
         <QSwitch v-model="switchValue1" />
         <QSwitch v-model="switchValue2" />
         <QSwitch v-model="switchValue2" theme="clear-sky"/>
@@ -243,25 +251,27 @@ function openDialog4(ev:any) {
 
     <div class="section">
       <h2 class="section-title">Menu</h2>
-      <div class="grid">
+      <div class="grid gap-4 grid-cols-2">
         <div
           class="menu-wrapper"
           style="width: 300px; height: 260px; position: relative"
         >
+          <h3>Normal</h3>
           <QMenu :items="menuItems" />
         </div>
         <div
           class="menu-wrapper"
-          style="width: 300px; height: 260px; position: relative"
+          style="width: 300px; height: 360px;"
         >
-          <QMenu :items="menuItems" no-frame/>
+          <h3>Persistent & without frame</h3>
+          <QMenu :items="menuItems" no-frame persistent/>
         </div>
       </div>
     </div>
 
     <div class="section">
       <h2 class="section-title">Dropdown Menu</h2>
-      <div class="grid">
+      <div class="flow">
         <QDropdownMenu
           :items="menuItems"
           :initial-item="selectedMenuItem"
@@ -286,7 +296,7 @@ function openDialog4(ev:any) {
 
     <div class="section">
       <h2 class="section-title">Language Selector</h2>
-      <div class="grid">
+      <div class="flow">
         <QLanguageSelector :lang="'en'" auto @change="onLangSelected"/>
         <div style="margin-top: 0.5rem">
           <QIconArrowRight></QIconArrowRight>
@@ -297,7 +307,7 @@ function openDialog4(ev:any) {
 
     <div class="section">
       <h2 class="section-title">Datetime Picker</h2>
-      <div class="grid">
+      <div class="flow">
         <QDatetimePicker v-model="datetimeValue" />
         <br/>
         <QDatetimePicker v-model="datetimeValue" disabled />
@@ -306,7 +316,7 @@ function openDialog4(ev:any) {
 
     <div class="section">
       <h2 class="section-title">Dialog</h2>
-      <div class="grid">
+      <div class="flow">
         <button class="button primary" @click="dialogValue1 = true">
           Open Dialog
         </button>
@@ -386,7 +396,7 @@ function openDialog4(ev:any) {
 
     <div class="section">
       <h2 class="section-title">Frame</h2>
-      <div class="grid">
+      <div class="grid gap-4 grid-cols-2">
         <div class="frame">
           Some content here
         </div>
@@ -435,7 +445,7 @@ function openDialog4(ev:any) {
 
     <div class="section">
       <h2 class="section-title">Avatar</h2>
-      <div class="grid">
+      <div class="flow">
         <QAvatar :src="'https://picsum.photos/200'" size="24" />
         <QAvatar :src="'https://picsum.photos/200'" size="32" />
         <QAvatar :src="'https://picsum.photos/200'" size="48" />
@@ -445,7 +455,7 @@ function openDialog4(ev:any) {
 
     <div class="section">
       <h2 class="section-title">Share</h2>
-      <div class="grid">
+      <div class="flow">
         <QShare url="https://quail.ink" layout="row" />
         <QShare url="https://quail.ink" layout="column" />
       </div>
@@ -454,7 +464,7 @@ function openDialog4(ev:any) {
 
     <div class="section">
       <h2 class="section-title">Icons</h2>
-      <div class="grid">
+      <div class="flow">
         <div v-for="icon in icons">
           <component :is="icon" />
         </div>
@@ -477,12 +487,7 @@ function openDialog4(ev:any) {
 .section {
   margin: 2rem 0;
 }
-.grid {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 1rem;
-  flex-wrap: wrap;
-}
+
 .frame {
   padding: 1rem;
 }
