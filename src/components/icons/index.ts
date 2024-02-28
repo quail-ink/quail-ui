@@ -63,6 +63,12 @@ import QIconDataflow from './QIconDataflow.vue';
 import QIconFaceHappy from './QIconFaceHappy.vue';
 import QIconMessageSquare from './QIconMessageSquare.vue';
 import QIconShareSquare from './QIconShareSquare.vue';
+import QIconArrowUp from './QIconArrowUp.vue';
+import QIconArrowDown from './QIconArrowDown.vue';
+import QIconQrCode from './QIconQrCode.vue';
+import QIconRefresh from './QIconRefresh.vue';
+import QIconWallet from './QIconWallet.vue';
+
 import QIconColorTelegram from './QIconColorTelegram.vue';
 import QIconColorFeed from './QIconColorFeed.vue';
 import QIconColorTwitter from './QIconColorTwitter.vue';
@@ -142,6 +148,11 @@ export {
   QIconFaceHappy,
   QIconMessageSquare,
   QIconShareSquare,
+  QIconArrowUp,
+  QIconArrowDown,
+  QIconQrCode,
+  QIconRefresh,
+  QIconWallet,
 
   QIconColorTelegram,
   QIconColorFeed,
