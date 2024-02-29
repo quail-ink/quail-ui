@@ -16,8 +16,8 @@ const props = defineProps({
     default: "An Avatar",
   },
   size: {
-    type: String,
-    default: "32px",
+    type: Number,
+    default: 32,
   },
 });
 

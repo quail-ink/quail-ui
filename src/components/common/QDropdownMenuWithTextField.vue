@@ -131,11 +131,11 @@ onMounted(() => {
 
   .q-dropdown-menu-with-text-field-bottom {
     color: var(--vt-c-text-light-3);
-    .fill-action,.text-hint {
-      padding: 0.1rem 0.5rem 0.5rem 1rem;
+    .text-hint {
+      padding: 0.1rem 0.75rem 0.5rem 1rem;
     }
     .fill-action {
-      padding-right: 2rem;
+      padding: 0.1rem 2rem 0.5rem 1rem;
       cursor: default;
       transition: color 0.2s ease-in;
       &:hover {
