@@ -163,11 +163,16 @@ function doAction(item: any) {
     .q-menu-image {
       height: 24px;
       width: 24px;
+      min-height: 24px;
+      min-width: 24px;
+      border-radius: 4px;
     }
 
     .q-menu-icon {
-      width: 16px;
-      height: 16px;
+      width: 20px;
+      height: 20px;
+      min-width: 20px;
+      min-height: 20px;
       display: flex;
       justify-content: center;
       align-items: center;
