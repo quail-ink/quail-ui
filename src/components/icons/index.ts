@@ -74,6 +74,9 @@ import QIconInbox from './QIconInbox.vue';
 import QIconKeyboard from './QIconKeyboard.vue';
 import QIconSpeedoMeter from './QIconSpeedoMeter.vue';
 import QIconInfoCircle from './QIconInfoCircle.vue';
+import QIconKey from './QIconKey.vue';
+import QIconFingerprint from './QIconFingerprint.vue';
+import QIconFingerprintLock from './QIconFingerprintLock.vue';
 
 import QIconColorTelegram from './QIconColorTelegram.vue';
 import QIconColorFeed from './QIconColorFeed.vue';
@@ -165,6 +168,9 @@ export {
   QIconKeyboard,
   QIconSpeedoMeter,
   QIconInfoCircle,
+  QIconKey,
+  QIconFingerprint,
+  QIconFingerprintLock,
 
   QIconColorTelegram,
   QIconColorFeed,
