@@ -523,9 +523,10 @@ function openDialog4(ev:any) {
       <h2 class="section-title">Avatar</h2>
       <div class="flow">
         <QAvatar :src="'https://picsum.photos/200'" size="24" />
-        <QAvatar :src="'https://picsum.photos/200'" size="32" />
-        <QAvatar :src="'https://picsum.photos/200'" size="48" />
+        <QAvatar :src="'https://picsum.photos/200'" size="32" variant="rounded" />
+        <QAvatar :src="'https://picsum.photos/200'" size="48" variant="square"/>
         <QAvatar :src="'https://picsum.photos/200'" size="64" />
+        <QAvatar :src="'https://quail.ink'" size="96" />
       </div>
     </div>
 

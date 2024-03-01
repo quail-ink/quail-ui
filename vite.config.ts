@@ -2,8 +2,6 @@ import scss from 'rollup-plugin-scss';
 import { defineConfig } from 'vite'
 import { fileURLToPath, URL } from 'node:url'
 import { resolve } from 'path'
-import vueJsx from '@vitejs/plugin-vue-jsx'
-
 import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
