@@ -542,7 +542,7 @@ function openDialog4(ev:any) {
     <div class="section">
       <h2 class="section-title">Icons</h2>
       <div class="flow">
-        <div v-for="icon in icons">
+        <div v-for="icon in icons" class="icon-wrapper">
           <component :is="icon" />
         </div>
       </div>
@@ -567,5 +567,9 @@ function openDialog4(ev:any) {
 
 .frame {
   padding: 1rem;
+}
+.icon-wrapper {
+  height: 24px;
+  width: 24px;
 }
 </style>
