@@ -26,7 +26,7 @@ const props = defineProps({
   },
 });
 
-const imgSrc = ref(props.src || defaultAvatar);
+const imgSrc = computed(() => props.src || defaultAvatar);
 
 const cls = computed(() => {
   const ret = [];
