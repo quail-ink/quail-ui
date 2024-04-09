@@ -271,10 +271,10 @@ button.button.primary {
 }
 
 button.button[disabled] {
-  background-color: #999;
+  background-color: #6a6a7f;
   cursor: disabled;
   &:hover {
-    background-color: #999;
+    background-color: #6a6a7f;
   }
   .button-icon {
     opacity: 0.6;

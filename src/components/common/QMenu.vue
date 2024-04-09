@@ -179,4 +179,13 @@ function doAction(item: any) {
     }
   }
 }
+@media (max-width: 768px) {
+  .q-menu {
+    .q-menu-item {
+      .q-menu-item-inner {
+        min-height: 44px;
+      }
+    }
+  }
+}
 </style>

@@ -8,7 +8,6 @@
           use-dialog="always"
           use-filter
           scroll-height="400px"
-          hide-action-label
           variant="plain"
           @change="selectChanged"
         ></q-dropdown-menu>

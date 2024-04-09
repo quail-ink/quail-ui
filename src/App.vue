@@ -126,47 +126,59 @@ function openDialog4(ev:any) {
     <div class="section">
       <h2 class="section-title">Buttons</h2>
       <div class="flow">
-        <button class="button primary">Primary</button>
-        <button class="button primary elevated">Primary</button>
-        <button class="button primary" disabled>Primary</button>
-        <button class="button sm primary">Small</button>
-        <button class="button xs primary">Smaller</button>
-        <button class="button xxs primary">Smallest</button>
-        <button class="button outlined">Outlined</button>
-        <button class="button outlined" disabled>Outlined</button>
-        <button class="button sm outlined">Outlined</button>
-        <button class="button plain">Plain</button>
-        <button class="button plain" disabled>Plain</button>
-        <button class="button sm plain">Plain</button>
+        <QButton class="primary" @click="() => console.log('OK')">Primary</QButton>
+        <QButton class="primary elevated">Primary</QButton>
+        <QButton class="primary" disabled>Primary</QButton>
+        <QButton class="primary" loading>Loading</QButton>
+        <QButton class="sm primary">Small</QButton>
+        <QButton class="xs primary">Smaller</QButton>
+        <QButton class="xxs primary">Smallest</QButton>
       </div>
       <div class="flow">
-        <button class="button danger">Danger</button>
-        <button class="button danger" disabled>Danger</button>
-        <button class="button outlined danger">Danger</button>
-        <button class="button outlined danger" disabled>Danger</button>
-        <button class="button plain danger">Danger</button>
-        <button class="button plain danger" disabled>Danger</button>
-        <button class="button sm danger">Danger</button>
-        <button class="button sm outlined danger">Danger</button>
-        <button class="button sm plain danger">Danger</button>
+        <QButton class="outlined">Outlined</QButton>
+        <QButton class="outlined" disabled>Outlined</QButton>
+        <QButton class="outlined" loading>Loading</QButton>
       </div>
       <div class="flow">
-        <button class="button icon primary">
+        <QButton class="plain">Plain</QButton>
+        <QButton class="plain" disabled>Plain</QButton>
+        <QButton class="plain" loading>Loading</QButton>
+      </div>
+      <div class="flow">
+        <QButton class="danger">Danger</QButton>
+        <QButton class="danger" disabled>Danger</QButton>
+        <QButton class="danger" loading>Danger</QButton>
+      </div>
+      <div class="flow">
+        <QButton class="outlined danger">Danger</QButton>
+        <QButton class="outlined danger" disabled>Danger</QButton>
+        <QButton class="outlined danger" loading>Danger</QButton>
+      </div>
+      <div class="flow">
+        <QButton class="plain danger">Danger</QButton>
+        <QButton class="plain danger" disabled>Danger</QButton>
+        <QButton class="plain danger" loading>Danger</QButton>
+      </div>
+      <div class="flow">
+        <QButton class="icon primary">
           <QIconPlus class="icon" />
-        </button>
-        <button class="button icon danger">
+        </QButton>
+        <QButton class="icon danger">
           <QIconTrash class="icon" />
-        </button>
-        <button class="button icon outlined">
+        </QButton>
+        <QButton class="icon outlined danger">
+          <QIconTrash class="icon" />
+        </QButton>
+        <QButton class="icon outlined">
           <QIconSun class="icon" />
-        </button>
-        <button class="button icon plain">
+        </QButton>
+        <QButton class="icon plain">
           <QIconQuail class="icon" />
-        </button>
-        <button class="button primary">
+        </QButton>
+        <QButton class="primary">
           <QIconSearch class="icon" />
           <span class="button-label">Search</span>
-        </button>
+        </QButton>
       </div>
     </div>
 

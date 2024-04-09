@@ -243,7 +243,7 @@ onMounted(() => {
     .menu-icon {
     }
     .menu-title {
-      margin-left: 1rem;
+      margin-left: 12px;
     }
     .chevron-icon {
       transition: all 0.2s ease-in;
