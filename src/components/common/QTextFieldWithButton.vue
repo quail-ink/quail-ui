@@ -115,9 +115,9 @@ function changed() {
       />
     </div>
     <div class="q-text-button-wrapper">
-      <button class="q-button button primary" :disabled="!validated" @click="submit">
+      <q-button class="primary" :disabled="!validated" @click="submit">
         {{ label }}
-      </button>
+      </q-button>
     </div>
     <div v-if="glow !== ''" class="q-button-glow"></div>
   </div>
@@ -131,14 +131,16 @@ function changed() {
     border-bottom-right-radius: 0;
     min-width: 296px;
   }
-  .q-button {
-    transform: translateY(-1px);
-    width: 100%;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .q-text-button-wrapper {
+    .q-button {
+      transform: translateY(-1px);
+      width: 100%;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
 
   &.code {
@@ -159,15 +161,15 @@ function changed() {
       flex: 4;
       position: relative;
       z-index: 1;
+      .q-button {
+        border-radius: 0 4px 4px 0;
+        transform: translateY(0px);
+      }
     }
     .q-text-field {
       border-radius: 4px 0 0 4px;
       border-width: 1px 0 1px 1px;
       min-width: auto;
-    }
-    .q-button {
-      border-radius: 0 4px 4px 0;
-      transform: translateY(0px);
     }
   }
   &.glow-matrix {

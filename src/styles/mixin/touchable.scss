@@ -1,0 +1,100 @@
+
+.touchable {
+  background-color: #ddd;
+  color: #000;
+  border-radius: 4px;
+  &.primary {
+    --q-progress-color: rgba(255, 255, 255, 0.1);
+    --q-progress-color-light: rgba(255, 255, 255, 0.05);
+    background-color: var(--vt-c-black);
+    border: var(--vt-c-black);
+    color: white;
+    &:hover {
+      box-shadow: 0 0 8px rgba(41,30,56,.2);
+    }
+    &.elevated {
+      box-shadow: 0 0 16px rgba(41, 30, 56, .3);
+    }
+    &[disabled] {
+      box-shadow: none;
+      background-color: #6a6a7f;
+    }
+  }
+  &.danger {
+    --q-progress-color: rgba(255, 255, 255, 0.15);
+    --q-progress-color-light: rgba(255, 255, 255, 0.05);
+    background-color: #f44336;
+    color: white;
+    border: #f44336;
+    &:hover {
+      background-color: #d32f2f;
+    }
+    &.elevated {
+      box-shadow: 0px 1px 9px 0px rgba(244,67,54,0.3);
+    }
+    &[disabled] {
+      opacity: 0.5;
+    }
+  }
+  &.outlined {
+    --q-progress-color: rgba(0, 0, 0, 0.0);
+    --q-progress-color-light: rgba(0, 0, 0, 0.03);
+    background-color: transparent;
+    border: 1px solid #0000001A;
+    box-shadow: inset 0px 1px 10px 0px #0000000D, 0px 1px 1px 0px #4343431A;
+    &:hover{
+      box-shadow: inset 0px 1px 2px 0px #0000000D, 0px 1px 1px 0px #4343431A;
+    }
+    &.elevated {
+      box-shadow: inset 0px 1px 10px 0px #0000000D, 0px 1px 9px 0px #4343431A;
+    }
+    &.elevated:hover {
+      box-shadow: inset 0px 1px 2px 0px #0000000D, 0px 1px 9px 0px #4343431A;
+    }
+    &[disabled] {
+      color: #888;
+      &:hover {
+        box-shadow: inset 0px 1px 10px 0px #0000000D, 0px 1px 3px 0px #4343431A !important;
+      }
+    }
+  }
+  &.outlined.danger {
+    --q-progress-color: rgba(0, 0, 0, 0.0);
+    --q-progress-color-light: rgba(255, 0, 0, 0.03);
+    color: #d32f2f;
+    // box-shadow: inset 0 0 0 1px rgba(244,67,54,0.2);
+    border: 1px solid rgba(244,67,54,0.2);
+    box-shadow: inset 0px 1px 10px 0px rgba(244,67,54,0.01), 0px 1px 1px 0px rgba(244,67,54,0.1);
+    &:hover{
+      background-color: rgba(244,67,54,0.04);
+    }
+    &.elevated {
+      box-shadow: inset 0px 1px 10px 0px rgba(244,67,54,0.01), 0px 1px 9px 0px rgba(244,67,54,0.1);
+    }
+    &[disabled] {
+      opacity: 0.5;
+    }
+  }
+  &.plain {
+    --q-progress-color: rgba(0, 0, 0, 0.0);
+    --q-progress-color-light: rgba(0, 0, 0, 0.03);
+    box-shadow: none;
+    border: none;
+    background-color: transparent;
+    &:hover{
+      background-color: rgba(0,0,0,0.05);
+    }
+  }
+  &.plain.danger {
+    --q-progress-color: rgba(0, 0, 0, 0.0);
+    --q-progress-color-light: rgba(255, 0, 0, 0.03);
+    color: #d32f2f;
+    background-color: transparent;
+    &:hover{
+      background-color: rgba(244,67,54,0.04);
+    }
+    &[disabled] {
+      opacity: 0.5;
+    }
+  }
+}

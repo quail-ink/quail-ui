@@ -26,7 +26,7 @@ const props = defineProps({
 });
 
 const cls = computed(() => {
-  const ret = ['q-button'];
+  const ret = ['q-button touchable'];
   ret.push(props.class);
   if (props.loading) {
     ret.push('loading');
@@ -40,13 +40,12 @@ const validated = computed(() => {
 </script>
 
 <style scoped lang="scss">
+@import "@/styles/mixin/touchable.scss";
+
 .q-button {
   height: 44px;
-  background-color: #ddd;
   font-weight: 500;
-  color: #000;
   border-radius: 4px;
-  border: none;
   padding: 0.8rem 1rem;
   text-align: center;
   text-decoration: none;
@@ -89,6 +88,8 @@ const validated = computed(() => {
     width: 100%;
   }
   &.icon {
+    padding: 0.8rem;
+    width: 44px;
     &:deep(.icon) {
       display: flex;
       justify-content: center;
@@ -97,96 +98,22 @@ const validated = computed(() => {
       height: 16px;
       width: 16px;
     }
+    &.sm {
+      padding: 0.6rem;
+      width: 38px;
+    }
+    &.xs {
+      padding: 0.6rem;
+      width: 32px;
+    }
   }
 }
 /* press animation */
 .q-button:active {
-  transform: scale(0.93);
+  // transform: scale(0.98);
 }
 .q-button[disabled] {
   transform: scale(1) !important;
-}
-.q-button {
-  &.primary {
-    --q-progress-color: rgba(255, 255, 255, 0.1);
-    --q-progress-color-light: rgba(255, 255, 255, 0.05);
-    background-color: var(--vt-c-black);
-    color: white;
-    &:hover {
-      box-shadow: 0 0 8px rgba(41,30,56,.2);
-    }
-    &.elevated {
-      box-shadow: 0 0 16px rgba(41, 30, 56, .3);
-    }
-    &[disabled] {
-      box-shadow: none;
-      background-color: #6a6a7f;
-    }
-  }
-  &.danger {
-    --q-progress-color: rgba(255, 255, 255, 0.15);
-    --q-progress-color-light: rgba(255, 255, 255, 0.05);
-    background-color: #f44336;
-    color: white;
-    border: none;
-    &:hover {
-      background-color: #d32f2f;
-    }
-    &[disabled] {
-      opacity: 0.5;
-    }
-  }
-  &.outlined {
-    --q-progress-color: rgba(0, 0, 0, 0.0);
-    --q-progress-color-light: rgba(0, 0, 0, 0.03);
-    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.1);
-    background-color: transparent;
-    &:hover{
-      background-color: rgba(235, 241, 247, 0.486);
-    }
-    &[disabled] {
-      color: #888;
-      background-color: transparent;
-      &:hover {
-        background-color: transparent !important;
-      }
-    }
-  }
-  &.outlined.danger {
-    --q-progress-color: rgba(0, 0, 0, 0.0);
-    --q-progress-color-light: rgba(255, 0, 0, 0.03);
-    color: #d32f2f;
-    box-shadow: inset 0 0 0 1px rgba(244,67,54,0.2);
-    background-color: transparent;
-    &:hover{
-      background-color: rgba(244,67,54,0.04);
-    }
-    &[disabled] {
-      opacity: 0.5;
-    }
-  }
-  &.plain {
-    --q-progress-color: rgba(0, 0, 0, 0.0);
-    --q-progress-color-light: rgba(0, 0, 0, 0.03);
-    box-shadow: none;
-    border: none;
-    background-color: transparent;
-    &:hover{
-      background-color: rgba(0,0,0,0.05);
-    }
-  }
-  &.plain.danger {
-    --q-progress-color: rgba(0, 0, 0, 0.0);
-    --q-progress-color-light: rgba(255, 0, 0, 0.03);
-    color: #d32f2f;
-    background-color: transparent;
-    &:hover{
-      background-color: rgba(244,67,54,0.04);
-    }
-    &[disabled] {
-      opacity: 0.5;
-    }
-  }
 }
 .q-button.loading {
   .ocean {

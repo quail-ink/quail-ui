@@ -162,6 +162,7 @@ input.text-field, textarea.textarea {
   width: 100%;
   font-size: 1rem;
   outline: none;
+  box-shadow: inset 0px 1px 8px 0px rgba(0,0,0,0.03), 0px 1px 1px 0px #4343431A;
 
   &:focus {
     border: 1px solid rgba(0, 0, 0, 0.2);
@@ -262,101 +263,11 @@ button.button {
   }
 }
 
-button.button.primary {
-  background-color: var(--vt-c-black);
-  color: white;
-  &:hover {
-    box-shadow: 0 0 8px rgba(41,30,56,.2);
-  }
-}
-
-button.button[disabled] {
-  background-color: #6a6a7f;
-  cursor: disabled;
-  &:hover {
-    background-color: #6a6a7f;
-  }
-  .button-icon {
-    opacity: 0.6;
-  }
-}
-
-button.button.primary.elevated {
-  box-shadow: 0 0 16px rgba(41, 30, 56, .3);
-  &:hover {
-    box-shadow: 0 0 20px rgba(41, 30, 56, 0.6);
-  }
-}
-
-button.button.primary[disabled], button.button.primary.elevated[disabled] {
-  box-shadow: none;
-}
-
-button.outlined {
-  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.1);
-  background-color: transparent;
-  &:hover{
-    background-color: rgba(0,0,0,0.04);
-  }
-}
-
-button.outlined[disabled] {
-  color: #888;
-  background-color: transparent;
-  cursor: default;
-  &:hover {
-    background-color: transparent !important;
-  }
-}
-
-button.outlined.danger {
-  color: #d32f2f;
-  box-shadow: inset 0 0 0 1px rgba(244,67,54,0.2);
-  background-color: transparent;
-  &:hover{
-    background-color: rgba(244,67,54,0.04);
-  }
-}
-
-button.danger {
-  background-color: #f44336;
-  color: white;
-  border: none;
-  &:hover {
-    background-color: #d32f2f;
-  }
-}
-
 button.toggle {
   &.on {
     // box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
     // background: var(--vt-c-white-mute);
     color: var(--vt-c-red);
-  }
-}
-
-button.plain {
-  box-shadow: none;
-  border: none;
-  background-color: transparent;
-  &:hover{
-    background-color: rgba(0,0,0,0.05);
-  }
-}
-
-button.plain[disabled] {
-  opacity: 0.4;
-  background-color: transparent;
-  cursor: default;
-  &:hover {
-    background-color: transparent;
-  }
-}
-
-button.plain.danger {
-  color: #f44336;
-  .fa {
-    color: #f44336;
   }
 }
 

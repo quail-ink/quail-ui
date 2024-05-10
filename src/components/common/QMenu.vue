@@ -134,6 +134,7 @@ function doAction(item: any) {
     }
     &.with-divider {
       height: 0px;
+      padding: 0.5rem 0;
     }
 
     .q-menu-item-divider {
@@ -147,7 +148,7 @@ function doAction(item: any) {
       justify-items: center;
       align-items: center;
       padding: 0.5rem 1rem;
-      transition: background-color 0.2s ease-in;
+      transition: background-color 0.1s ease-in;
       &:hover {
         background-color: rgba(0, 0, 0, 0.06);
       }

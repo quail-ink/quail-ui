@@ -91,22 +91,22 @@ function gotoPage(ix: any, item:any ) {
 </script>
 <template>
   <div class="q-pagination">
-    <button class="prev q-button button sm outlined icon" @click="prevPage" :disabled="!props.hasPrev">
+    <q-button class="prev sm outlined icon" @click="prevPage" :disabled="!props.hasPrev">
       <q-icon-arrow-left class="icon" ></q-icon-arrow-left>
-    </button>
+    </q-button>
     <div v-if="totalPage !== 0" class="q-page-indicators">
       <div v-for="item in indicators" class="q-page-indicator">
-        <button class="q-page-indicator q-button button sm plain" :class="item.label === val? 'active': ''" :disabled="item.disabled" @click="gotoPage(item.label, item)">
+        <q-button class="q-page-indicator sm plain" :class="item.label === val? 'active': ''" :disabled="item.disabled" @click="gotoPage(item.label, item)">
           {{ item.label }}
-        </button>
+        </q-button>
       </div>
     </div>
     <div v-else class="q-page-indicator-simple">
       <div class="">{{ modelValue }}</div>
     </div>
-    <button class="next q-button button sm outlined icon" @click="nextPage" :disabled="!props.hasNext">
+    <q-button class="next sm outlined icon" @click="nextPage" :disabled="!props.hasNext">
       <q-icon-arrow-right class="icon" ></q-icon-arrow-right>
-    </button>
+    </q-button>
   </div>
 </template>
 

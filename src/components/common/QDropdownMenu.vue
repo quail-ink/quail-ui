@@ -63,7 +63,7 @@ const actionCls = computed(() => {
   }
 
   if (props.variant === "outlined") {
-    cls.push("frame");
+    cls.push("outlined");
   } else if (props.variant === "plain") {
     cls.push("plain");
   }
@@ -174,7 +174,7 @@ onMounted(() => {
 <template>
   <div class="q-dropdown-menu">
     <div class="q-dropdown-menu-inner narrow-view">
-      <div class="q-dropdown-menu-action" :class="actionCls" @click.stop="toggle">
+      <div class="q-dropdown-menu-action touchable" :class="actionCls" @click.stop="toggle">
         <div v-if="!hideSelected && selectedItem && !hasSlot" class="q-dropdown-selected">
           <img
             v-if="selectedItem.image"
@@ -219,6 +219,8 @@ onMounted(() => {
 </template>
 
 <style lang="scss">
+@import "@/styles/mixin/touchable.scss";
+
 .q-dropdown-menu {
   height: 44px;
   .q-dropdown-menu-inner {
@@ -232,10 +234,9 @@ onMounted(() => {
     align-items: center;
     cursor: default;
     transition: all 0.2s ease-in;
+
     &:hover {
-      &.frame {
-        box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.16);
-      }
+
       .chevron-icon {
         opacity: 1;
       }

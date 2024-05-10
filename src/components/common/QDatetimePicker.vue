@@ -40,7 +40,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="q-datetime-picker">
+  <div class="q-datetime-picker touchable outlined">
     <input v-model="date" type="date" :disabled="disabled" @change="changed" />
     <input v-model="time" type="time" :disabled="disabled" @change="changed" />
   </div>

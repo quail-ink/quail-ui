@@ -136,6 +136,7 @@ function openDialog4(ev:any) {
       </div>
       <div class="flow">
         <QButton class="outlined">Outlined</QButton>
+        <QButton class="outlined elevated">Outlined</QButton>
         <QButton class="outlined" disabled>Outlined</QButton>
         <QButton class="outlined" loading>Loading</QButton>
       </div>
@@ -146,11 +147,13 @@ function openDialog4(ev:any) {
       </div>
       <div class="flow">
         <QButton class="danger">Danger</QButton>
+        <QButton class="danger elevated">Danger</QButton>
         <QButton class="danger" disabled>Danger</QButton>
         <QButton class="danger" loading>Danger</QButton>
       </div>
       <div class="flow">
         <QButton class="outlined danger">Danger</QButton>
+        <QButton class="outlined danger elevated">Danger</QButton>
         <QButton class="outlined danger" disabled>Danger</QButton>
         <QButton class="outlined danger" loading>Danger</QButton>
       </div>
@@ -215,7 +218,7 @@ function openDialog4(ev:any) {
             <div class="form-error">It seems you're typing something wrong</div>
           </div>
           <div class="form-row">
-            <button class="button primary">Save</button>
+            <QButton class="primary">Save</QButton>
           </div>
         </div>
       </div>
@@ -405,19 +408,19 @@ function openDialog4(ev:any) {
     <div class="section">
       <h2 class="section-title">Dialog</h2>
       <div class="flow">
-        <button class="button primary" @click="dialogValue1 = true">
+        <QButton class="outlined" @click="dialogValue1 = true">
           Open Dialog
-        </button>
+        </QButton>
 
-        <button class="button primary" @click="dialogValue2 = true">
+        <QButton class="outlined" @click="dialogValue2 = true">
           Open Persistent Dialog
-        </button>
+        </QButton>
 
         <QDialog v-model="dialogValue3" desktop-mode="popup">
           <template #trigger>
-            <button class="button primary" @click.stop="openDialog3">
+            <QButton class="outlined" @click.stop="openDialog3">
               Open Dialog (popup)
-            </button>
+            </QButton>
           </template>
 
           <div class="dialog-body">
@@ -429,9 +432,9 @@ function openDialog4(ev:any) {
 
         <QDialog v-model="dialogValue4" desktop-mode="popup" no-frame>
           <template #trigger>
-              <button class="button primary" @click.stop="openDialog4">
+              <QButton class="outlined" @click.stop="openDialog4">
               Open Dialog (popup & no-frame)
-            </button>
+            </QButton>
           </template>
 
           <div
@@ -440,19 +443,19 @@ function openDialog4(ev:any) {
           >
             <div class="dialog-body-frame" style="background-color: #fff; border-radius: 8px; padding: 20px; box-shadow: 0 0 20px rgba(0,0,0,0.1);">
               <div class="form-row center">
-                <button class="button primary block">
+                <QButton class="primary block">
                   Action
-                </button>
+                </QButton>
               </div>
               <div class="form-row center">
-                <button class="button danger block">
+                <QButton class="danger block">
                   Action
-                </button>
+                </QButton>
               </div>
               <div class="form-row center">
-                <button class="button block" @click="dialogValue4 = false">
+                <QButton class="block" @click="dialogValue4 = false">
                   Cancel
-                </button>
+                </QButton>
               </div>
             </div>
           </div>
@@ -472,9 +475,9 @@ function openDialog4(ev:any) {
               <p style="text-align: center">You must click close button to close me</p>
             </div>
             <div class="form-row center">
-              <button class="button primary" @click="dialogValue2 = false">
+              <QButton class="primary" @click="dialogValue2 = false">
                 Close
-              </button>
+              </QButton>
             </div>
           </div>
         </QDialog>
