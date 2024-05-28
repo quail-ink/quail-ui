@@ -96,14 +96,14 @@ function gotoPage(ix: any, item:any ) {
     </q-button>
     <div v-if="totalPage !== 0" class="q-page-indicators">
       <div v-for="item in indicators" class="q-page-indicator">
-        <q-button class="q-page-indicator sm plain" :class="item.label === val? 'active': ''" :disabled="item.disabled" @click="gotoPage(item.label, item)">
+        <q-button class="q-page-indicator sm outlined" :class="item.label === val? 'active': ''" :disabled="item.disabled" @click="gotoPage(item.label, item)">
           {{ item.label }}
         </q-button>
       </div>
     </div>
-    <div v-else class="q-page-indicator-simple">
+    <q-button v-else class="outlined sm q-page-indicator-simple q-page-indicator">
       <div class="">{{ modelValue }}</div>
-    </div>
+    </q-button>
     <q-button class="next sm outlined icon" @click="nextPage" :disabled="!props.hasNext">
       <q-icon-arrow-right class="icon" ></q-icon-arrow-right>
     </q-button>
@@ -116,36 +116,49 @@ function gotoPage(ix: any, item:any ) {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  .prev {
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+  .next {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+  }
   .q-page-indicators {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 0.2rem;
+    padding: 0;
   }
   .q-page-indicator {
-    margin-right: 1px;
-    &:last-child {
-      margin-right: 0;
+    border-radius: 0 !important;
+    background-color: white !important;
+    border-right: none !important;
+    &:first-child {
+      .q-button {
+        border-left: none !important;
+      }
     }
     .q-button {
       padding-left: 0.6rem;
       padding-right: 0.6rem;
-      opacity: 0.6;
+      border-right: none !important;
     }
     .q-button[disabled] {
-      opacity: 0.5;
-      border: none;
-      padding-left: 0rem;
-      padding-right: 0rem;
+      padding-left: 0.3rem;
+      padding-right: 0.3rem;
     }
     .q-button.active {
-      background-color: rgba(0, 0, 0, 0.06);
+      color: var(--vt-c-blue);
       opacity: 1;
     }
   }
   .q-page-indicator-simple {
     padding: 0 1rem;
     font-size: 0.9rem;
+    border-left: none !important;
+    border-right: none !important;
+    color: var(--vt-c-blue) !important;
   }
 }
 </style>

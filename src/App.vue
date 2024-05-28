@@ -86,6 +86,12 @@ const currencies = computed(() => [
   },
 ]);
 
+const tabs = computed(() => [
+  { id: "tab1", title: "Tab 1" },
+  { id: "tab2", title: "Tab 2" },
+  { id: "tab3", title: "Tab 3" },
+]);
+
 function onLangSelected(item: any) {
   console.log("Language selected", item);
   selectedLang.value = item.value;
@@ -519,6 +525,13 @@ function openDialog4(ev:any) {
           @change:next="() => { currentPage++; console.log(currentPage) }"
           @change:goto="(val: any) => { currentPage = val; console.log(val)}"
         />
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Tabs</h2>
+      <div class="flex">
+        <QTabs :tabs="tabs" />
       </div>
     </div>
 
