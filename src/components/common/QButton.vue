@@ -45,7 +45,7 @@ const validated = computed(() => {
 .q-button {
   height: 44px;
   font-weight: 500;
-  border-radius: 4px;
+  border-radius: 6px;
   padding: 0.8rem 1rem;
   text-align: center;
   text-decoration: none;
@@ -107,13 +107,6 @@ const validated = computed(() => {
       width: 32px;
     }
   }
-}
-/* press animation */
-.q-button:active {
-  // transform: scale(0.98);
-}
-.q-button[disabled] {
-  transform: scale(1) !important;
 }
 .q-button.loading {
   .ocean {

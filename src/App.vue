@@ -286,19 +286,17 @@ function openDialog4(ev:any) {
     <div class="section">
       <h2 class="section-title">Menu</h2>
       <div class="flow">
-        <div
-          class="menu-wrapper"
-          style="width: 300px; height: 260px; position: relative"
-        >
+        <div class="menu-wrapper" style="width: 300px; height: 380px;">
           <h3>Normal</h3>
-          <QMenu :items="menuItems" />
+          <QMenu :items="menuItems" persistent/>
         </div>
-        <div
-          class="menu-wrapper"
-          style="width: 300px; height: 360px;"
-        >
-          <h3>Persistent & without frame</h3>
+        <div class="menu-wrapper" style="width: 300px; height: 380px;">
+          <h3>without frame</h3>
           <QMenu :items="menuItems" no-frame persistent/>
+        </div>
+        <div class="menu-wrapper" style="width: 300px; height: 380px;">
+          <h3>without frame & shadow</h3>
+          <QMenu :items="menuItems" no-frame no-shadow persistent/>
         </div>
       </div>
     </div>
@@ -487,12 +485,15 @@ function openDialog4(ev:any) {
 
     <div class="section">
       <h2 class="section-title">Frame</h2>
-      <div class="grid gap-4 grid-cols-2">
+      <div class="grid gap-4 grid-cols-3">
         <div class="frame">
           Some content here
         </div>
         <div class="frame focus">
-          Some content here
+          Some content here, focused
+        </div>
+        <div class="frame shadow">
+          Some content here, with shadow
         </div>
       </div>
     </div>

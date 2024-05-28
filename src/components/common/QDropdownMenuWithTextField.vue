@@ -119,7 +119,7 @@ onMounted(() => {
 .q-dropdown-menu-with-text-field {
   width: 100%;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
+  border-radius: 6px;
   box-shadow: inset 0px 1px 8px 0px rgba(0,0,0,0.03), 0px 1px 1px 0px #4343431A;
 
   .q-dropdown-menu-with-text-field-top, .q-dropdown-menu-with-text-field-bottom {

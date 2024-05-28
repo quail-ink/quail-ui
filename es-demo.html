@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Use Quail UI as an ES Module in Vue 3</title>
+    <link rel="stylesheet" href="/dist/style.css" />
+    <script>
+      window.__VUE_PROD_DEVTOOLS__ = true;
+    </script>
+    <script type="importmap">
+      {
+        "imports": {
+          "vue": "https://cdn.jsdelivr.net/npm/vue@3.3.9/dist/vue.esm-browser.prod.js",
+          "quailui": "https://static.quail.ink/assets/quail-ui/0.2.29/index.js",
+        }
+      }
+    </script>
+    <script type="module">
+      import autoAnimate from "autoAnimate";
+      import * as Vue from "vue";
+      import QuailUI from "quailui";
+      window.Vue = Vue;
+      window.QuailUI = QuailUI;
+      window._autoAnimate = autoAnimate;
+    </script>
+    <script type="module">
+      const { createApp, ref, onMounted } = window.Vue;
+
+      const messages = {
+        en: {
+          hello: "hello world",
+          hello_to: "hello {name}",
+        },
+      };
+
+      export function detectLang() {
+        let lang = localStorage.getItem("quail-language");
+
+        if (lang && messages[lang]) {
+          return lang;
+        }
+
+        lang = navigator.language.toLowerCase();
+        if (lang.length > 5) {
+          lang = lang.substring(0, 5);
+        }
+
+        if (lang && messages[lang]) {
+          return lang;
+        } else {
+          lang = lang.substring(0, 2);
+          if (lang && messages[lang]) {
+            return lang;
+          }
+          return "en";
+        }
+      }
+
+      function t(name, data) {
+        const lang = detectLang();
+        const locale = messages[lang];
+        let msg = "";
+        if (locale) {
+          msg = locale[name];
+          if (msg === undefined) {
+            msg = messages.en[name];
+          }
+        }
+
+        if (data) {
+          for (const key in data) {
+            msg = msg.replace(`{${key}}`, data[key]);
+          }
+        }
+
+        return msg;
+      }
+
+      const app = createApp({
+        data() {
+          return {
+            name: "world",
+            currentPage: 1,
+            emailInput: "",
+          };
+        },
+        methods: {
+          t,
+          doSubscribe: function (val) {
+            console.log(val);
+          },
+        },
+        mounted: function () {
+          console.log("mounted");
+        },
+        delimiters: ["${", "}"],
+      });
+
+      app.use(window.QuailUI, {debug: true});
+      app.mount("#app");
+    </script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Hello ${name}</h1>
+
+      <button class="button outlined">OK</button>
+
+      <q-fence :title="name" type="warning"></q-fence>
+    </div>
+  </body>
+</html>

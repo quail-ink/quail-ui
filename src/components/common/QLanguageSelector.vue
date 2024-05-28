@@ -33,34 +33,34 @@ const selectedLangItem: Ref<any> = ref(null);
 const languageItems = computed(() => {
   let items = [
     {
-      title_flag: "🇺🇸 English",
-      title_no_flag: "English",
+      flag: "🇺🇸",
+      title: "English",
       value: "en",
       action: selectLang,
     },
     {
-      title_flag: "🇨🇳 简体中文",
-      title_no_flag: "简体中文",
+      flag: "🇨🇳",
+      title: "简体中文",
       value: "zh",
       action: selectLang,
     },
     {
-      title_flag: "🇹🇼 正體中文",
-      title_no_flag: "正體中文",
+      flag: "🇹🇼",
+      title: "正體中文",
       value: "zh-tw",
       action: selectLang,
     },
     {
-      title_flag: "🇯🇵 日本語",
-      title_no_flag: "日本語",
+      flag: "🇯🇵",
+      title: "日本語",
       value: "ja",
       action: selectLang,
     },
   ]
   if (props.auto) {
     items.unshift({
-      title_flag: "🌐 Auto",
-      title_no_flag: "Auto",
+      flag: "🌐",
+      title: "Auto",
       value: "",
       action: selectLang,
     });
@@ -68,7 +68,7 @@ const languageItems = computed(() => {
   items = items.map((item) => {
     return {
       ...item,
-      title: props.noFlag ? item.title_no_flag: item.title_flag,
+      title: props.noFlag ? item.title: `${item.flag}  ${item.title}`,
     };
   });
 

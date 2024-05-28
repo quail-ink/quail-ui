@@ -60,7 +60,7 @@ function handleError(e: Event) {
   }
   &.rounded {
     img {
-      border-radius: 4px;
+      border-radius: 6px;
     }
   }
   &.square {

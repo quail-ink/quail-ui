@@ -201,7 +201,7 @@ onMounted(() => {
 .q-dialog {
   background-color: white;
   padding: 0rem;
-  border-radius: 4px;
+  border-radius: 6px;
   z-index: 101;
   &.shaking {
     animation: shake 0.3s;

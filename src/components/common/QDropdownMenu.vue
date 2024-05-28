@@ -228,7 +228,7 @@ onMounted(() => {
   }
   .q-dropdown-menu-action {
     height: 44px;
-    padding: 0 0.5rem 0 1rem;
+    padding: 0 0.5rem 0 0.8rem;
     display: flex;
     justify-items: center;
     align-items: center;
@@ -274,10 +274,12 @@ onMounted(() => {
     flex: 1;
     display: flex;
     align-items: center;
+    user-select: none;
   }
   .menu-image {
     width: 24px;
     height: 24px;
+    border-radius: 6px;
   }
   .icon {
     height: 16px;
@@ -291,7 +293,7 @@ onMounted(() => {
 }
 .q-menu-popup-body {
   background: #fff;
-  border-radius: 4px;
+  border-radius: 6px;
   .filter-area {
     padding: 1rem 1rem 0.5rem 1rem;
   }

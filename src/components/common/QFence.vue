@@ -5,7 +5,7 @@
         <component :is="components[icon]" class="icon" />
       </template>
       <q-icon-help v-else class="icon" ></q-icon-help>
-      <div class="q-fence-text">
+      <div class="q-fence-text text-sm">
         {{ text }}
       </div>
     </a>
@@ -14,7 +14,7 @@
         <component :is="components[icon]" class="icon" />
       </template>
       <q-icon-help v-else class="icon" ></q-icon-help>
-      <div class="q-fence-text">
+      <div class="q-fence-text text-sm">
         {{ text }}
       </div>
     </div>
@@ -48,12 +48,11 @@ const props = defineProps({
   display: block;
   width: 100%;
   .q-fence-inner {
-    border-radius: 4px;
+    border-radius: 6px;
     display: flex;
     align-items: flex-start;
     width: 100%;
     padding: 0.5rem 0.8rem;
-    font-size: 0.8rem;
     color: var(--vt-c-text-light-1);
     opacity: 0.7;
     background: var(--vt-c-white-soft);

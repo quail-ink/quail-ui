@@ -2,7 +2,7 @@
 .touchable {
   background-color: #ddd;
   color: #000;
-  border-radius: 4px;
+  border-radius: 6px;
   &.primary {
     --q-progress-color: rgba(255, 255, 255, 0.1);
     --q-progress-color-light: rgba(255, 255, 255, 0.05);
@@ -40,8 +40,8 @@
     --q-progress-color: rgba(0, 0, 0, 0.0);
     --q-progress-color-light: rgba(0, 0, 0, 0.03);
     background-color: transparent;
-    border: 1px solid #0000001A;
-    box-shadow: inset 0px 1px 10px 0px #0000000D, 0px 1px 1px 0px #4343431A;
+    border: 1px solid var(--vt-c-divider-light-1);
+    box-shadow: inset 0px 1px 10px 0px #0000000D, 0px 1px 2px 0px #4343431A;
     &:hover{
       box-shadow: inset 0px 1px 2px 0px #0000000D, 0px 1px 1px 0px #4343431A;
     }

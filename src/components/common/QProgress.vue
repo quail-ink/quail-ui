@@ -63,10 +63,10 @@ const completed = computed(() => {
     width: 100%;
     height: 8px;
     background: var(--vt-c-white-soft);
-    border-radius: 4px;
+    border-radius: 6px;
     overflow: hidden;
     .q-progress-bar {
-      border-radius: 4px;
+      border-radius: 6px;
       position: absolute;
       top: 0;
       left: 0;

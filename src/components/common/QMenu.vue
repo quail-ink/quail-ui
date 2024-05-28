@@ -14,6 +14,10 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  noShadow: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const emit = defineEmits(["action"]);
@@ -25,6 +29,9 @@ const menuCls = computed(() => {
   }
   if (props.noFrame) {
     _cls.push("no-frame");
+  }
+  if (props.noShadow) {
+    _cls.push("no-shadow");
   }
   return _cls.join(" ");
 });
@@ -98,13 +105,16 @@ function doAction(item: any) {
   min-width: 220px;
   background: white;
   transform: translateY(0.5rem);
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 0 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--vt-c-divider-light-1);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   padding: 0.5rem 0;
-  border-radius: 4px;
+  border-radius: 6px;
   z-index: 20;
   &.no-frame {
-    box-shadow: none;
     border: none;
+  }
+  &.no-shadow {
+    box-shadow: none;
   }
   &.persistent {
     position: static;
@@ -138,7 +148,7 @@ function doAction(item: any) {
     }
 
     .q-menu-item-divider {
-      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      border-top: 1px solid var(--vt-c-divider-light-1);
       margin: 0 1rem;
       height: 0px;
       transform: translateY(-0.5px);
@@ -148,7 +158,8 @@ function doAction(item: any) {
       justify-items: center;
       align-items: center;
       padding: 0.5rem 1rem;
-      transition: background-color 0.1s ease-in;
+      transition: background-color 0.01s ease-in;
+      user-select: none;
       &:hover {
         background-color: rgba(0, 0, 0, 0.06);
       }
@@ -166,7 +177,7 @@ function doAction(item: any) {
       width: 24px;
       min-height: 24px;
       min-width: 24px;
-      border-radius: 4px;
+      border-radius: 6px;
     }
 
     .q-menu-icon {

@@ -49,7 +49,7 @@ onMounted(() => {
 <style lang="scss">
 .q-datetime-picker {
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 6px;
 }
 .q-datetime-picker {
   input[type="date"],

@@ -162,12 +162,12 @@ function changed() {
       position: relative;
       z-index: 1;
       .q-button {
-        border-radius: 0 4px 4px 0;
+        border-radius: 0 6px 6px 0;
         transform: translateY(0px);
       }
     }
     .q-text-field {
-      border-radius: 4px 0 0 4px;
+      border-radius: 6px 0 0 6px;
       border-width: 1px 0 1px 1px;
       min-width: auto;
     }
