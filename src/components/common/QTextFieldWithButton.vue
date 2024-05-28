@@ -187,10 +187,12 @@ function changed() {
     .q-button {
       color: #b3e941 !important;
       background: rgba(180, 233, 65, 0.3) !important;
+      border-color: rgba(180, 233, 65, 0.3) !important;
       &[disabled] {
         color: #8bb434 !important;
         background: rgba(180, 233, 65, 0.2) !important;
         box-shadow: none !important;
+        border-color: rgba(180, 233, 65, 0.2) !important;
       }
     }
     .q-button-glow {
