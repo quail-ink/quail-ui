@@ -41,15 +41,15 @@
     --q-progress-color-light: rgba(0, 0, 0, 0.03);
     background-color: transparent;
     border: 1px solid var(--vt-c-divider-light-1);
-    box-shadow: inset 0px 1px 10px 0px #0000000D, 0px 1px 2px 0px #4343431A;
+    box-shadow: inset 0px 1px 10px 0px rgba(0, 0, 0, 0.01), 0px 1px 2px 0px #4343431A;
     &:hover{
-      box-shadow: inset 0px 1px 2px 0px #0000000D, 0px 1px 1px 0px #4343431A;
+      box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 0, 0.01), 0px 1px 1px 0px #4343431A;
     }
     &.elevated {
-      box-shadow: inset 0px 1px 10px 0px #0000000D, 0px 1px 9px 0px #4343431A;
+      box-shadow: inset 0px 1px 10px 0px rgba(0, 0, 0, 0.01), 0px 1px 9px 0px #4343431A;
     }
     &.elevated:hover {
-      box-shadow: inset 0px 1px 2px 0px #0000000D, 0px 1px 9px 0px #4343431A;
+      box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 0, 0.01), 0px 1px 9px 0px #4343431A;
     }
     &[disabled] {
       color: #888;

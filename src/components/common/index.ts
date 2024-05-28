@@ -14,6 +14,7 @@ import QShare from './QShare.vue';
 import QAvatar from './QAvatar.vue';
 import QDropdownMenuWithTextField from './QDropdownMenuWithTextField.vue';
 import QButton from './QButton.vue';
+import QTabs from './QTabs.vue';
 
 export {
   QDatetimePicker,
@@ -32,4 +33,5 @@ export {
   QAvatar,
   QDropdownMenuWithTextField,
   QButton,
+  QTabs,
 };
