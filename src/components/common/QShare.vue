@@ -1,12 +1,12 @@
 <template>
   <div class="q-share" :class="cls">
-    <a :href="`https://twitter.com/intent/tweet?url=${shareUrl}&text=${props.text}`" target="_blank" title="Share on Twitter" class="q-share-link twitter">
+    <a :href="`https://twitter.com/intent/tweet?url=${shareUrl}&text=${text}`" target="_blank" title="Share on Twitter" class="q-share-link twitter">
       <q-icon-color-twitter class="icon share-icon"></q-icon-color-twitter>
     </a>
     <a :href="`https://www.facebook.com/sharer.php?u=${shareUrl}`" target="_blank" title="Share on facebook" class="q-share-link facebook">
       <q-icon-color-facebook class="icon share-icon"></q-icon-color-facebook>
     </a>
-    <a :href="`https://news.ycombinator.com/submitlink?u=${shareUrl}&t=${props.text}`" target="_blank" title="Share on hackernews" class="q-share-link hackernews">
+    <a :href="`https://news.ycombinator.com/submitlink?u=${shareUrl}&t=${text}`" target="_blank" title="Share on hackernews" class="q-share-link hackernews">
       <q-icon-color-hackernews class="icon share-icon"></q-icon-color-hackernews>
     </a>
     <a :href="`https://www.linkedin.com/shareArticle?mini=true&amp;url=${shareUrl}`" target="_blank" title="Share on linkedin" class="q-share-link linkedin">
@@ -47,6 +47,13 @@ const shareUrl = computed(() => {
   }
   // share the url of the current page
   return encodeURIComponent(window.location.href);
+});
+
+const text = computed(() => {
+  if (props.text) {
+    return encodeURIComponent(props.text);
+  }
+  return encodeURIComponent(document.title);
 });
 
 </script>
