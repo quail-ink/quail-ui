@@ -77,6 +77,9 @@ import QIconInfoCircle from './QIconInfoCircle.vue';
 import QIconKey from './QIconKey.vue';
 import QIconFingerprint from './QIconFingerprint.vue';
 import QIconFingerprintLock from './QIconFingerprintLock.vue';
+import QIconMusicNote from './QIconMusicNote.vue';
+import QIconPuzzle from './QIconPuzzle.vue';
+import QIconVideo from './QIconVideo.vue';
 
 import QIconColorTelegram from './QIconColorTelegram.vue';
 import QIconColorFeed from './QIconColorFeed.vue';
@@ -171,6 +174,9 @@ export {
   QIconKey,
   QIconFingerprint,
   QIconFingerprintLock,
+  QIconMusicNote,
+  QIconPuzzle,
+  QIconVideo,
 
   QIconColorTelegram,
   QIconColorFeed,
