@@ -35,7 +35,7 @@
 
 <script setup lang="ts">
 import { computed, getCurrentInstance, ref } from "vue";
-import { copyToClipboard } from "@/utils";
+import { copyToClipboard } from "../../utils";
 
 const components = getCurrentInstance()?.appContext.components;
 

@@ -1,5 +1,5 @@
 
-function copyToClipboard(text) {
+function copyToClipboard(text:string) {
   if (navigator.clipboard && window.isSecureContext) {
     // Navigator clipboard API method
     navigator.clipboard.writeText(text).then(function() {}, function(err) {
