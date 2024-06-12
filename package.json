@@ -25,7 +25,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@chenfengyuan/vue-qrcode": "2",
     "dayjs": "^1.11.9",
+    "qrcode": "1",
     "vue": "^3.3.4"
   },
   "devDependencies": {

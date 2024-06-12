@@ -551,18 +551,18 @@ function openDialog4(ev:any) {
     <div class="section">
       <h2 class="section-title">Avatar</h2>
       <div class="flow">
-        <QAvatar :src="'https://picsum.photos/200'" size="24" />
-        <QAvatar :src="'https://picsum.photos/200'" size="32" variant="rounded" />
-        <QAvatar :src="'https://picsum.photos/200'" size="48" variant="square"/>
-        <QAvatar :src="'https://picsum.photos/200'" size="64" />
-        <QAvatar :src="'https://quail.ink'" size="96" />
+        <QAvatar :src="'https://picsum.photos/200'" :size="24" />
+        <QAvatar :src="'https://picsum.photos/200'" :size="32" variant="rounded" />
+        <QAvatar :src="'https://picsum.photos/200'" :size="48" variant="square"/>
+        <QAvatar :src="'https://picsum.photos/200'" :size="64" />
+        <QAvatar :src="'https://quail.ink'" :size="96" />
       </div>
     </div>
 
     <div class="section">
       <h2 class="section-title">Share</h2>
       <div class="flow">
-        <QShare url="https://quail.ink" layout="row" :services="['twitter', 'mastodon', 'bluesky']"/>
+        <QShare url="https://quail.ink" layout="row" :services="['twitter', 'mastodon', 'bluesky', 'facebook', 'general']"/>
         <QShare url="https://quail.ink" layout="column" />
       </div>
     </div>

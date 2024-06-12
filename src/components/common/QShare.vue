@@ -1,15 +1,42 @@
 <template>
   <div class="q-share" :class="cls">
     <a v-for="serv in enabledServices" :key="`serv-${serv.name}`"
-      :href="serv.url" target="_blank"
-      :title="serv.tooltip" class="q-share-link" :class="serv.name">
+      :title="serv.tooltip" class="q-share-link" :class="serv.name"
+      @click="shareToService(serv)"
+    >
       <component :is="serv.icon" class="icon share-icon"></component>
     </a>
+    <q-dialog v-model="showMastodonDialog" title="Share to Mastodon">
+      <div class="q-dialog-content mastodon-dialog-content flex center">
+        <q-icon-color-mastodon class="service-icon"></q-icon-color-mastodon>
+        <input class="text-field" v-model="mastodonHost" placeholder="Instance Domain" ref="mastodonHostInput"/>
+        <q-button class="primary icon ml-2" @click="shareToMastodon">
+          <q-icon-arrow-right></q-icon-arrow-right>
+        </q-button>
+      </div>
+    </q-dialog>
+    <q-dialog v-model="showGeneralDialog" title="Share to ...">
+      <div class="q-dialog-content general-dialog-content">
+        <div class="qrcode-wrapper">
+          <vue-qrcode :value="generalUrl" :options="{ width: 200, margin: 1 }"></vue-qrcode>
+        </div>
+        <div class="operations form">
+          <div class="copy-row form-row">
+            <q-button class="outlined ml-2 block" @click="copyUrl">
+              <q-icon-copy class="icon"></q-icon-copy>
+              <span class="button-label">Copy URL</span>
+            </q-button>
+          </div>
+        </div>
+      </div>
+    </q-dialog>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, getCurrentInstance } from "vue";
+import { computed, getCurrentInstance, ref } from "vue";
+import { copyToClipboard } from "@/utils";
+
 const components = getCurrentInstance()?.appContext.components;
 
 const supportedServices:any = {
@@ -42,8 +69,20 @@ const supportedServices:any = {
     "icon": "q-icon-color-mastodon",
     "tooltip": "Share on Mastodon",
     "url_template": "https://{host}/share?text={textWithUrl}"
+  },
+  "general": {
+    "icon": "q-icon-color-share",
+    "tooltip": "Share to ...",
+    "url_template": ""
   }
 };
+
+const showGeneralDialog = ref(false);
+const generalUrl = ref('');
+
+const showMastodonDialog = ref(false);
+const mastodonHost = ref('');
+const mastodonHostInput:any = ref(null);
 
 const props = defineProps({
   url: {
@@ -60,7 +99,7 @@ const props = defineProps({
   },
   services: {
     type: Array<string>,
-    default: () => ["twitter", "facebook", "hackernews", "linkedin"],
+    default: () => ["twitter", "facebook", "hackernews", "general"],
   },
 });
 
@@ -93,6 +132,7 @@ const enabledServices = computed(() => {
   for (const service of props.services) {
     const item = supportedServices[service];
     if (item) {
+      item.name = service;
       item.url = buildUrl(item.url_template, {
         url: shareUrl.value,
         text: text.value,
@@ -110,6 +150,47 @@ function buildUrl(url: string, params: Record<string, string>) {
     url = url.replace(`{${key}}`, params[key]);
   }
   return url;
+}
+
+function shareToService(service: any) {
+  switch (service.name) {
+    case "mastodon":
+      openMastodonDialog(service);
+      break;
+    case "general":
+      showGeneralDialog.value = true;
+      generalUrl.value = decodeURIComponent(shareUrl.value);
+      break;
+    default:
+      window.open(service.url, "_blank");
+  }
+}
+
+function copyUrl() {
+  copyToClipboard(generalUrl.value);
+  showGeneralDialog.value = false;
+}
+
+function openMastodonDialog(service:any) {
+  showMastodonDialog.value = true
+  const existing = localStorage.getItem('quailui_global_mastodon_host') || ''
+  mastodonHost.value = existing
+  setTimeout(() => {
+    // focus the input field and select the text
+    mastodonHostInput.value?.focus()
+    mastodonHostInput.value?.select()
+  }, 300)
+}
+
+function shareToMastodon() {
+  const url = buildUrl(supportedServices.mastodon.url_template, {
+    host: mastodonHost.value,
+    text: text.value,
+    textWithUrl: `${text.value}${encodeURIComponent('\n\n')}${shareUrl.value}`,
+  });
+  localStorage.setItem('quailui_global_mastodon_host', mastodonHost.value);
+  window.open(url, "_blank");
+  showMastodonDialog.value = false;
 }
 
 </script>
@@ -140,7 +221,7 @@ function buildUrl(url: string, params: Record<string, string>) {
   justify-content: center;
   align-items: center;
   .q-share-link {
-    margin-right: 0.8rem;
+    margin-right: 0.5rem;
     &:last-child {
       margin-right: 0;
     }
@@ -152,11 +233,49 @@ function buildUrl(url: string, params: Record<string, string>) {
   justify-content: center;
   align-items: center;
   .q-share-link {
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.5rem;
     &:last-child {
       margin-bottom: 0;
     }
   }
 }
 
+.mastodon-dialog-content {
+  align-items: center;
+  .service-icon {
+    width: 36px;
+    height: 36px;
+    margin-right: 0.5rem;
+  }
+}
+
+.general-dialog-content {
+  display: flex;
+  flex-direction: column;
+  .qrcode-wrapper {
+    flex: 0;
+    display: flex;
+    justify-content: center;
+    canvas {
+      border: 1px solid var(--vt-c-divider-light-1);
+      border-radius: 6px;
+    }
+  }
+  .operations {
+    flex: 1;
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .general-dialog-content {
+    flex-direction: column;
+  }
+  .qrcode-wrapper {
+    margin-bottom: 1rem;
+  }
+  .operations {
+    margin-left: 0;
+  }
+}
 </style>
