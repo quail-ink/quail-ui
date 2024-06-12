@@ -89,6 +89,8 @@ import QIconColorLinkedin from './QIconColorLinkedin.vue';
 import QIconColorHackernews from './QIconColorHackernews.vue';
 import QIconColorDiscord from './QIconColorDiscord.vue';
 import QIconColorLine from './QIconColorLine.vue';
+import QIconColorBluesky from './QIconColorBluesky.vue';
+import QIconColorMastodon from './QIconColorMastodon.vue';
 
 // obsolete
 import QIconTelegram from './QIconColorTelegram.vue';
@@ -186,6 +188,8 @@ export {
   QIconColorHackernews,
   QIconColorDiscord,
   QIconColorLine,
+  QIconColorBluesky,
+  QIconColorMastodon,
 
   // obsolete
   QIconTelegram,

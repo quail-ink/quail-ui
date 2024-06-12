@@ -1,22 +1,50 @@
 <template>
   <div class="q-share" :class="cls">
-    <a :href="`https://twitter.com/intent/tweet?url=${shareUrl}&text=${text}`" target="_blank" title="Share on Twitter" class="q-share-link twitter">
-      <q-icon-color-twitter class="icon share-icon"></q-icon-color-twitter>
-    </a>
-    <a :href="`https://www.facebook.com/sharer.php?u=${shareUrl}`" target="_blank" title="Share on facebook" class="q-share-link facebook">
-      <q-icon-color-facebook class="icon share-icon"></q-icon-color-facebook>
-    </a>
-    <a :href="`https://news.ycombinator.com/submitlink?u=${shareUrl}&t=${text}`" target="_blank" title="Share on hackernews" class="q-share-link hackernews">
-      <q-icon-color-hackernews class="icon share-icon"></q-icon-color-hackernews>
-    </a>
-    <a :href="`https://www.linkedin.com/shareArticle?mini=true&amp;url=${shareUrl}`" target="_blank" title="Share on linkedin" class="q-share-link linkedin">
-      <q-icon-color-linkedin class="icon share-icon"></q-icon-color-linkedin>
+    <a v-for="serv in enabledServices" :key="`serv-${serv.name}`"
+      :href="serv.url" target="_blank"
+      :title="serv.tooltip" class="q-share-link" :class="serv.name">
+      <component :is="serv.icon" class="icon share-icon"></component>
     </a>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, getCurrentInstance } from "vue";
+const components = getCurrentInstance()?.appContext.components;
+
+const supportedServices:any = {
+  "twitter": {
+    "icon": "q-icon-color-twitter",
+    "tooltip": "Share on Twitter",
+    "url_template": "https://x.com/intent/tweet?url={url}&text={text}"
+  },
+  "facebook": {
+    "icon": "q-icon-color-facebook",
+    "tooltip": "Share on Facebook",
+    "url_template": "https://www.facebook.com/sharer.php?u={url}"
+  },
+  "hackernews": {
+    "icon": "q-icon-color-hackernews",
+    "tooltip": "Share on Hackernews",
+    "url_template": "https://news.ycombinator.com/submitlink?u={url}&t={text}"
+  },
+  "linkedin": {
+    "icon": "q-icon-color-linkedin",
+    "tooltip": "Share on LinkedIn",
+    "url_template": "https://www.linkedin.com/shareArticle?mini=true&amp;url={url}"
+  },
+  "bluesky": {
+    "icon": "q-icon-color-bluesky",
+    "tooltip": "Share on Bluesky",
+    "url_template": "https://bsky.app/intent/compose?text={textWithUrl}"
+  },
+  "mastodon": {
+    "icon": "q-icon-color-mastodon",
+    "tooltip": "Share on Mastodon",
+    "url_template": "https://{host}/share?text={textWithUrl}"
+  }
+};
+
 const props = defineProps({
   url: {
     type: String,
@@ -29,7 +57,11 @@ const props = defineProps({
   layout: {
     type: String,
     default: "row",
-  }
+  },
+  services: {
+    type: Array<string>,
+    default: () => ["twitter", "facebook", "hackernews", "linkedin"],
+  },
 });
 
 const cls = computed(() => {
@@ -55,6 +87,30 @@ const text = computed(() => {
   }
   return encodeURIComponent(document.title);
 });
+
+const enabledServices = computed(() => {
+  const enabled = [];
+  for (const service of props.services) {
+    const item = supportedServices[service];
+    if (item) {
+      item.url = buildUrl(item.url_template, {
+        url: shareUrl.value,
+        text: text.value,
+        textWithUrl: `${text.value}${encodeURIComponent('\n\n')}${shareUrl.value}`,
+        host: window.location.host,
+      });
+      enabled.push(item);
+    }
+  }
+  return enabled;
+});
+
+function buildUrl(url: string, params: Record<string, string>) {
+  for (const key in params) {
+    url = url.replace(`{${key}}`, params[key]);
+  }
+  return url;
+}
 
 </script>
 <style lang="scss">
