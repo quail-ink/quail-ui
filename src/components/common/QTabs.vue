@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 
 const props = defineProps({
+  modelValue: Object,
   tabs: {
     type: Array<any>,
     required: true,
@@ -12,13 +13,22 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(["change"]);
+const emit = defineEmits(["change", "update:modelValue"]);
+
+const selectedTab = ref(props.tabs[props.initialIndex]);
 
 const selectedIndex = ref(props.initialIndex);
 
+watch(() => props.modelValue, (tab:any) => {
+	selectedIndex.value = props.tabs.findIndex((t:any) => t.id === tab.id);
+  selectedTab.value = tab || props.tabs[0];
+});
+
 function selectTab(ix: number, tab: any) {
   selectedIndex.value = ix;
+  selectedTab.value = tab;
   emit("change", {index: ix, tab: tab});
+  emit('update:modelValue', tab);
 }
 
 </script>

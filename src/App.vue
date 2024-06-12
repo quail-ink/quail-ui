@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import * as icons from "./components/icons";
+import QButton from "./components/common/QButton.vue";
 
 const switchValue1 = ref(true);
 const switchValue2 = ref(false);
@@ -91,6 +92,8 @@ const tabs = computed(() => [
   { id: "tab2", title: "Tab 2" },
   { id: "tab3", title: "Tab 3" },
 ]);
+
+const selectedTab = ref(tabs.value[0]);
 
 function onLangSelected(item: any) {
   console.log("Language selected", item);
@@ -531,7 +534,13 @@ function openDialog4(ev:any) {
     <div class="section">
       <h2 class="section-title">Tabs</h2>
       <div class="flex">
-        <QTabs :tabs="tabs" />
+        <div class="">
+          <QTabs v-model="selectedTab" :tabs="tabs" />
+          <div class="mt-4 frame p-4">
+            Selected tab: {{ selectedTab.title }}
+          </div>
+        </div>
+        <QButton class="outlined ml-4" @click="selectedTab = tabs[1]">Select Tab 2</QButton>
       </div>
     </div>
 
