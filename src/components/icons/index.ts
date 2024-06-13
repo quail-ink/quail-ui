@@ -80,6 +80,7 @@ import QIconFingerprintLock from './QIconFingerprintLock.vue';
 import QIconMusicNote from './QIconMusicNote.vue';
 import QIconPuzzle from './QIconPuzzle.vue';
 import QIconVideo from './QIconVideo.vue';
+import QIconCloseCircle from './QIconCloseCircle.vue';
 
 import QIconColorTelegram from './QIconColorTelegram.vue';
 import QIconColorFeed from './QIconColorFeed.vue';
@@ -176,6 +177,7 @@ export {
   QIconMusicNote,
   QIconPuzzle,
   QIconVideo,
+  QIconCloseCircle,
 
   QIconColorTelegram,
   QIconColorFeed,
