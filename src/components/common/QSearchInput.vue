@@ -2,8 +2,8 @@
   <div class="q-search-input">
     <QInput v-model="text" type="text" :placeholder="placeholder" :disabled="disabled"
       @keyup="keyup" @change="textChanged"></QInput>
-    <div v-if="items && showItems" class="result mt-1">
-      <QMenu :items="resultItems"  persistent></QMenu>
+    <div v-if="items && showItems" class="result">
+      <QMenu :items="resultItems" ></QMenu>
     </div>
   </div>
 </template>
@@ -82,5 +82,6 @@ onMounted(() => {
 
 <style scoped lang="scss">
 .q-search-input {
+  position: relative;
 }
 </style>
