@@ -15,6 +15,8 @@ import QAvatar from './QAvatar.vue';
 import QDropdownMenuWithTextField from './QDropdownMenuWithTextField.vue';
 import QButton from './QButton.vue';
 import QTabs from './QTabs.vue';
+import QInput from './QInput.vue';
+import QSearchInput from './QSearchInput.vue';
 
 export {
   QDatetimePicker,
@@ -34,4 +36,6 @@ export {
   QDropdownMenuWithTextField,
   QButton,
   QTabs,
+  QInput,
+  QSearchInput,
 };

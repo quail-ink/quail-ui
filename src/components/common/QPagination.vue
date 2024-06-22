@@ -4,7 +4,7 @@ import QIconArrowLeft from '../icons/QIconArrowLeft.vue';
 import QIconArrowRight from '../icons/QIconArrowRight.vue';
 const props = defineProps({
   modelValue: {
-    type: Number || Object,
+    type: Number,
     default: 1,
   },
   totalPage: {

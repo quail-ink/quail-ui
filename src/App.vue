@@ -11,6 +11,8 @@ const dialogValue2 = ref(false);
 const dialogValue3 = ref(false);
 const dialogValue4 = ref(false);
 const fieldValue = ref("");
+const inputValue = ref("");
+
 const menuItems = computed(() => [
   {
     title: "Item 1",
@@ -93,6 +95,22 @@ const tabs = computed(() => [
   { id: "tab3", title: "Tab 3" },
 ]);
 
+const searchItems = computed(() => {
+  const source = [
+    "Apple", "Banana", "Cherry", "Donut", "Apple Pie", "Banana Split",
+  ];
+  const ret = source.map((item) => {
+    return {
+      title: item,
+      subtitle: `This is a ${item}`,
+      action: () => {
+        console.log("search item selected", item);
+      },
+    };
+  });
+  return ret.filter((item) => item.title.toLowerCase().includes(inputValue.value.toLowerCase()));
+})
+
 const selectedTab = ref(tabs.value[0]);
 
 function onLangSelected(item: any) {
@@ -120,6 +138,13 @@ function openDialog3(ev:any) {
 
 function openDialog4(ev:any) {
   dialogValue4.value = true;
+}
+
+function searchInputKeyup(val:any) {
+  console.log("searchInputChanged", val);
+}
+function selectSearchResult(val:any) {
+  console.log("select result ", val);
 }
 </script>
 
@@ -191,6 +216,35 @@ function openDialog4(ev:any) {
           <QIconSearch class="icon" />
           <span class="button-label">Search</span>
         </QButton>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Input</h2>
+      <div class="flow">
+        <QInput v-model="inputValue" type="text" placeholder="type here!" />
+        <br/>
+        <QInput v-model="inputValue" type="text" placeholder="type here!">
+          <template #prepend-out>
+            <QSwitch class="mr-2"/>
+          </template>
+          <template #prepend>
+            <QIconSearch class="icon ml-2" />
+          </template>
+          <template #append>
+            <QButton class="outlined xs icon mr-1">
+              <QIconSun class="icon" />
+            </QButton>
+          </template>
+          <template #append-out>
+            <QButton class="primary icon ml-2">
+              <QIconMenu class="icon" />
+            </QButton>
+          </template>
+        </QInput>
+      </div>
+      <div class="flow">
+        <div>inputValue: {{ inputValue }}</div>
       </div>
     </div>
 
@@ -528,6 +582,8 @@ function openDialog4(ev:any) {
           @change:next="() => { currentPage++; console.log(currentPage) }"
           @change:goto="(val: any) => { currentPage = val; console.log(val)}"
         />
+        <br />
+        <QButton class="outlined" @click="currentPage = 1">Go to 1</QButton>
       </div>
     </div>
 
@@ -541,6 +597,17 @@ function openDialog4(ev:any) {
           </div>
         </div>
         <QButton class="outlined ml-4" @click="selectedTab = tabs[1]">Select Tab 2</QButton>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Search</h2>
+      <div class="flex">
+        <QSearchInput v-model="inputValue" :items="searchItems"
+          @keyup="searchInputKeyup" @select="selectSearchResult"/>
+      </div>
+      <div class="flex">
+        inputValue: {{ inputValue }}
       </div>
     </div>
 
