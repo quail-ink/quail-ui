@@ -93,6 +93,10 @@ import QIconColorLine from './QIconColorLine.vue';
 import QIconColorBluesky from './QIconColorBluesky.vue';
 import QIconColorMastodon from './QIconColorMastodon.vue';
 import QIconColorShare from './QIconColorShare.vue';
+import QIconColorGithub from './QIconColorGithub.vue';
+import QIconColorSteam from './QIconColorSteam.vue';
+import QIconColorInstagram from './QIconColorInstagram.vue';
+
 
 export {
   QIconArrowUpRight,
@@ -190,4 +194,7 @@ export {
   QIconColorBluesky,
   QIconColorMastodon,
   QIconColorShare,
+  QIconColorGithub,
+  QIconColorSteam,
+  QIconColorInstagram,
 };
