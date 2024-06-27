@@ -18,11 +18,11 @@
     <q-dialog v-model="showGeneralDialog" title="Share to ...">
       <div class="q-dialog-content general-dialog-content">
         <div class="qrcode-wrapper">
-          <vue-qrcode :value="generalUrl" :options="{ width: 200, margin: 1 }"></vue-qrcode>
+          <img :src="generalDataUrl" alt="QR Code" class="frame shadow"/>
         </div>
         <div class="operations form">
           <div class="copy-row form-row">
-            <q-button class="outlined ml-2 block" @click="copyUrl">
+            <q-button class="outlined block" @click="copyUrl">
               <q-icon-copy class="icon"></q-icon-copy>
               <span class="button-label">Copy URL</span>
             </q-button>
@@ -36,8 +36,7 @@
 <script setup lang="ts">
 import { computed, getCurrentInstance, ref } from "vue";
 import { copyToClipboard } from "../../utils";
-
-const components = getCurrentInstance()?.appContext.components;
+import QRCode from "qrcode";
 
 const supportedServices:any = {
   "twitter": {
@@ -79,6 +78,7 @@ const supportedServices:any = {
 
 const showGeneralDialog = ref(false);
 const generalUrl = ref('');
+const generalDataUrl = ref('');
 
 const showMastodonDialog = ref(false);
 const mastodonHost = ref('');
@@ -160,6 +160,13 @@ function shareToService(service: any) {
     case "general":
       showGeneralDialog.value = true;
       generalUrl.value = decodeURIComponent(shareUrl.value);
+      QRCode.toDataURL(generalUrl.value, { width: 400, margin: 1 }, (err:any, url:any) => {
+        if (err) {
+          console.error(err);
+          return ;
+        }
+        generalDataUrl.value = url;
+      });
       break;
     default:
       window.open(service.url, "_blank");
@@ -256,9 +263,9 @@ function shareToMastodon() {
     flex: 0;
     display: flex;
     justify-content: center;
-    canvas {
-      border: 1px solid var(--vt-c-divider-light-1);
-      border-radius: 6px;
+    img {
+      max-width: 200px;
+      max-height: 200px;
     }
   }
   .operations {

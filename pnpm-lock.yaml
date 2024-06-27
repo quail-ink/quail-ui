@@ -8,14 +8,11 @@ importers:
 
   .:
     dependencies:
-      '@chenfengyuan/vue-qrcode':
-        specifier: '2'
-        version: 2.0.0(qrcode@1.5.3)(vue@3.4.27(typescript@5.4.5))
       dayjs:
         specifier: ^1.11.9
         version: 1.11.11
       qrcode:
-        specifier: '1'
+        specifier: ^1.5.3
         version: 1.5.3
       vue:
         specifier: ^3.3.4
@@ -24,6 +21,9 @@ importers:
       '@types/node':
         specifier: ^20.5.1
         version: 20.12.11
+      '@types/qrcode':
+        specifier: ^1.5.5
+        version: 1.5.5
       '@vitejs/plugin-vue':
         specifier: ^4.2.3
         version: 4.6.2(vite@4.5.3(@types/node@20.12.11)(sass@1.77.0))(vue@3.4.27(typescript@5.4.5))
@@ -61,12 +61,6 @@ packages:
   '@babel/types@7.24.5':
     resolution: {integrity: sha512-6mQNsaLeXTw0nxYUYu+NSa4Hx4BlF1x1x8/PMFbiR+GBSr+2DkECc69b8hgy2frEodNcvPffeH8YfWd3LI6jhQ==}
     engines: {node: '>=6.9.0'}
-
-  '@chenfengyuan/vue-qrcode@2.0.0':
-    resolution: {integrity: sha512-33Cfr0zjbc3Dd8d5b1IgzXRAgXH0c2Gv19VI4snS25V/x9Z41eg769tC+Us1x+vqgQQhgD5YUjLnkpkrQfeMSw==}
-    peerDependencies:
-      qrcode: ^1.5.0
-      vue: ^3.0.0
 
   '@esbuild/android-arm64@0.18.20':
     resolution: {integrity: sha512-Nz4rJcchGDtENV0eMKUNa6L12zz2zBDXuhj/Vjh18zGqB44Bi7MBMSXjgunJgjRhCmKOjnPuZp4Mb6OKqtMHLQ==}
@@ -205,6 +199,9 @@ packages:
 
   '@types/node@20.12.11':
     resolution: {integrity: sha512-vDg9PZ/zi+Nqp6boSOT7plNuthRugEKixDv5sFTIpkE89MmNtEArAShI4mxuX2+UrLEe9pxC1vm2cjm9YlWbJw==}
+
+  '@types/qrcode@1.5.5':
+    resolution: {integrity: sha512-CdfBi/e3Qk+3Z/fXYShipBT13OJ2fDO2Q2w5CIP5anLTLIndQG9z6P1cnm+8zCWSpm5dnxMFd/uREtb0EXuQzg==}
 
   '@vitejs/plugin-vue@4.6.2':
     resolution: {integrity: sha512-kqf7SGFoG+80aZG6Pf+gsZIVvGSCKE98JbiWqcCV9cThtg91Jav0yvYFC9Zb+jKetNGF6ZKeoaxgZfND21fWKw==}
@@ -595,11 +592,6 @@ snapshots:
       '@babel/helper-validator-identifier': 7.24.5
       to-fast-properties: 2.0.0
 
-  '@chenfengyuan/vue-qrcode@2.0.0(qrcode@1.5.3)(vue@3.4.27(typescript@5.4.5))':
-    dependencies:
-      qrcode: 1.5.3
-      vue: 3.4.27(typescript@5.4.5)
-
   '@esbuild/android-arm64@0.18.20':
     optional: true
 
@@ -671,6 +663,10 @@ snapshots:
   '@types/node@20.12.11':
     dependencies:
       undici-types: 5.26.5
+
+  '@types/qrcode@1.5.5':
+    dependencies:
+      '@types/node': 20.12.11
 
   '@vitejs/plugin-vue@4.6.2(vite@4.5.3(@types/node@20.12.11)(sass@1.77.0))(vue@3.4.27(typescript@5.4.5))':
     dependencies:

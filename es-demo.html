@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Use Quail UI as an ES Module in Vue 3</title>
     <link rel="stylesheet" href="/dist/style.css" />
+    <style>
+      #app {
+        max-width: 960px;
+        margin: 0 auto;
+      }
+      p {
+        margin: 0 0 20px;
+      }
+    </style>
     <script>
       window.__VUE_PROD_DEVTOOLS__ = true;
     </script>
@@ -12,17 +21,15 @@
       {
         "imports": {
           "vue": "https://cdn.jsdelivr.net/npm/vue@3.3.9/dist/vue.esm-browser.prod.js",
-          "quailui": "https://static.quail.ink/assets/quail-ui/0.2.29/index.js",
+          "quailui": "https://static.quail.ink/assets/quail-ui/0.2.67/index.js"
         }
       }
     </script>
     <script type="module">
-      import autoAnimate from "autoAnimate";
       import * as Vue from "vue";
       import QuailUI from "quailui";
       window.Vue = Vue;
       window.QuailUI = QuailUI;
-      window._autoAnimate = autoAnimate;
     </script>
     <script type="module">
       const { createApp, ref, onMounted } = window.Vue;
@@ -104,10 +111,14 @@
   <body>
     <div id="app">
       <h1>Hello ${name}</h1>
+      <p>
+        <q-button class="button outlined">OK</q-button>
+      </p>
+      <q-fence :text="name" type="warning"></q-fence>
 
-      <button class="button outlined">OK</button>
-
-      <q-fence :title="name" type="warning"></q-fence>
+      <p>
+        <q-share url="https://quail.ink" layout="row" :services="['twitter', 'mastodon', 'bluesky', 'facebook', 'general']"/>
+      </p>
     </div>
   </body>
 </html>
