@@ -633,6 +633,20 @@ function selectSearchResult(val:any) {
         <QAvatar :src="'https://picsum.photos/200'" :size="64" />
         <QAvatar :src="'https://quail.ink'" :size="96" />
       </div>
+      <div class="flow">
+        <QAvatar :src="'https://picsum.photos/200'" :size="42" border-type="solid" />
+        <QAvatar :src="'https://picsum.photos/200'" :size="42" variant="rounded" border-type="solid" />
+        <QAvatar :src="'https://picsum.photos/200'" :size="42" variant="square" border-type="solid" />
+        <QAvatar :size="42" border-type="hollow" border-color="#d24662">
+          <QIconColorInstagram class="icon" />
+        </QAvatar>
+        <QAvatar :size="42" border-type="hollow" border-color="#54b5e6">
+          <QIconColorTwitter class="icon" />
+        </QAvatar>
+        <QAvatar :size="42" border-type="solid" >
+          <QIconColorTwitter class="icon" />
+        </QAvatar>
+      </div>
     </div>
 
     <div class="section">

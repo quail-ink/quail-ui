@@ -1,6 +1,9 @@
 <template>
   <div class="q-avatar" :style="sty" :class="cls">
-    <img :src="imgSrc" :alt="alt" @error="handleError" />
+    <template v-if="props.src === ''">
+      <slot></slot>
+    </template>
+    <img v-else :src="imgSrc" :alt="alt" @error="handleError" />
   </div>
 </template>
 <script setup lang="ts">
@@ -24,6 +27,14 @@ const props = defineProps({
     type: String,
     default: "circle", // circle, rounded, square
   },
+  borderType: {
+    type: String, // none, solid, hollow
+    default: "none",
+  },
+  borderColor: { // only for borderType="hollow"
+    type: String,
+    default: "#000",
+  }
 });
 
 const imgSrc = computed(() => props.src || defaultAvatar);
@@ -37,12 +48,24 @@ const cls = computed(() => {
   } else if (props.variant === "square") {
     ret.push("square");
   }
+  if (props.borderType === 'solid') {
+    ret.push('border-solid');
+  } else if (props.borderType === 'hollow') {
+    ret.push('border-hollow');
+  }
   return ret.join(" ");
 });
 
-const sty = ref({
-  width: `${props.size}px`,
-  height: `${props.size}px`,
+
+const sty = computed(() => {
+  const ret:any = {
+    width: `${props.size}px`,
+    height: `${props.size}px`,
+  };
+  if (props.borderType === 'hollow') {
+    ret['border-color'] = props.borderColor;
+  }
+  return ret;
 });
 
 function handleError(e: Event) {
@@ -53,20 +76,36 @@ function handleError(e: Event) {
 <style lang="scss">
 .q-avatar {
   display: block;
+  border-radius: 50%;
   img {
     border-radius: 50%;
     width: 100%;
     height: 100%;
   }
+  & > svg {
+    width: 100%;
+    height: 100%;
+  }
   &.rounded {
+    border-radius: 8px;
     img {
       border-radius: 6px;
     }
   }
   &.square {
+    border-radius: 0;
     img {
       border-radius: 0;
     }
+  }
+  &.border-solid {
+    border: 3px solid #fff;
+    box-shadow: 0 0 1px #c4bab9, 0 1px 2px #4343431a;
+  }
+  &.border-hollow {
+    padding: 2px;
+    border-width: 1px;
+    border-style: solid;
   }
 }
 </style>
