@@ -10,3 +10,8 @@
   </defs>
 </svg>
 </template>
+<script>
+export default {
+  name: 'QIconColorGithub',
+};
+</script>

@@ -3,3 +3,8 @@
   <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   </svg>
 </template>
+<script lang="ts">
+export default {
+  name: 'QIconArrowUp',
+};
+</script>

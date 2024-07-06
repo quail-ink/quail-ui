@@ -63,12 +63,12 @@ const validated = computed(() => {
   &.sm {
     padding: 0.6rem 0.8rem;
     height: 38px;
-    font-size: 0.8rem;
+    font-size: 0.875rem;
   }
   &.xs {
     padding: 0.6rem 0.8rem;
     height: 32px;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
   }
   &.xxs {
     padding: 0.6rem 0.8rem;
@@ -107,51 +107,5 @@ const validated = computed(() => {
       width: 32px;
     }
   }
-}
-.q-button.loading {
-  .ocean {
-    height: 100%; /* change the height of the waves here */
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    overflow: hidden;
-  }
-  .wave {
-    animation: progress 1s linear infinite;
-    background: repeating-linear-gradient(
-      45deg,
-      var(--q-progress-color),
-      var(--q-progress-color) 10px,
-      var(--q-progress-color-light) 10px,
-      var(--q-progress-color-light) 20px
-    );
-    position: absolute;
-    left: -28px;
-    right: 0;
-    top: 0;
-    bottom: 0;
-  }
-  &.primary {
-    color: #9d9db8;
-  }
-  &.danger {
-    color: #ffcaca;
-  }
-  &.outlined, &.plain {
-    color: #888;
-  }
-  &.outlined.danger, &.plain.danger {
-    color: #e67b7b;
-  }
-}
-@keyframes progress {
-	from {
-		transform: translateX(0);
-	}
-	to {
-		transform: translateX(28px);
-	}
 }
 </style>

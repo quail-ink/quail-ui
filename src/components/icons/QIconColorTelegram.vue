@@ -26,3 +26,8 @@
   </defs>
   </svg>
 </template>
+<script>
+export default {
+  name: 'QIconColorTelegram',
+};
+</script>

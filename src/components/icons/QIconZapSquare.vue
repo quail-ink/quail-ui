@@ -14,3 +14,8 @@
   </defs>
   </svg>
 </template>
+<script>
+export default {
+  name: 'QIconZapSquare',
+};
+</script>

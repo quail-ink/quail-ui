@@ -20,3 +20,8 @@
 </defs>
 </svg>
 </template>
+<script>
+export default {
+  name: 'QIconColorShare',
+};
+</script>

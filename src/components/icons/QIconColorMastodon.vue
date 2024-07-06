@@ -17,4 +17,8 @@
   </defs>
   </svg>
 </template>
-
+<script>
+export default {
+  name: 'QIconColorMastodon',
+};
+</script>

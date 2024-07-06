@@ -3,6 +3,7 @@ import { computed, ref } from "vue";
 import * as icons from "./components/icons";
 import QButton from "./components/common/QButton.vue";
 
+const toggleValue = ref(false);
 const switchValue1 = ref(true);
 const switchValue2 = ref(false);
 const datetimeValue = ref("2023-10-23");
@@ -173,6 +174,7 @@ function selectSearchResult(val:any) {
         <QButton class="outlined elevated">Outlined</QButton>
         <QButton class="outlined" disabled>Outlined</QButton>
         <QButton class="outlined" loading>Loading</QButton>
+        <QButton class="outlined toggle-on">Toggled</QButton>
       </div>
       <div class="flow">
         <QButton class="plain">Plain</QButton>
@@ -216,6 +218,15 @@ function selectSearchResult(val:any) {
           <QIconSearch class="icon" />
           <span class="button-label">Search</span>
         </QButton>
+      </div>
+    </div>
+    <div class="section">
+      <h2 class="section-title">Toggle Button</h2>
+      <div class="flow">
+        <QToggleButton v-model="toggleValue">On/Off</QToggleButton>
+        <QToggleButton v-model="toggleValue" class="icon"><QIconMenu /></QToggleButton>
+        <div>value: {{ toggleValue }}</div>
+        <QButton class="primary" @click="toggleValue = !toggleValue">Toggle</QButton>
       </div>
     </div>
 
@@ -349,16 +360,16 @@ function selectSearchResult(val:any) {
     <div class="section">
       <h2 class="section-title">Menu</h2>
       <div class="flow">
-        <div class="menu-wrapper" style="width: 300px; height: 380px;">
-          <h3>Normal</h3>
+        <div class="menu-wrapper" style="width: 300px; height: 420px;">
+          <strong>Normal</strong>
           <QMenu :items="menuItems" persistent/>
         </div>
-        <div class="menu-wrapper" style="width: 300px; height: 380px;">
-          <h3>without frame</h3>
+        <div class="menu-wrapper" style="width: 300px; height: 420px;">
+          <strong>without frame</strong>
           <QMenu :items="menuItems" no-frame persistent/>
         </div>
-        <div class="menu-wrapper" style="width: 300px; height: 380px;">
-          <h3>without frame & shadow</h3>
+        <div class="menu-wrapper" style="width: 300px; height: 420px;">
+          <strong>without frame & shadow</strong>
           <QMenu :items="menuItems" no-frame no-shadow persistent/>
         </div>
       </div>
@@ -400,7 +411,22 @@ function selectSearchResult(val:any) {
           hide-action-label
           @change="dropdownMenuSelectionChanged"
         ></QDropdownMenu>
-
+        <QDropdownMenu
+          class="sm"
+          :loading="true"
+          :disabled="true"
+          :items="menuItems"
+          :initial-item="selectedMenuItem"
+          @change="dropdownMenuSelectionChanged"
+        />
+        <QButton class="outlined sm">OK</QButton>
+        <QDropdownMenu
+          class="xs"
+          :items="menuItems"
+          :initial-item="selectedMenuItem"
+          @change="dropdownMenuSelectionChanged"
+        />
+        <QButton class="outlined xs">OK</QButton>
       </div>
       <h3 class="mb-2">use dialog</h3>
       <div class="flow">
@@ -657,12 +683,12 @@ function selectSearchResult(val:any) {
       </div>
     </div>
 
-
     <div class="section">
       <h2 class="section-title">Icons</h2>
-      <div class="flow">
-        <div v-for="icon in icons" class="icon-wrapper">
-          <component :is="icon" />
+      <div class="grid gap-2 grid-cols-2 md-grid-cols-3 lg-grid-cols-5">
+        <div v-for="icon in icons" class="icon-wrapper frame">
+          <component :is="icon" :data-name="icon.name" class="icon"/>
+          <span class="label text-xs ml-2">{{ icon.name }}</span>
         </div>
       </div>
     </div>
@@ -671,6 +697,8 @@ function selectSearchResult(val:any) {
 </template>
 
 <style lang="scss" scoped>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;400;500;700;900&display=swap');
+
 .container {
   max-width: 1280px;
   padding: 1rem;
@@ -687,8 +715,19 @@ function selectSearchResult(val:any) {
 .frame {
   padding: 1rem;
 }
+
 .icon-wrapper {
+  padding: 1rem 0.5rem !important;
+  display: flex;
+  align-items: center;
   height: 24px;
-  width: 24px;
+  .icon {
+    height: 20px;
+    width: 20px;
+    min-width: 20px;
+  }
+  .label {
+    font-family: monospace;
+  }
 }
 </style>

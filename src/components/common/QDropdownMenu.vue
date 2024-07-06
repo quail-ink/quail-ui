@@ -45,7 +45,15 @@ const props = defineProps({
   emptyHit: {
     type: String,
     default: "No item",
-  }
+  },
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
+  loading: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const emit = defineEmits(["change"]);
@@ -76,6 +84,10 @@ const actionCls = computed(() => {
     cls.push("prepend");
   } else {
     cls.push("no-prepend");
+  }
+
+  if (props.loading) {
+    cls.push("loading");
   }
 
   return cls.join(" ");
@@ -112,6 +124,10 @@ const useDialogFlag = computed(() => {
 });
 
 function toggle() {
+  if (props.disabled) {
+    return;
+  }
+  
   if (!expanded.value) {
     // want to expand? close other menus
     closePopupMenu();
@@ -175,6 +191,9 @@ onMounted(() => {
   <div class="q-dropdown-menu">
     <div class="q-dropdown-menu-inner narrow-view">
       <div class="q-dropdown-menu-action touchable" :class="actionCls" @click.stop="toggle">
+        <div v-if="props.loading" class="ocean">
+          <div class="wave"></div>
+        </div>
         <div v-if="!hideSelected && selectedItem && !hasSlot" class="q-dropdown-selected">
           <img
             v-if="selectedItem.image"
@@ -223,6 +242,20 @@ onMounted(() => {
 
 .q-dropdown-menu {
   height: 44px;
+  &.sm {
+    .q-dropdown-menu-action {
+      padding: 0 0.5rem 0 0.8rem;
+      height: 38px;
+      font-size: 0.875rem;
+    }
+  }
+  &.xs {
+    .q-dropdown-menu-action {
+      padding: 0 0.5rem 0 0.8rem;
+      height: 32px;
+      font-size: 0.75rem;
+    }
+  }
   .q-dropdown-menu-inner {
     position: relative;
   }

@@ -16,3 +16,8 @@
     ></path>
   </svg>
 </template>
+<script>
+export default {
+  name: 'QIconTooling',
+};
+</script>

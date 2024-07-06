@@ -44,6 +44,7 @@
     border: 1px solid var(--vt-c-divider-light-1);
     box-shadow: inset 0px 1px 10px 0px rgba(0, 0, 0, 0.01), 0px 1px 2px 0px #4343431A;
     &:hover{
+      color: var(--vt-c-black-soft);
       box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 0, 0.01), 0px 1px 1px 0px #4343431A;
     }
     &.elevated {
@@ -57,6 +58,11 @@
       &:hover {
         box-shadow: inset 0px 1px 10px 0px #0000000D, 0px 1px 3px 0px #4343431A !important;
       }
+    }
+    &.toggle-on {
+      // pushed state
+      background-color: var(--vt-c-white-soft);
+      box-shadow: inset 0px 1px 2px #4343431A;
     }
   }
   &.outlined.danger {
@@ -98,4 +104,50 @@
       opacity: 0.5;
     }
   }
+}
+.touchable.loading {
+  .ocean {
+    height: 100%; /* change the height of the waves here */
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+  }
+  .wave {
+    animation: progress 1s linear infinite;
+    background: repeating-linear-gradient(
+      45deg,
+      var(--q-progress-color),
+      var(--q-progress-color) 10px,
+      var(--q-progress-color-light) 10px,
+      var(--q-progress-color-light) 20px
+    );
+    position: absolute;
+    left: -28px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+  &.primary {
+    color: #9d9db8;
+  }
+  &.danger {
+    color: #ffcaca;
+  }
+  &.outlined, &.plain {
+    color: #888;
+  }
+  &.outlined.danger, &.plain.danger {
+    color: #e67b7b;
+  }
+}
+@keyframes progress {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(28px);
+	}
 }

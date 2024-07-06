@@ -19,7 +19,7 @@
         @blur="() => emit('blur')"
       />
       <QButton class="clear-btn plain icon" @click="clear">
-        <QIconCloseCirle class="icon" />
+        <QIconEditorDelete class="icon" />
       </QButton>
       <div class="q-input-append">
         <slot name="append"></slot>

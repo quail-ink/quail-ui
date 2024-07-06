@@ -5,3 +5,8 @@
     />
   </svg>
 </template>
+<script>
+export default {
+  name: 'QIconDocumentation',
+};
+</script>

@@ -17,3 +17,8 @@
   </defs>
 </svg>
 </template>
+<script>
+export default {
+  name: 'QIconColorSteam',
+};
+</script>

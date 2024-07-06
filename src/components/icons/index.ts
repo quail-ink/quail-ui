@@ -81,6 +81,9 @@ import QIconMusicNote from './QIconMusicNote.vue';
 import QIconPuzzle from './QIconPuzzle.vue';
 import QIconVideo from './QIconVideo.vue';
 import QIconCloseCircle from './QIconCloseCircle.vue';
+import QIconEditorDelete from './QIconEditorDelete.vue';
+import QIconLayoutRight from './QIconLayoutRight.vue';
+import QIconStars from './QIconStars.vue';
 
 import QIconColorTelegram from './QIconColorTelegram.vue';
 import QIconColorFeed from './QIconColorFeed.vue';
@@ -182,6 +185,9 @@ export {
   QIconPuzzle,
   QIconVideo,
   QIconCloseCircle,
+  QIconEditorDelete,
+  QIconLayoutRight,
+  QIconStars,
 
   QIconColorTelegram,
   QIconColorFeed,
