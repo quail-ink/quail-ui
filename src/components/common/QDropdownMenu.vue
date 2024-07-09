@@ -127,7 +127,7 @@ function toggle() {
   if (props.disabled) {
     return;
   }
-  
+
   if (!expanded.value) {
     // want to expand? close other menus
     closePopupMenu();
@@ -228,7 +228,7 @@ onMounted(() => {
             <input type="text" class="filter-input text-field" placeholder="Filter" v-model="filterText" />
           </div>
           <div class="scroll-area" :class="scrollAreaCls" ref="scrollArea" :style="{ height: props.scrollHeight, maxHeight: props.scrollHeight }">
-            <q-menu v-if="filteredItems" :items="filteredItems" @action="menuItemClick" persistent no-frame></q-menu>
+            <q-menu v-if="filteredItems" :items="filteredItems" @action="menuItemClick" persistent no-frame no-shadow></q-menu>
             <div v-else class="empty-hint flow place-center" v-text="emptyHit"></div>
           </div>
         </div>
@@ -241,7 +241,7 @@ onMounted(() => {
 @import "@/styles/mixin/touchable.scss";
 
 .q-dropdown-menu {
-  height: 44px;
+  // height: 44px;
   &.sm {
     .q-dropdown-menu-action {
       padding: 0 0.5rem 0 0.8rem;
