@@ -61,6 +61,8 @@ const sty = computed(() => {
   const ret:any = {
     width: `${props.size}px`,
     height: `${props.size}px`,
+    'max-width': `${props.size}px`,
+    'max-height': `${props.size}px`,
   };
   if (props.borderType === 'hollow') {
     ret['border-color'] = props.borderColor;

@@ -18,6 +18,7 @@ import QTabs from './QTabs.vue';
 import QInput from './QInput.vue';
 import QSearchInput from './QSearchInput.vue';
 import QToggleButton from './QToggleButton.vue';
+import QTextarea from './QTextarea.vue';
 
 export {
   QDatetimePicker,
@@ -40,4 +41,5 @@ export {
   QInput,
   QSearchInput,
   QToggleButton,
+  QTextarea,
 };

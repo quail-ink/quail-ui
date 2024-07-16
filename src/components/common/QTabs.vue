@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue';
+import { computed, ref, watch } from 'vue';
 
 const props = defineProps({
   modelValue: Object,
@@ -31,13 +31,35 @@ function selectTab(ix: number, tab: any) {
   emit('update:modelValue', tab);
 }
 
+
+function genCls(tab:any, ix: number) {
+  const ret = [];
+  if (selectedIndex.value === ix) {
+    ret.push("selected outlined");
+  } else {
+    ret.push("plain");
+  }
+  if (tab.icon) {
+    ret.push("with-icon");
+  }
+  if (tab.title) {
+    ret.push("with-label");
+  }
+  return ret.join(" ");
+}
+
 </script>
 
 <template>
   <div class="q-tabs">
-    <QButton class="q-tab-button sm" :class="selectedIndex === ix ? 'outlined selected' : 'plain'"
+    <QButton class="q-tab-button sm" :class="genCls(tab, ix)"
       v-for="tab, ix in tabs" :key="`tab-button-${ix}`" @click="selectTab(ix, tab)">
-      {{ tab.title }}
+      <template v-if="tab.icon">
+        <component :is="tab.icon" class="q-tab-button-icon" />
+      </template>
+      <div class="q-tab-button-label">
+        {{ tab.title }}
+      </div>
     </QButton>
   </div>
 </template>
@@ -63,6 +85,18 @@ function selectTab(ix: number, tab: any) {
       &:hover {
         background-color: transparent !important;
       }
+    }
+  }
+  .q-tab-button {
+    &.with-icon.with-label {
+      .q-tab-button-icon {
+        margin-right: 0.5rem;
+      }
+    }
+    .q-tab-button-icon {
+      height: 16px;
+      width: 16px;
+      max-width: 16px;
     }
   }
 }

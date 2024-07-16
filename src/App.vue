@@ -91,8 +91,8 @@ const currencies = computed(() => [
 ]);
 
 const tabs = computed(() => [
-  { id: "tab1", title: "Tab 1" },
-  { id: "tab2", title: "Tab 2" },
+  { id: "tab1", title: "Tab 1", icon: "QIconSun" },
+  { id: "tab2", icon: "QIconMagicWand" },
   { id: "tab3", title: "Tab 3" },
 ]);
 
@@ -234,6 +234,8 @@ function selectSearchResult(val:any) {
       <h2 class="section-title">Input</h2>
       <div class="flow">
         <QInput v-model="inputValue" type="text" placeholder="type here!" />
+        <QInput v-model="inputValue" type="text" placeholder="type here!" :error="true" :hint-text="'Some errors!'"/>
+        <QInput v-model="inputValue" type="text" placeholder="type here!" :hint-text="'Less than 10 charactors'" :max="10"/>
         <br/>
         <QInput v-model="inputValue" type="text" placeholder="type here!">
           <template #prepend-out>
@@ -260,10 +262,15 @@ function selectSearchResult(val:any) {
     </div>
 
     <div class="section">
-      <h2 class="section-title">Text field and Textarea</h2>
-      <div class="flow">
-        <input type="text" placeholder="type here!" class="text-field" />
-        <textarea placeholder="type here!" class="textarea" />
+      <h2 class="section-title">Textarea</h2>
+      <div class="mb-4">
+        <QTextarea v-model="inputValue" placeholder="type here!" />
+      </div>
+      <div class="mb-4">
+        <QTextarea v-model="inputValue" placeholder="type here!" :error='true' :hint-text="'Some errors!'"/>
+      </div>
+      <div>
+        <QTextarea v-model="inputValue" placeholder="type here!" :max="100" :hint-icon="'QIconMarkdown'" :hint-text="'Markdown Enabled.'"/>
       </div>
     </div>
 
@@ -282,7 +289,7 @@ function selectSearchResult(val:any) {
           </div>
           <div class="form-row column">
             <div class="form-label">Put a text field</div>
-            <input type="text" placeholder="type here!" class="text-field" />
+            <QInput type="text" placeholder="type here!" />
             <div class="form-hint">
               What you're typing here will be an example
             </div>

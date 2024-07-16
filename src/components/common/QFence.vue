@@ -62,7 +62,7 @@ const props = defineProps({
     .icon {
       width: 16px;
       min-width: 16px;
-      margin-right: 0.5rem;
+      margin-right: 0.75rem;
     }
     &.with-link:hover {
       opacity: 1;

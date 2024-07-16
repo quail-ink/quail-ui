@@ -121,6 +121,11 @@ onMounted(() => {
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 6px;
   box-shadow: inset 0px 1px 8px 0px rgba(0,0,0,0.03), 0px 1px 1px 0px #4343431A;
+  transition: border-color 0.2s ease-in-out;
+
+  &:has(input:focus) {
+    border-color: var(--vt-c-divider-light-focus);
+  }
 
   .q-dropdown-menu-with-text-field-top, .q-dropdown-menu-with-text-field-bottom {
     display: flex;
@@ -133,10 +138,10 @@ onMounted(() => {
   .q-dropdown-menu-with-text-field-bottom {
     color: var(--vt-c-text-light-3);
     .text-hint {
-      padding: 0.1rem 0.75rem 0.5rem 1rem;
+      padding: 0.1rem 0.75rem 0.4rem .75rem;
     }
     .fill-action {
-      padding: 0.1rem 2rem 0.5rem 1rem;
+      padding: 0.1rem 0.75rem 0.4rem .75rem;
       cursor: default;
       transition: color 0.2s ease-in;
       &:hover {
