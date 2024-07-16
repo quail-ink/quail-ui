@@ -195,9 +195,10 @@ onMounted(() => {
     }
 
     &:deep(.q-text-field) {
-      border: none;
+      border: none !important;
+      box-shadow: none !important;
+      outline: none !important;
       min-height: 42px;
-      box-shadow: none;
     }
     .clear-btn {
       min-height: 42px;

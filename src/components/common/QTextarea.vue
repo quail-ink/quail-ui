@@ -132,8 +132,9 @@ onMounted(() => {
   }
 
   &:deep(textarea) {
-    border: none;
-    box-shadow: none;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
   }
 
   // if textarea gets focus, apply border color to .q-textarea by parent pesudo class
