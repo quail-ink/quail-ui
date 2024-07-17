@@ -167,6 +167,11 @@ onMounted(() => {
       color: var(--vt-c-red);
     }
   }
+  &.disabled {
+    .clear-btn {
+      display: none;
+    }
+  }
 
   .q-input-prepend, .q-input-append,
   .q-input-prepend-out, .q-input-append-out {

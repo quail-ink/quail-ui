@@ -233,6 +233,7 @@ function selectSearchResult(val:any) {
     <div class="section">
       <h2 class="section-title">Input</h2>
       <div class="flow">
+        <QInput v-model="inputValue" type="text" placeholder="type here!" :disabled="true"/>
         <QInput v-model="inputValue" type="text" placeholder="type here!" />
         <QInput v-model="inputValue" type="text" placeholder="type here!" :error="true" :hint-text="'Some errors!'"/>
         <QInput v-model="inputValue" type="text" placeholder="type here!" :hint-text="'Less than 10 charactors'" :max="10"/>
