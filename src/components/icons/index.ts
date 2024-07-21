@@ -85,6 +85,13 @@ import QIconEditorDelete from './QIconEditorDelete.vue';
 import QIconLayoutRight from './QIconLayoutRight.vue';
 import QIconStars from './QIconStars.vue';
 import QIconMarkdown from './QIconMarkdown.vue';
+import QIconChevronDownDouble from './QIconChevronDownDouble.vue';
+import QIconChevronUpDouble from './QIconChevronUpDouble.vue';
+import QIconCpuChip from './QIconCpuChip.vue';
+import QIconEmail from './QIconEmail.vue';
+import QIconGrid from './QIconGrid.vue';
+import QIconPasscode from './QIconPasscode.vue';
+import QIconStickerCircle from './QIconStickerCircle.vue';
 
 import QIconColorTelegram from './QIconColorTelegram.vue';
 import QIconColorFeed from './QIconColorFeed.vue';
@@ -190,6 +197,13 @@ export {
   QIconLayoutRight,
   QIconStars,
   QIconMarkdown,
+  QIconChevronDownDouble,
+  QIconChevronUpDouble,
+  QIconCpuChip,
+  QIconEmail,
+  QIconGrid,
+  QIconPasscode,
+  QIconStickerCircle,
 
   QIconColorTelegram,
   QIconColorFeed,
