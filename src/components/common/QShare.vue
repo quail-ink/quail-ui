@@ -208,7 +208,7 @@ function shareToMastodon() {
     width: 24px;
     height: 24px;
     background: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    // box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 50%;
     filter: grayscale(1);
     opacity: 0.8;
@@ -219,7 +219,28 @@ function shareToMastodon() {
     }
     &:hover {
       filter: grayscale(0);
-      opacity: 1;
+      opacity: 1 !important;
+    }
+    &.twitter {
+      opacity: 0.9;
+    }
+    &.facebook {
+      opacity: 0.6;
+    }
+    &.linkedin {
+      opacity: 0.65;
+    }
+    &.mastodon {
+      opacity: 0.68;
+    }
+    &.bluesky {
+      opacity: 0.65;
+    }
+    &.hackernews {
+      opacity: 0.7;
+    }
+    &.general {
+      opacity: 0.63;
     }
   }
 }

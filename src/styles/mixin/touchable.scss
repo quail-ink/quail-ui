@@ -45,6 +45,7 @@
     box-shadow: inset 0px 1px 10px 0px rgba(0, 0, 0, 0.01), 0px 1px 2px 0px #4343431A;
     &:hover{
       color: var(--vt-c-black-soft);
+      background-color: rgba(0, 0, 0, 0.02);
       box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 0, 0.01), 0px 1px 1px 0px #4343431A;
     }
     &.elevated {
@@ -56,6 +57,7 @@
     &[disabled] {
       color: #888;
       &:hover {
+        background-color: transparent;
         box-shadow: inset 0px 1px 10px 0px #0000000D, 0px 1px 3px 0px #4343431A !important;
       }
     }
@@ -80,6 +82,9 @@
     }
     &[disabled] {
       opacity: 0.5;
+      &:hover {
+        background-color: transparent;
+      }
     }
   }
   &.plain {
@@ -90,6 +95,12 @@
     background-color: transparent;
     &:hover{
       background-color: rgba(0,0,0,0.05);
+    }
+    &[disabled] {
+      opacity: 0.5;
+      &:hover {
+        background-color: transparent;
+      }
     }
   }
   &.plain.danger {
@@ -102,6 +113,9 @@
     }
     &[disabled] {
       opacity: 0.5;
+      &:hover {
+        background-color: transparent;
+      }
     }
   }
 }
