@@ -685,9 +685,13 @@ function selectSearchResult(val:any) {
 
     <div class="section">
       <h2 class="section-title">Share</h2>
-      <div class="flow">
+      <div class="p-4">
         <QShare url="https://quail.ink" layout="row" :services="['twitter', 'facebook', 'linkedin','mastodon', 'bluesky', 'hackernews', 'general']"/>
+        <br/>
         <QShare url="https://quail.ink" layout="column" />
+      </div>
+      <div class="p-4" style="background-color: black">
+        <QShare url="https://quail.ink" layout="row" :services="['twitter', 'facebook', 'linkedin','mastodon', 'bluesky', 'hackernews', 'general']"/>
       </div>
     </div>
 

@@ -1,11 +1,5 @@
 <template>
   <div class="q-share" :class="cls">
-    <a v-for="serv in enabledServices" :key="`serv-${serv.name}`"
-      :title="serv.tooltip" class="q-share-link" :class="serv.name"
-      @click="shareToService(serv)"
-    >
-      <component :is="serv.icon" class="icon share-icon"></component>
-    </a>
     <q-dialog v-model="showMastodonDialog" title="Share to Mastodon">
       <div class="q-dialog-content mastodon-dialog-content flex center">
         <q-icon-color-mastodon class="service-icon"></q-icon-color-mastodon>
@@ -30,6 +24,14 @@
         </div>
       </div>
     </q-dialog>
+    <a v-for="serv in enabledServices" :key="`serv-${serv.name}`"
+      :title="serv.tooltip" class="q-share-link" :class="serv.name"
+      @click="shareToService(serv)"
+    >
+      <span class="q-share-link-inner" :class="serv.name">
+        <component :is="serv.icon" class="icon share-icon"></component>
+      </span>
+    </a>
   </div>
 </template>
 
@@ -204,31 +206,38 @@ function shareToMastodon() {
 <style lang="scss">
 .q-share {
   .q-share-link {
+    background: #bbb;
+    border-radius: 50%;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      background: #fff;
+      .q-share-link-inner {
+        filter: grayscale(0);
+        opacity: 1 !important;
+      }
+    }
+  }
+  .q-share-link-inner {
     display: block;
     width: 24px;
     height: 24px;
-    background: #fff;
-    // box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 50%;
     filter: grayscale(1);
-    opacity: 0.8;
     transition: all 0.2s ease-in-out;
-    img {
+    opacity: 0.7;
+    svg {
       width: 100%;
       height: 100%;
-    }
-    &:hover {
-      filter: grayscale(0);
-      opacity: 1 !important;
+      transition: all 0.2s ease-in-out;
     }
     &.twitter {
-      opacity: 0.9;
+      opacity: 0.8;
     }
     &.facebook {
       opacity: 0.6;
     }
     &.linkedin {
-      opacity: 0.65;
+      opacity: 0.6;
     }
     &.mastodon {
       opacity: 0.68;
