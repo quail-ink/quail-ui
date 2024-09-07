@@ -1,11 +1,4 @@
 :root {
-  code, code * {
-    font-family: "JetBrains Mono", "Roboto Mono", "Source Code Pro", Monaco, Menlo, Consolas, monospace;
-  }
-  .fa {
-    font-family: ForkAwesome;
-  }
-
   --vt-c-white: #ffffff;
   --vt-c-white-soft: #f2f2f2;
   --vt-c-white-mute: #718096;
@@ -68,6 +61,10 @@
   --vt-c-text-dark-1: var(--vt-c-white);
   --vt-c-text-dark-2: var(--vt-c-white-soft);
   --vt-c-text-dark-3: var(--vt-c-white-mute);
+  
+  code, code * {
+    font-family: "JetBrains Mono", "Roboto Mono", "Source Code Pro", Monaco, Menlo, Consolas, monospace;
+  }
 }
 
 /* semantic color variables for this project */
@@ -105,6 +102,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-weight: normal;
+}
+
+a {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: transparent; /* For some Androids */
 }
 
 .v-enter-active,

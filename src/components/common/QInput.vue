@@ -36,7 +36,7 @@
             {{ hintText }}
           </div>
         </div>
-        <div v-if="max !== -1" class="q-text-field-counter">
+        <div v-if="max !== -1" class="q-text-field-counter text-xs">
           {{ text.length }} / {{ max }}
         </div>
       </div>
