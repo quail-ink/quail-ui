@@ -77,6 +77,8 @@ const selectedMenuItem = ref(menuItems.value[0]);
 
 const selectedLang = ref('en');
 
+const selectedCurrency = ref('USD');
+
 const currencies = computed(() => [
   {
     title: "BTC",
@@ -117,6 +119,11 @@ const selectedTab = ref(tabs.value[0]);
 function onLangSelected(item: any) {
   console.log("Language selected", item);
   selectedLang.value = item.value;
+}
+
+function onCurrencySelected(item: any) {
+  console.log("Currency selected", item);
+  selectedCurrency.value = item.value;
 }
 
 function dropdownMenuSelectionChanged(item: any) {
@@ -470,6 +477,13 @@ function selectSearchResult(val:any) {
           <QIconArrowRight></QIconArrowRight>
         </div>
         <QLanguageSelector :lang="selectedLang" no-flag :presist="true" @change="onLangSelected"/>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Currency Selector</h2>
+      <div class="flow">
+        <QCurrencySelector :currency="'USD'" @change="onCurrencySelected"/>
       </div>
     </div>
 

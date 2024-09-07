@@ -33,25 +33,25 @@ const selectedLangItem: Ref<any> = ref(null);
 const languageItems = computed(() => {
   let items = [
     {
-      flag: "🇺🇸",
+      flag: "🗽",
       title: "English",
       value: "en",
       action: selectLang,
     },
     {
-      flag: "🇨🇳",
+      flag: "🐼",
       title: "简体中文",
       value: "zh",
       action: selectLang,
     },
     {
-      flag: "🇹🇼",
+      flag: "🧋",
       title: "正體中文",
       value: "zh-tw",
       action: selectLang,
     },
     {
-      flag: "🇯🇵",
+      flag: "🌸",
       title: "日本語",
       value: "ja",
       action: selectLang,
