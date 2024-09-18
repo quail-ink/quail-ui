@@ -116,6 +116,34 @@ const searchItems = computed(() => {
 
 const selectedTab = ref(tabs.value[0]);
 
+const selectedPaymentApproachItem = ref(null);
+
+const paymentApproachArray = computed(() => {
+  return [{
+    name: "stripe_1",
+    icons: ['visa', 'mastercard', 'amex' ],
+    selected: true,
+    symbol: "JPY",
+    desc: "card"
+  }, {
+    name: "stripe_2",
+    icons: ['visa', 'mastercard', 'amex', 'wechat', 'alipay' ],
+    symbol: "JPY",
+    desc: "all"
+  }, {
+    name: "stripe_3",
+    icons: ['evm' ],
+    symbol: "JPY",
+    desc: "blockchain",
+    disabled: true
+  }]
+})
+
+function selectPaymentApproachItem(item: any) {
+  console.log("selectPaymentApproachItem", item);
+  selectedPaymentApproachItem.value = item;
+}
+
 function onLangSelected(item: any) {
   console.log("Language selected", item);
   selectedLang.value = item.value;
@@ -706,6 +734,16 @@ function selectSearchResult(val:any) {
       </div>
       <div class="p-4" style="background-color: black">
         <QShare url="https://quail.ink" layout="row" :services="['twitter', 'facebook', 'linkedin','mastodon', 'bluesky', 'hackernews', 'general']"/>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">PaymentApproachSelect</h2>
+      <div class="">
+        <QPaymentApproachSelect :channels="paymentApproachArray" @select="selectPaymentApproachItem"/>
+      </div>
+      <div class="">
+        selected: {{ selectedPaymentApproachItem }}
       </div>
     </div>
 

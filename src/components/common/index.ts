@@ -20,6 +20,8 @@ import QSearchInput from './QSearchInput.vue';
 import QToggleButton from './QToggleButton.vue';
 import QTextarea from './QTextarea.vue';
 import QCurrencySelector from './QCurrencySelector.vue';
+import QPaymentApproachItem from './QPaymentApproachItem.vue';
+import QPaymentApproachSelect from './QPaymentApproachSelect.vue';
 
 export {
   QDatetimePicker,
@@ -44,4 +46,6 @@ export {
   QToggleButton,
   QTextarea,
   QCurrencySelector,
+  QPaymentApproachItem,
+  QPaymentApproachSelect,
 };
