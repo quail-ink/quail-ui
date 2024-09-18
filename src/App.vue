@@ -6,6 +6,9 @@ import QButton from "./components/common/QButton.vue";
 const toggleValue = ref(false);
 const switchValue1 = ref(true);
 const switchValue2 = ref(false);
+const switchValue3 = ref(false);
+const switchValue4 = ref(false);
+
 const datetimeValue = ref("2023-10-23");
 const dialogValue1 = ref(false);
 const dialogValue2 = ref(false);
@@ -738,12 +741,20 @@ function selectSearchResult(val:any) {
     </div>
 
     <div class="section">
-      <h2 class="section-title">PaymentApproachSelect</h2>
+      <h2 class="section-title">PaymentApproachSelect / PaymentApproachItems</h2>
       <div class="">
         <QPaymentApproachSelect :channels="paymentApproachArray" @select="selectPaymentApproachItem"/>
       </div>
-      <div class="">
+      <div class="mb-4">
         selected: {{ selectedPaymentApproachItem }}
+      </div>
+      <div class="">
+        <QPaymentApproachItem name="stripe_1" :icons="['visa', 'mastercard', 'amex']" :selected="true" symbol="" desc="card" >
+          <QSwitch v-model="switchValue3" />
+        </QPaymentApproachItem>
+        <QPaymentApproachItem name="stripe_2" :icons="['wechat', 'alipay']" :selected="true" symbol="" desc="others" >
+          <QSwitch v-model="switchValue4" />
+        </QPaymentApproachItem>
       </div>
     </div>
 
