@@ -78,7 +78,7 @@ const props = defineProps({
     .icon-unionpay {
       background-image: url('@/assets/images/payment-icons/payment-card-unionpay.svg');
     }
-    .icon-wechat {
+    .icon-wechat_pay {
       background-image: url('@/assets/images/payment-icons/payment-wechat.svg');
     }
     .icon-alipay {

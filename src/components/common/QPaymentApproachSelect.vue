@@ -42,7 +42,7 @@ function selectPaymentApproach(item:any) {
     <div v-for="ch in _channels" :key="`app-${ch.name}`" class="q-payment-approach-item-wrapper mb-1" :class="selectedCls(ch)"
       @click="selectPaymentApproach(ch)">
       <QPaymentApproachItem
-        :name="ch.name" :icons="ch.icons" :selected="ch.selected" :symbol="ch.symbol" :desc="ch.desc" :disabled="ch.disabled"
+        :name="ch.name" :icons="ch.icons" :symbol="ch.symbol" :desc="ch.desc" :disabled="ch.disabled"
       />
     </div>
   </div>

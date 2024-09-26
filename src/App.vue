@@ -130,7 +130,7 @@ const paymentApproachArray = computed(() => {
     desc: "card"
   }, {
     name: "stripe_2",
-    icons: ['visa', 'mastercard', 'amex', 'wechat', 'alipay' ],
+    icons: ['visa', 'mastercard', 'amex', 'wechat_pay', 'alipay' ],
     symbol: "JPY",
     desc: "all"
   }, {
@@ -752,7 +752,7 @@ function selectSearchResult(val:any) {
         <QPaymentApproachItem name="stripe_1" :icons="['visa', 'mastercard', 'amex']" :selected="true" symbol="" desc="card" >
           <QSwitch v-model="switchValue3" />
         </QPaymentApproachItem>
-        <QPaymentApproachItem name="stripe_2" :icons="['wechat', 'alipay']" :selected="true" symbol="" desc="others" >
+        <QPaymentApproachItem name="stripe_2" :icons="['wechat_pay', 'alipay']" :selected="true" symbol="" desc="others" >
           <QSwitch v-model="switchValue4" />
         </QPaymentApproachItem>
       </div>
