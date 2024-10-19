@@ -68,6 +68,11 @@ onMounted(() => {
   const ret = getFormattedDatetime('');
   date.value = ret.date;
   time.value = ret.time;
+  if (props.modelValue) {
+    const ret = getFormattedDatetime(props.modelValue);
+    date.value = ret.date;
+    time.value = ret.time;
+  }
 });
 </script>
 
