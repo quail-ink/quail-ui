@@ -25,13 +25,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "dayjs": "^1.11.9",
     "qrcode": "^1.5.3",
     "vue": "^3.3.4"
   },
   "devDependencies": {
-    "@types/qrcode": "^1.5.5",
     "@types/node": "^20.5.1",
+    "@types/qrcode": "^1.5.5",
     "@vitejs/plugin-vue": "^4.2.3",
     "rollup-plugin-scss": "^4.0.0",
     "sass": "^1.66.1",

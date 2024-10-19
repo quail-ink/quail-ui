@@ -543,6 +543,11 @@ function selectSearchResult(val:any) {
         <br/>
         <QDatetimePicker v-model="datetimeValue" disabled />
       </div>
+      <div class="flow">
+        <QDatetimePicker v-model="datetimeValue" accept="date"/>
+        <br/>
+        <QDatetimePicker v-model="datetimeValue" accept="time" />
+      </div>
     </div>
 
     <div class="section">
