@@ -206,50 +206,68 @@ function shareToMastodon() {
 <style lang="scss">
 .q-share {
   .q-share-link {
-    background: #bbb;
     border-radius: 50%;
     transition: all 0.2s ease-in-out;
     &:hover {
-      background: #fff;
       .q-share-link-inner {
-        filter: grayscale(0);
-        opacity: 1 !important;
+        &.twitter {
+          background-color: rgba(84, 181, 230, 0.2);
+        }
+        &.facebook {
+          background-color: rgba(78, 113, 168, 0.2);
+        }
+        &.linkedin {
+          background-color: rgba(22, 134, 176, 0.2);
+        }
+        &.mastodon {
+          background-color: rgba(43, 144, 217, 0.2);
+        }
+        &.bluesky {
+          background-color: rgba(56, 142, 255, 0.2);
+        }
+        &.hackernews {
+          background-color: rgba(255, 102, 0, 0.2);
+        }
+        &.general {
+          background-color: rgba(187, 187, 187, 0.2);
+        }
       }
     }
   }
   .q-share-link-inner {
     display: block;
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
-    filter: grayscale(1);
     transition: all 0.2s ease-in-out;
-    opacity: 0.7;
+    padding: 2px;
+    border-width: 1px;
+    border-style: solid;
     svg {
       width: 100%;
       height: 100%;
       transition: all 0.2s ease-in-out;
     }
     &.twitter {
-      opacity: 0.8;
+      border-color: #54b5e6;
     }
     &.facebook {
-      opacity: 0.6;
+      border-color: #4E71A8;
     }
     &.linkedin {
-      opacity: 0.6;
+      border-color: #1686B0;
     }
     &.mastodon {
-      opacity: 0.68;
+      border-color: #2B90D9;
     }
     &.bluesky {
-      opacity: 0.65;
+      border-color: #388eff;
     }
     &.hackernews {
-      opacity: 0.7;
+      border-color: #FF6600;
     }
     &.general {
-      opacity: 0.63;
+      border-color: #bbb;
     }
   }
 }
